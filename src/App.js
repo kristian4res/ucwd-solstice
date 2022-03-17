@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Homepage from './pages/homepage/homepage';
 import Explore from './pages/explore/explore';
 import FAQ from './pages/faq/faq';
@@ -8,13 +8,12 @@ import SignIn from './pages/signin/signin';
 import SignUp from './pages/signup/signup';
 
 import './App.css';
+import NavigationBar from './components/navigation-bar/navigationBar';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">
-        Welcome to Solstice!
-      </h1>
+      <NavigationBar />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/explore" element={<Explore />} />
