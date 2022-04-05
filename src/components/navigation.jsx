@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import LogoButton from './logo-button'
 
 const Navigation = () => {
   const [navClass, setNavClass] = useState('');
   const [y, setY] = useState(100);
 
-  // Check 
-  const handleNavigation = (e) => {
-    const window = e.currentTarget;
-
-    if (y > window.scrollY) {
-      setNavClass('');
-    } else if (y < window.scrollY) {
-      setNavClass('bg-dark-body');
-    }
-
-    setY(window.scrollY);
-  };
-
+  const handleNavigation = useCallback(
+    e => {
+      const window = e.currentTarget;
+      if (y > window.scrollY) {
+        setNavClass('');
+      } else if (y < window.scrollY) {
+        setNavClass('bg-dark-body');
+      }
+      setY(window.scrollY);
+    }, [y]
+  );
+  
   useEffect(() => {
     setY(window.scrollY);
-
     window.addEventListener("scroll", (e) => handleNavigation(e));
-  }, []);
+  
+    return () => { // return a cleanup function to unregister our function since its gonna run multiple times
+      window.removeEventListener("scroll", (e) => handleNavigation(e));
+    };
+  }, [handleNavigation]);
 
   return (
     <div className={`flex w-full transition-colors ${navClass} text-white z-10 fixed top-0 mx-auto py-4 px-8 md:px-14 lg:px-24`}>
