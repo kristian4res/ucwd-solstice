@@ -1,7 +1,8 @@
 import React from 'react';
 
 import vidScubadiving1 from '../assets/scuba-diving-vid-1.mp4';
-import imgKayaking1 from '../assets/snowboarding-md-1.jpg';
+import imgSnowboarding1 from '../assets/snowboarding-md-1.jpg';
+import ImageCard from '../components/image-card';
 
 const Homepage = () => {
   return (
@@ -14,38 +15,20 @@ const Homepage = () => {
               </video>
             </div>
             <div className="flex flex-col items-start w-1/3">
-              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold my-4 uppercase text-white inline-block">Solstice <br/> Explore the World</h1>
+              <h1 className="text-xl md:text-4xl lg:text-6xl font-bold my-4 uppercase text-white inline-block">Solstice <br/> Explore the World</h1>
               <div>
                 <input type="text" placeholder='Search a location'></input>
               </div>
             </div>
           </header>
-          <section id="recommendations-section" className='h-1/3'>
+          <section id="recommendations-section" className='w-full h-1/3'>
             <h2 className="text-2xl font-bold m-4">
               We recommend these destinations
             </h2>
-            <div className='flex justify-evenly'>
-              <div className="rounded md:rounded-md m-0.5 h-52 w-72 overflow-hidden">
-                <img id="image" 
-                  src={imgKayaking1}
-                  alt="A snowboarder"
-                  className='w-full h-full object-cover'
-                />
-              </div>
-              <div className="rounded md:rounded-md m-0.5 h-52 w-72 overflow-hidden">
-                <img id="image" 
-                  src={imgKayaking1}
-                  alt="A snowboarder"
-                  className='w-full h-full object-cover'
-                />
-              </div>
-              <div className="rounded md:rounded-md m-0.5 h-52 w-72 overflow-hidden">
-                <img id="image" 
-                  src={imgKayaking1}
-                  alt="A snowboarder"
-                  className='w-full h-full object-cover'
-                />
-              </div>
+            <div className='grid grid-cols-1 gap-6 mt-3 place-content-center md:grid-cols-3'>
+              <ImageCard imgUrl={imgSnowboarding1} />
+              <ImageCard imgUrl={imgSnowboarding1} />
+              <ImageCard imgUrl={imgSnowboarding1} />
             </div>
           </section>
         </div>
