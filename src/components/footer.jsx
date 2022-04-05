@@ -2,7 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='absolute bottom-0 w-full'>footer</div>
+    <div className='flex flex-col items-center mt-4 w-full bg-dark-body'>
+      <h3 className='text-white'>
+        Footer
+      </h3>
+    </div>
   )
 }
 
