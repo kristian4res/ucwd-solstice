@@ -18,7 +18,7 @@ const Navigation = () => {
       if (y > window.scrollY) {
         setNavClass('');
       } else if (y < window.scrollY) {
-        setNavClass('backdrop-blur bg-dark-body shadow-lg');
+        setNavClass('backdrop-blur bg-dark shadow-lg');
       }
     }, [y]
   );
@@ -43,20 +43,21 @@ const Navigation = () => {
   }, [handleNavBackdrop]);
 
   return (
-    <div className={`${navClass} w-full ${location.pathname === '/' ? 'text-white' : 'text-dark-body' } z-10 fixed top-0`}>
-      <div className={`flex items-center w-full transition-all ease-in mx-auto py-4 px-8 md:px-14 lg:px-24`}>
+    <div className={`w-full ${navClass} z-10 fixed top-0 text-white`}>
+      <div className={`flex ${location.pathname === '/' ? 'transparent' : 'bg-dark' } 
+        items-center w-full transition-all ease-in mx-auto py-4 px-6 md:px-14 lg:px-24`
+      }>
         <LogoButton pageLocation={location.pathname} navStatus={navClass} />
         <BurgerMenu isNavOpen={isNavOpen} handleMobileNav={handleMobileNav} />
-        {/* WORK IN PROGRESS */}
         <nav className={
           `absolute top-0 opacity-0 right-0 h-screen w-[50vw] 
-          ${location.pathname !== '/' ? 'bg-white' : 'bg-dark-body' }  text-white
+          ${location.pathname === '/' ? 'bg-dark md:text-white' : '' }  
           transition-all ease-in
           justify-center items-center 
           ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-full md:translate-x-0 md:opacity-100'} 
           md:bg-transparent md:static md:flex md:h-fit md:w-fit`
         }>
-          <ul className='flex flex-col h-full items-start px-12 pt-4 mt-[4.7rem] bg-slate-500
+          <ul className='flex flex-col h-full items-start px-16 pt-4 mt-[4.7rem] bg-slate-500
             md:bg-transparent md:m-0 md:p-0 md:space-x-12 md:flex-row md:justify-center md:items-center'
           >
             <li>

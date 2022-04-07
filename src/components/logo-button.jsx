@@ -12,7 +12,7 @@ const LogoButton = ({ pageLocation, navStatus }) => {
         <SolsticeLogoColoured />
         : <SolsticeLogoLight />
       }
-      <div className='flex flex-col items-center justify-center ml-1 h-full text-center'>
+      <div className={`flex flex-col items-center justify-center ml-1 h-full text-center`}>
         solstice
       </div>
     </Link>
