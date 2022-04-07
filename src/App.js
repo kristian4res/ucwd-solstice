@@ -1,8 +1,18 @@
+import {
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
+
+import Homepage from './routes/home-page';
+import Explore from './routes/explore-page';
+import Contacts from './routes/contacts-page';
+import SignIn from './routes/sign-in-page';
+import SignUp from './routes/sign-up-page';
+
 import Navigation from './components/navigation';
 import Hero from './components/hero';
 import Footer from './components/footer';
-
-import Homepage from './pages/home-page';
 
 import './App.css';
 
@@ -10,9 +20,19 @@ function App() {
   return (
     <div id="page-container" className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
       <Navigation />
-      <Hero />
       <main id="main-content" className='flex flex-col justify-evenly w-full'>
-        <Homepage />
+        <Routes>
+          <Route exact path="/" element={
+            <>
+              <Hero />
+              <Homepage />
+            </>
+          }/>
+          <Route exact path="/explore" element={<Explore />}/>
+          <Route exact path="/contacts" element={<Contacts />}/>
+          <Route exact path="/signin" element={<SignIn />}/>
+          <Route exact path="/signup" element={<SignUp />}/>
+        </Routes>
       </main>
       <Footer />
     </div>

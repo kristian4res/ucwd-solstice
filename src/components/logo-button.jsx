@@ -1,20 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as SolsticeLogoLight } from '../assets/solstice-logo-light.svg';
 import { ReactComponent as SolsticeLogoColoured } from '../assets/solstice-logo-coloured.svg';
 
-const LogoButton = ({ navStatus }) => {
+const LogoButton = ({ pageLocation, navStatus }) => {
   return (
-    <div className="flex justify-center text-xl font-bold mr-auto cursor-default md:text-3xl">
+    <Link className="flex justify-center items-center text-xl font-bold mr-auto md:text-3xl" to='/'>
       {
-        navStatus.length > 0 ?
+        navStatus.length > 0 || pageLocation !== '/' ?
         <SolsticeLogoColoured />
         : <SolsticeLogoLight />
       }
       <div className='flex flex-col items-center justify-center ml-1 h-full text-center'>
         solstice
       </div>
-    </div>
+    </Link>
   )
 }
 
