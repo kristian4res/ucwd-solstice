@@ -7,7 +7,7 @@ const ImageCard = ({ imgUrl, imgTitle, sportType }) => {
     }
 
     return (
-            <div className="container drop-shadow-lg flex justify-center rounded md:rounded-md m-0.5 overflow-hidden relative">
+            <div className="container shadow-md flex justify-center rounded md:rounded-md m-0.5 overflow-hidden relative">
                 <h4 className={`container absolute my-0 px-2 py-2 top-0 left-0 ${sportTypeColor[sportType]}`}>
                     <span className='text-lg text-white md:text-xl'>{imgTitle}</span>
                 </h4>
