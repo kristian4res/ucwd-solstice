@@ -7,10 +7,10 @@ module.exports = {
       colors: {
         'dark': '#2C2C2C',
         'primary': '#E99A27',
+        'secondary': '#739a77',
         'selected-text': '#89e497',
         'theme': '#89e497',
         'nav': '#404053',
-        'secondary': '#739a77',
         'badge': '#3F3F51',
         'input-border': '#565666',
         'input': '#2A2A35'

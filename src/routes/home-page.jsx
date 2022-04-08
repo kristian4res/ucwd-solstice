@@ -23,7 +23,7 @@ const Homepage = () => {
         </div>
         <div className='flex justify-center md:justify-end mx-10 mt-4'>
           {/* Button */}
-          <button className='flex justify-center items-center w-60 px-2 py-2 mb-4 text-white text-xl font-light bg-dark-body rounded md:text-2xl md:rounded-xl'>
+          <button className='flex justify-center items-center w-60 px-2 py-2 mb-4 text-white text-xl font-light bg-dark rounded md:text-2xl md:rounded-xl'>
             <span>Explore More</span>
             <ChevronDoubleRightIcon className='h-6 w-6 md:h-8 md:w-8' />
           </button>

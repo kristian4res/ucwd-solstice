@@ -1,13 +1,10 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
 
 import { MenuIcon, XIcon } from '@heroicons/react/solid';
 
-const BurgerMenu = ({ isNavOpen, handleMobileNav }) => {
-  const location = useLocation();
-
+const BurgerMenuBtn = ({ isNavOpen, handleMobileNav }) => {
   return (
-    <div className={`flex justify-center items-center z-20 cursor-pointer h-12 w-12 rounded-[50%] 
+    <div className={`flex justify-center items-center z-10 cursor-pointer h-12 w-12 rounded-[50%] 
     text-white hover:bg-dark hover:opacity-60
     md:hidden 
     `} 
@@ -20,4 +17,4 @@ const BurgerMenu = ({ isNavOpen, handleMobileNav }) => {
   )
 }
 
-export default BurgerMenu
+export default BurgerMenuBtn

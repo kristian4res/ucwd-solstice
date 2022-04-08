@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SearchForm from './search-form';
 import vidScubadiving1 from '../assets/scuba-diving-vid-1.mp4';
 
 const Hero = () => {
@@ -10,7 +11,7 @@ const Hero = () => {
               <source src={vidScubadiving1} type="video/mp4" />
             </video>
         </div>
-        <div className="flex flex-col items-center md:items-start w-1/3">
+        <div className="flex flex-col items-center w-3/5 md:items-start">
             <div className='flex flex-col'>
               <h1 className="my-0 text-3xl font-bold uppercase text-white inline-block md:text-4xl md:my-4 lg:text-6xl">
                 Solstice
@@ -20,9 +21,7 @@ const Hero = () => {
                 Explore the world
               </h2>
             </div>
-            <div className='mt-8 md:mt-4'>
-              <input type="text" placeholder='Search a location'></input>
-            </div>
+            <SearchForm />
         </div>
     </header>
   )
