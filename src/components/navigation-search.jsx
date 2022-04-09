@@ -13,7 +13,7 @@ const NavigationSearch = ({ navClass }) => {
                 <input className='my-2 px-2'type="text" placeholder='Search a location'></input>
             </div>
             <div className='flex justify-center mx-2 my-2 w-full md:w-fit md:items-center'>
-                <button className='flex justify-center items-center text-white bg-primary rounded-full p-2 md:w-14'>
+                <button className='flex h-full justify-center items-center text-white bg-primary rounded-full p-2 md:w-14'>
                     <SearchIcon className='h-6 w-6' />
                 </button>
             </div>
