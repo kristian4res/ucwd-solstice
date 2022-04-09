@@ -6,7 +6,7 @@ import { ReactComponent as SolsticeLogoColoured } from '../assets/solstice-logo-
 
 const LogoButton = ({ pageLocation, navStatus }) => {
   return (
-    <Link className="flex justify-center items-center text-xl font-bold md:text-3xl" to='/'>
+    <Link className="flex justify-center items-center text-lg font-bold md:text-3xl" to='/'>
       {
         navStatus.length > 0 || pageLocation !== '/' ?
         <SolsticeLogoColoured />
