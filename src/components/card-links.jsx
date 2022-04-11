@@ -8,7 +8,8 @@ const CardLink = ({ imgUrl, imgTitle }) => {
 
     return (
         <div className='container w-full h-full'>
-            <div className="container shadow-md flex justify-center rounded md:rounded-md m-0.5 overflow-hidden relative">
+            <div className="container shadow-md flex justify-center rounded 
+            md:rounded-md m-0.5 overflow-hidden relative">
                 <img id="image" 
                     src={imgUrl}
                     alt={'Winter sports'}
@@ -16,7 +17,8 @@ const CardLink = ({ imgUrl, imgTitle }) => {
                 />
             </div>
             <div>
-                <h4 className={`container my-0 px-2 py-2 uppercase text-lg text-dark drop-shadow-xl md:text-3xl`}>
+                <h4 className={`container my-0 px-2 py-2 uppercase text-lg font-semibold text-dark drop-shadow-xl 
+                md:text-3xl`}>
                     {imgTitle}
                 </h4>
             </div>

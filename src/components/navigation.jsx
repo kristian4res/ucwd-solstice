@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import LogoButton from './logo-button';
 import BurgerMenuBtn from './burger-menu-btn';
 import NavigationSearch from './navigation-search';
+import LinkUnderline from './link-underline';
+import LinkSolid from './link-solid';
 
 const Navigation = () => {
   // State for managing navigation look
@@ -64,31 +66,13 @@ const Navigation = () => {
             <ul className='flex flex-col h-full items-start px-16 pt-4 mt-[5.3rem] bg-slate-500
               lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-12 lg:flex-row lg:justify-center lg:items-center'
             >
-              <li>
-                <Link className='text-lg' to='/'>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className='text-lg' to='/explore'>
-                  Explore
-                </Link>
-              </li>
-              <li>
-                <Link className='text-lg' to='/contacts'>
-                  Contacts
-                </Link>
-              </li>
-              <li>
-                <Link className='text-lg' to='/signin'>
-                  Sign In
-                </Link>
-              </li>
-              <li>
-                <Link className='text-lg' to='/signup'>
-                  Sign Up
-                </Link>
-              </li>
+              <LinkUnderline label='Home' route='/' />
+              <LinkUnderline label='Explore' route='/explore' />
+              <LinkUnderline label='Contacts' route='/contacts' />
+              <div className='flex flex-row space-x-4 mt-6 md:mt-0 lg:ml-2'>
+                <LinkSolid label='Sign Up' route='/signup' color='bg-success' />
+                <LinkSolid label='Sign In' route='/signin' color='bg-secondary' />
+              </div>
             </ul>
           </nav>
         </div>

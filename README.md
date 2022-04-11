@@ -12,3 +12,4 @@ To visit the latest live version of the app, go to this [link]().
 
 ## Acknowledgements
   - [Detecting Page Scroll Direction](https://stackoverflow.com/questions/62497110/detect-scroll-direction-in-react-js)
+  - [Link Underline Component Animation](https://www.30secondsofcode.org/css/s/hover-underline-animation)
