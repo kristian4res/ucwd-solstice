@@ -15,7 +15,7 @@ const Homepage = () => {
   return (
     <>
       <section id="recommendations-section" className='mt-2 w-full h-full mb-6 md:mt-4 md:h-1/3'>
-        <h2 className="text-dark-body text-2xl font-bold mx-10 mt-6">
+        <h2 className="text-dark-body text-2xl font-bold mx-10 mt-12 md:mt-6">
           Inspiration for your next trip
         </h2>
         <div className='grid grid-cols-1 gap-6 mt-3 place-content-center mx-10 md:grid-cols-3'>

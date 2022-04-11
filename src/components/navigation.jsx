@@ -25,11 +25,11 @@ const Navigation = () => {
   );
 
   const handleMobileNav = () => {
-    if (window.screen.width > 768) {
+    // Only work when screen size is below 1024px (lg)
+    if (window.screen.width > 1024) {
       return null;
     }
 
-    console.log('HELLLO')
     setNavOpen(prevState => !prevState);
   }
 
