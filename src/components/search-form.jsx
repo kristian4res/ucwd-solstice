@@ -24,6 +24,7 @@ const SearchForm = () => {
         <div className='place-self-center flex justify-center px-2 py-2 h-full w-full md:w-fit md:items-center'>
             <button className='flex w-full h-full justify-center items-center text-white bg-primary rounded-full p-2 md:w-32'>
                 <SearchIcon className='h-6 w-6' />
+                <span className='ml-2'>Search</span>
             </button>
         </div>
     </div>

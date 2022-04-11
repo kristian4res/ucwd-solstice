@@ -29,6 +29,7 @@ const Navigation = () => {
       return null;
     }
 
+    console.log('HELLLO')
     setNavOpen(prevState => !prevState);
   }
 
@@ -54,14 +55,14 @@ const Navigation = () => {
           <BurgerMenuBtn isNavOpen={isNavOpen} handleMobileNav={handleMobileNav} />
           <nav className={
             `absolute top-0 opacity-0 right-0 h-screen w-[50vw] 
-            ${location.pathname === '/' ? 'bg-dark md:text-white' : '' }  
+            ${location.pathname === '/' ? 'bg-dark lg:text-white' : '' }  
             transition-all ease-in
             justify-center items-center 
-            ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-full md:translate-x-0 md:opacity-100'} 
-            md:bg-transparent md:static md:flex md:h-fit md:w-fit`
+            ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-full lg:translate-x-0 lg:opacity-100'} 
+            lg:bg-transparent lg:static lg:flex lg:h-fit lg:w-fit`
           }>
-            <ul className='flex flex-col h-full items-start px-16 pt-4 mt-[5.4rem] bg-slate-500
-              md:bg-transparent md:m-0 md:p-0 md:space-x-12 md:flex-row md:justify-center md:items-center'
+            <ul className='flex flex-col h-full items-start px-16 pt-4 mt-[5.3rem] bg-slate-500
+              lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-12 lg:flex-row lg:justify-center lg:items-center'
             >
               <li>
                 <Link className='text-lg' to='/'>
