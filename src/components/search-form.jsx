@@ -25,7 +25,8 @@ const SearchForm = () => {
         </div>
         <div className='flex justify-center px-2 py-2 h-full w-full col-span-full
          md:items-center md:justify-self-center xl:col-span-1'>
-            <button className='flex w-full h-full justify-center items-center text-white bg-primary rounded-full p-2'>
+            <button className='flex w-full h-full justify-center items-center text-white bg-primary rounded-full p-2
+            hover:brightness-90'>
                 <SearchIcon className='h-6 w-6' />
                 <span className='ml-2'>Search</span>
             </button>

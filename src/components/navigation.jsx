@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import LogoButton from './logo-button';
 import BurgerMenuBtn from './burger-menu-btn';
 import NavigationSearch from './navigation-search';
 import LinkUnderline from './link-underline';
 import LinkSolid from './link-solid';
+import LogoAdaptive from './logo-adaptive';
 
 const Navigation = () => {
   // State for managing navigation look
@@ -52,7 +52,7 @@ const Navigation = () => {
         items-center w-full transition-all ease-in mx-auto py-4 px-6 md:px-14 lg:px-24`
       }>
         <div className='w-full flex justify-between items-center space-x-2 md:space-x-4'>
-          <LogoButton pageLocation={location.pathname} navStatus={navClass} />
+          <LogoAdaptive pageLocation={location.pathname} navStatus={navClass} />
           <NavigationSearch navClass={navClass} />
           <BurgerMenuBtn isNavOpen={isNavOpen} handleMobileNav={handleMobileNav} />
           <nav className={

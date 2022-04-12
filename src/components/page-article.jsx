@@ -10,7 +10,8 @@ const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
       backgroundPosition: 'center',
       backgroundSize: 'cover',
     }}>
-      <article className='container flex flex-col text-white w-2/4 min-h-60 md:h-96'>
+      <article className='container flex flex-col mb-8 text-white w-2/4 min-h-60
+      md:h-96 md:mb-4'>
         <h2 className="text-2xl font-bold mt-6 mx-10">
           {
             articleTitle ? articleTitle 
@@ -18,7 +19,8 @@ const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
             'Make the most out of your trip'
           }
         </h2>
-        <p className='text-left mt-4 mx-10 w-3/4'>
+        <p className='text-left mt-4 mx-10 w-3/4 text-sm 
+          lg:text-md'>
           {
             articleText ? articleText 
             :

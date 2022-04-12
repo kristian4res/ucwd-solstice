@@ -24,10 +24,11 @@ const Homepage = () => {
           <CardLink imgUrl={imgSurfing1} imgTitle={'Surfing'} sportType={'summer'} />
         </div>
         <div className='flex justify-center md:justify-end mx-10 mt-4'>
-          <ButtonOutline btnTitle={'Explore More'}
+          <ButtonOutline btnTitle={'Explore More'} 
             icon={
               <ChevronDoubleRightIcon className='h-6 w-6 md:h-8 md:w-8' />
             }
+            route='/explore'
           />
         </div>
       </section>

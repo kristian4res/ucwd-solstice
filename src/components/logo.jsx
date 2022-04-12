@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as SolsticeLogoLight } from '../assets/solstice-logo-light.svg';
 import { ReactComponent as SolsticeLogoColoured } from '../assets/solstice-logo-coloured.svg';
 
-const LogoButton = ({ pageLocation, navStatus }) => {
+const Logo = ({ isColoured }) => {
   return (
     <Link className="flex justify-center items-center text-lg font-bold md:text-3xl" to='/'>
       {
-        navStatus.length > 0 || pageLocation !== '/' ?
+        isColoured ?
         <SolsticeLogoColoured />
         : <SolsticeLogoLight />
       }
@@ -19,4 +19,4 @@ const LogoButton = ({ pageLocation, navStatus }) => {
   )
 }
 
-export default LogoButton
+export default Logo
