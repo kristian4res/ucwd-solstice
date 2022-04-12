@@ -45,8 +45,24 @@ const Footer = () => {
           </ul>
         </section>
       </div>
-      <div className="flex">
-        BOTTOM
+      <div className='my-6 w-[90%] h-[2px] bg-white'></div>
+      <div className="flex flex-col w-full 
+      justify-between items-center 
+      lg:flex-row lg:px-28">
+        <p className='flex'>
+          © 2022 Solstice, Inc.
+        </p>
+        <ul className='flex flex-row space-x-2'>
+          <li>
+            👋
+          </li>
+          <li>
+            👋
+          </li>
+          <li>
+            👋
+          </li>
+        </ul>
       </div>
     </footer>
   )

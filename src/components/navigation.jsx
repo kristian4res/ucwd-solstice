@@ -63,13 +63,16 @@ const Navigation = () => {
             ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-full lg:translate-x-0 lg:opacity-100'} 
             lg:bg-transparent lg:static lg:flex lg:h-fit lg:w-fit`
           }>
-            <ul className='flex flex-col h-full items-start px-16 pt-4 mt-[5.3rem] bg-slate-500
-              lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-12 lg:flex-row lg:justify-center lg:items-center'
+            <ul className='flex flex-col h-full items-start 
+              px-16 pt-4 mt-[5.3rem] space-y-2 bg-dark
+              lg:space-y-0 lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-8 lg:flex-row lg:justify-center lg:items-center'
             >
               <LinkUnderline label='Home' route='/' />
               <LinkUnderline label='Explore' route='/explore' />
-              <LinkUnderline label='Contacts' route='/contacts' />
-              <div className='flex flex-row space-x-4 mt-6 md:mt-0 lg:ml-2'>
+              <LinkUnderline label='Support' route='/support' />
+              <LinkUnderline label='' route='/signin' />
+              <div className='flex flex-row space-x-4 pt-6 
+              lg:pt-0'>
                 <LinkSolid label='Sign Up' route='/signup' color='bg-success' />
                 <LinkSolid label='Sign In' route='/signin' color='bg-secondary' />
               </div>

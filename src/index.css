@@ -10,3 +10,18 @@
     background: rgb(124,175,212);
     background: linear-gradient(335deg, rgba(124,175,212,1) 30%, rgba(233,154,39,1) 96%);
 }
+
+.btn-solid {
+    @apply container font-bold text-current transition-all duration-[25] ease-out 
+    py-2 px-4 rounded-lg block 
+    brightness-100 
+    hover:brightness-90 md:text-lg; 
+}
+
+.btn-underline {
+    @apply text-current transition-all duration-[25] ease-out hover:text-primary
+    after:content-[''] after:absolute after:-bottom-1 after:left-0
+    after:bg-primary  after:w-full after:scale-0 
+    after:origin-bottom-right after:h-[2px]
+    hover:after:scale-100 hover:after:origin-bottom-left;
+}

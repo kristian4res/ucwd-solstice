@@ -5,7 +5,7 @@ import {
 
 import Homepage from './routes/home-page';
 import Explore from './routes/explore-page';
-import Contacts from './routes/contacts-page';
+import Contacts from './routes/support-page';
 import SignIn from './routes/sign-in-page';
 import SignUp from './routes/sign-up-page';
 
@@ -28,7 +28,7 @@ function App() {
             </>
           }/>
           <Route exact path="/explore" element={<Explore />}/>
-          <Route exact path="/contacts" element={<Contacts />}/>
+          <Route exact path="/support" element={<Contacts />}/>
           <Route exact path="/signin" element={<SignIn />}/>
           <Route exact path="/signup" element={<SignUp />}/>
         </Routes>
