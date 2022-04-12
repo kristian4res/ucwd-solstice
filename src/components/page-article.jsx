@@ -20,7 +20,7 @@ const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
           }
         </h2>
         <p className='text-left mt-4 mx-10 w-3/4 text-sm 
-          lg:text-md'>
+          lg:text-base'>
           {
             articleText ? articleText 
             :

@@ -11,6 +11,10 @@
     background: linear-gradient(335deg, rgba(124,175,212,1) 30%, rgba(233,154,39,1) 96%);
 }
 
+.form-group {
+    @apply flex flex-col h-full mx-2 py-2 px-2;
+}
+
 .btn-solid {
     @apply container font-bold text-current transition-all duration-[25] ease-out 
     py-2 px-4 rounded-lg block 
