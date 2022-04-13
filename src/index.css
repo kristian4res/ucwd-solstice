@@ -16,10 +16,10 @@
 }
 
 .btn-solid {
-    @apply container font-bold text-current transition-all duration-[25] ease-out 
-    py-2 px-4 rounded-lg block 
+    @apply container flex font-bold text-current transition-all duration-[25] ease-out 
+    py-2 px-4 rounded-lg 
     brightness-100 
-    hover:brightness-90 md:text-lg; 
+    hover:brightness-90; 
 }
 
 .btn-underline {

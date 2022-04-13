@@ -1,10 +1,13 @@
 import React from 'react';
 
-import TripTag from './trip-tag';
+import ButtonSolid from './button-solid';
+import { ChevronRightIcon } from '@heroicons/react/solid';
+// import TripTag from './trip-tag';
 
-const CardLink = ({ imgUrl, imgTitle, tag }) => {
+const CardArticle = ({ imgUrl, imgTitle, tag }) => {
     return (
-        <div className='container w-full h-full flex flex-col items-center shadow-lg rounded-lg overflow-clip'>
+        <div className='container w-full h-full flex flex-col items-center 
+        shadow-lg rounded-lg overflow-clip'>
             <div className="container flex justify-center 
              m-0.5 mb-0 overflow-hidden relative">
                 <img
@@ -20,15 +23,23 @@ const CardLink = ({ imgUrl, imgTitle, tag }) => {
                 </h4>
                 <div className='flex flex-col flex-wrap space-y-2
                 lg:flex-row lg:space-x-1 lg:space-y-0'>
-                    <TripTag category={'Season'} label={tag} color={tag} />
+                    {/* <TripTag category={'City'} label={tag} color={tag} /> */}
                 </div>
                 <p className='text-left py-4 text-slate-100 text-sm 
                 lg:text-base'>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!
                 </p>
+                <div className="flex justify-end text-dark ml-auto mt-1 mb-2 
+                md:justify-end ">
+                  <ButtonSolid btnTitle={'Learn more'} 
+                    icon={
+                      <ChevronRightIcon className='h-6 w-6 lg:h-8 lg:w-8' />
+                    } 
+                  />
+                </div>
             </div>
         </div>
         )
 }
 
-export default CardLink;
+export default CardArticle;

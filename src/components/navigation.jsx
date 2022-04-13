@@ -8,13 +8,21 @@ import LinkSolid from './link-solid';
 import LogoAdaptive from './logo-adaptive';
 
 const Navigation = () => {
-  // State for managing navigation look
-  const [navClass, setNavClass] = useState('');
-  const [y, setY] = useState(100);
-  const [isNavOpen, setNavOpen] = useState(false);
-
+  /** STATES */
+  // Routing
   const location = useLocation();
 
+  // Mobile nav
+  const [isNavOpen, setNavOpen] = useState(false);
+
+  const handleMobileNav = () => {
+    setNavOpen(prevState => !prevState);
+  }
+
+  // Detecting scroll
+  const [y, setY] = useState(100);
+  const [navClass, setNavClass] = useState('');
+  
   const handleNavBackdrop = useCallback(
     e => {
       const window = e.currentTarget;
@@ -25,17 +33,6 @@ const Navigation = () => {
       }
     }, [y]
   );
-
-  const handleMobileNav = () => {
-    // Only work when screen size is below 1024px (lg)
-    if (window.screen.width > 1024) {
-      return null;
-    }
-
-    setNavOpen(prevState => !prevState);
-  }
-
-  
   // Detects scrolling and changes navigation look
   useEffect(() => {
     setY(window.scrollY);
@@ -71,8 +68,9 @@ const Navigation = () => {
               <LinkUnderline label='Explore' route='/explore' />
               <LinkUnderline label='Support' route='/support' />
               <LinkUnderline label='' route='/signin' />
-              <div className='flex flex-row space-x-4 pt-6 
-              lg:pt-0'>
+              <div className='flex flex-col justify-between space-y-4 pt-6 
+              lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'
+              >
                 <LinkSolid label='Sign Up' route='/signup' color='bg-success' />
                 <LinkSolid label='Sign In' route='/signin' color='bg-secondary' />
               </div>

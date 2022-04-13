@@ -17,7 +17,7 @@ import './App.css';
 
 function App() {
   return (
-    <div id="page-container" className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
+    <div className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
       <Navigation />
       <main id="main-content" className='flex flex-col justify-evenly w-full'>
         <Routes>
