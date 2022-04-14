@@ -12,7 +12,18 @@
 }
 
 .form-group {
-    @apply flex flex-col h-full mx-2 py-2 px-2;
+    @apply flex flex-col h-full mx-2 py-2 px-2 relative;
+}
+
+.form-input-text {
+    @apply px-2 py-1 text-base;
+}
+
+.search-result-list {
+    @apply container min-h-fit w-[98%]
+    absolute top-[92%] left-1
+    rounded-b-lg overflow-hidden drop-shadow-xl 
+    bg-slate-100 text-dark z-10;
 }
 
 .btn-solid {
