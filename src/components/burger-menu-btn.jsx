@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MenuIcon, XIcon } from '@heroicons/react/solid';
+import { MenuAlt3Icon, XIcon } from '@heroicons/react/solid';
 
 const BurgerMenuBtn = ({ isNavOpen, handleMobileNav }) => {
   return (
@@ -10,8 +10,8 @@ const BurgerMenuBtn = ({ isNavOpen, handleMobileNav }) => {
     `} 
     onClick={handleMobileNav}>
         {
-        isNavOpen ? <XIcon className='h-8 w-8' />
-        : <MenuIcon className='h-8 w-8'/>
+        isNavOpen ? <XIcon className='h-6 w-6 sm:h-8 sm:w-8' />
+        : <MenuAlt3Icon className='h-6 w-6 sm:h-8 sm:w-8'/>
         }
     </div>
   )

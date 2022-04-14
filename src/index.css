@@ -16,7 +16,7 @@
 }
 
 .form-label {
-    @apply mb-1 mx-2;
+    @apply mb-1 mx-2 font-semibold;
 }
 
 .form-input {
@@ -24,8 +24,8 @@
     hover:brightness-95;
 }
 
-.search-result-list {
-    @apply container min-h-fit w-[98%]
+.form-input-dropdown {
+    @apply container min-h-fit w-full
     absolute top-[92%] left-1
     rounded-b-lg overflow-hidden drop-shadow-xl 
     bg-slate-100 text-dark z-10;

@@ -1,0 +1,13 @@
+[
+    {
+        "tripId": "ABC",
+        "tripName": "Surfing",
+        "tripSeason": "Summer",
+        "tripTotalPrice": "1000",
+        "tripLocation": "Hawaii, United States",
+        "tripAddress": "218 Puapihi St Lahaina, Hawaii",
+        "accomodationId": "ABC1",
+        "tripStartDate": "2021-06-19T09:00:00.000Z",
+        "tripEndDate": "2021-07-19T09:00:00.000Z"
+    }
+]

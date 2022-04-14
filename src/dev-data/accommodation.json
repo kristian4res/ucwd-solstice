@@ -1,0 +1,10 @@
+[
+    {
+        "accommodationId": "ABC1",
+        "accommodationName": "Bright Sun Resort Hotel",
+        "accommodationAddress": "220 Puapihi St Lahaina, Hawaii",
+        "averageRatings": "4.9",
+        "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
+        "generalDescription": "Best hotel in Hawaii"
+    }
+]
