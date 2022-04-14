@@ -29,7 +29,7 @@ const Navigation = () => {
       if (y > window.scrollY) {
         setNavClass('');
       } else if (y < window.scrollY) {
-        setNavClass('backdrop-blur bg-dark shadow-lg');
+        setNavClass('backdrop-blur bg-dark shadow-xl');
       }
     }, [y]
   );
@@ -44,7 +44,7 @@ const Navigation = () => {
   }, [handleNavBackdrop]);
 
   return (
-    <div className={`w-full ${navClass} z-10 fixed top-0 text-white`}>
+    <div className={`w-full ${navClass} z-20 fixed top-0 text-white`}>
       <div className={`flex ${location.pathname === '/' ? 'transparent' : 'bg-dark' } 
         items-center w-full transition-all ease-in mx-auto py-4 px-6 md:px-14 lg:px-24`
       }>
@@ -57,7 +57,7 @@ const Navigation = () => {
             ${location.pathname === '/' ? 'bg-dark lg:text-white' : '' }  
             transition-all ease-in
             justify-center items-center 
-            ${isNavOpen ? 'translate-x-0 opacity-100' : 'translate-x-full lg:translate-x-0 lg:opacity-100'} 
+            ${isNavOpen ? 'translate-x-0 opacity-100 drop-shadow-xl' : 'translate-x-full lg:translate-x-0 lg:opacity-100'} 
             lg:bg-transparent lg:static lg:flex lg:h-fit lg:w-fit`
           }>
             <ul className='flex flex-col h-full items-start 
