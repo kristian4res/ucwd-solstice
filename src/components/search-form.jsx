@@ -26,8 +26,8 @@ const SearchForm = () => {
         >
             <div className='form-group'>
                 {/* IN PROGRESS */}
-                <label htmlFor="search-form-location" className='mb-1 mx-2'>Location</label>
-                <input className='form-input-text' 
+                <label htmlFor="search-form-location" className='form-label'>Location</label>
+                <input className='form-input' 
                     name='search-form-location' 
                     type="text" 
                     placeholder='Search a location'
@@ -50,7 +50,7 @@ const SearchForm = () => {
                     required 
                 />
                 <ul className={`${locationInput === '' || !isSearching ? 'hidden' : 'block'}
-                    search-result-list
+                        search-result-list
                     `}
                 >
                     {
@@ -71,15 +71,15 @@ const SearchForm = () => {
                 </ul>
             </div>
             <div className='form-group'>
-                <label htmlFor="trip-check-in">Check In</label>
-                <input type="date"></input>
+                <label htmlFor="trip-check-in" className='form-label'>Check In</label>
+                <input className='form-input' type="date" min={new Date().toISOString()} />
             </div>
             <div className='form-group'>
-                <label htmlFor="trip-check-out">Check Out</label>
-                <input type="date"></input>
+                <label htmlFor="trip-check-out" className='form-label'>Check Out</label>
+                <input className='form-input' type="date" min={new Date().toISOString()} />
             </div>
             <div className='form-group'>
-                <label htmlFor="trip-travellers">Travellers</label>
+                <label htmlFor="trip-travellers" className='form-label'>Travellers</label>
                 <input type="number" placeholder='Number of travellers'></input>
             </div>
             <div className='flex justify-center text-white px-2 py-2 h-full w-full col-span-full
