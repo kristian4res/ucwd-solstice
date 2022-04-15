@@ -25,24 +25,28 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
         <>
             <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
             <button className='form-input text-left h-full w-full'
+                onFocus={() => setIsFocused(true)}
                 onClick={() => {
                     toggleModal(true);
-                    setIsFocused(true);
-                    // Timeout to ensure the function runs after the previous hooks
+                    // Timeout to delay the function execution (i.e. give time for other functions to execute)
                     setTimeout(() => inputRef.current.focus(), 100)
                 }}
             >
                 { contextInputValue ? contextInputValue : `${placeholder}`}
             </button>
-            <div className={`${!showModal || !isFocused ? 'hidden' : 'flex'}
+            <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
                 form-input-dropdown
             `}>
-                <input className='form-input' 
+                <input className={`form-input ${(!isFocused) ? 'hidden' : 'flex'}`} 
                     name={`search-form-${label}`} 
                     type={inputType} 
                     placeholder={placeholder}
                     ref={inputRef}
                     onChange={(e) => setInputValue(e.target.value)}
+                    onBlur={() => {
+                        // Timeout to delay the function execution (i.e. give time for other functions to execute)
+                        setTimeout(() => setIsFocused(false), 100)
+                    }}
                     value={inputValue}
                     autoComplete={'off'}
                     required 
@@ -60,8 +64,14 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                         }).map((val, key) => {
                             return <ButtonSearchResult key={key} 
                                 val={val}
-                                handleResults={setIsFocused} 
-                                handleClick={contextSetInputValue}
+                                handleClick={() => {
+                                    // Set input value and context value
+                                    setInputValue(val.name);
+                                    contextSetInputValue(val.name);
+                                    // Toggle input focus and modal
+                                    setIsFocused(false);
+                                    toggleModal(false);
+                                }}
                                 icon={iconEl ? iconEl : val.icon}
                             />
                         })

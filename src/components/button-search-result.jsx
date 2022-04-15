@@ -1,17 +1,11 @@
-import React, { useContext } from 'react';
-import AppContext from '../contexts/app-context';
+import React from 'react';
 
-const ButtonSearchResult = ({ val, handleResults, handleClick, icon }) => {
-    const { toggleModal } = useContext(AppContext);
+const ButtonSearchResult = ({ val, handleClick, icon }) => {
 
     return (
         <li className='text-dark hover:bg-slate-200 cursor-pointer'>
             <button className='btn-solid items-center px-2'
-                onClick={() => {
-                    handleClick(`${val.name}`);
-                    handleResults(false);
-                    toggleModal(false);
-                }}
+                onClick={() => handleClick()}
             >
                 {icon ? icon : '🥞'}
                 <div className='flex flex-col items-start justify-start w-full'>

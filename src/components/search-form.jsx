@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
