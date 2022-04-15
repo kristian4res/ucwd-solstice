@@ -6,9 +6,9 @@ import SearchFormContext from '../contexts/search-form-context';
 import { getTomorrowsDate } from '../utils/utils';
 
 import ButtonSolid from './button-solid';
-
-import { SearchIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import SearchFormInput from './search-form-input';
+
+import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 
 const SearchForm = () => {
     /** CONTEXTS */
@@ -17,16 +17,16 @@ const SearchForm = () => {
 
     return (
         <>   
-            <div className='container shadow-2xl w-fit px-2 py-2 grid auto-rows-auto grid-cols-1 
+            <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 
                 rounded-lg bg-white mt-8 text-dark
-                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:grid-cols-5'
+                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-fit xl:grid-cols-5'
             >
                 <div className='form-group'>
                     <SearchFormInput 
                         label={'location'}
                         placeholder={'Search a location'}
                         data={trips}
-                        iconEl={<LocationMarkerIcon className='h-6 w-6 xl:h-8 xl:w-8' />}
+                        iconEl={<HiLocationMarker className='h-6 w-6 xl:h-8 xl:w-8' />}
                     />
                 </div>
                 <div className='form-group'>
@@ -58,7 +58,7 @@ const SearchForm = () => {
                         btnStyles={'flex flex-row-reverse justify-center items-center bg-primary'}
                         btnTitle='Search'
                         icon={
-                            <SearchIcon className='h-6 w-6 lg:h-8 lg:w-8' />
+                            <HiSearch className='h-6 w-6 lg:h-8 lg:w-8' />
                         }
                         handleClick={submitSearchForm}
                     />

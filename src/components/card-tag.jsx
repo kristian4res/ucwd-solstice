@@ -1,21 +1,21 @@
 import React from 'react'
 
-const TripTag = ({ category, label, color }) => {
+const CardTag = ({ category, label }) => {
   const colors = {
     "summer": 'bg-primary',
-    "winter": 'bg-secondary'
+    "winter": 'bg-secondary-pastel',
   }
 
   return (
     <div className={`container w-fit py-[0.2rem] px-[0.4rem] rounded-full shadow-md 
-      ${colors[color]}
+      ${colors[label] ? colors[label]: 'bg-secondary'}
     `}>
       <span className='capitalize text-white text-sm
-      lg:text-base'>
-        {category}: {label}
+      xl:text-base'>
+        {label}
       </span>
     </div>
   )
 }
 
-export default TripTag
+export default CardTag

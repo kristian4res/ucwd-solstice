@@ -1,26 +1,8 @@
-[
-    {
-        "tripId": "ABC1",
-        "tripName": "Wavez",
-        "tripTags": [
-            ["season", "summer"],
-            ["sport", "surfing"]
-        ],
-        "tripTotalPrice": "1000",
-        "tripLocation": "Honolulu, Hawaii (US)",
-        "tripAddress": "218 Puapihi St Lahaina, Hawaii",
-        "accomodationId": "ABC1",
-        "tripImages": ["surfing-md-1.jpg"],
-        "tripStartDate": "2021-06-19T09:00:00.000Z",
-        "tripEndDate": "2021-07-19T09:00:00.000Z"
-    },
-    {
+{
         "tripId": "ABC2",
-        "tripName": "YETI SPORTS",
-        "tripTags": [
-            ["season", "winter"],
-            ["sport", "snowboarding"]
-        ],
+        "tripName": "Cool Breeze",
+        "tripSport": "Snowboarding",
+        "tripSeason": "Winter",
         "tripTotalPrice": "1200",
         "tripLocation": "Bern, Switzerland",
         "tripAddress": "21 Maven Rd, Switzerland",
@@ -32,10 +14,6 @@
     {
         "tripId": "ABC3",
         "tripName": "Rapids",
-        "tripTags": [
-            ["season", "summer"],
-            ["sport", "kayaking"]
-        ],
         "tripSport": "Kayaking",
         "tripSeason": "Summer",
         "tripTotalPrice": "999",
@@ -46,4 +24,3 @@
         "tripStartDate": "2021-06-19T09:00:00.000Z",
         "tripEndDate": "2021-07-19T09:00:00.000Z"
     }
-]

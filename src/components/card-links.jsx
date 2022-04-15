@@ -1,8 +1,8 @@
 import React from 'react';
 
-import TripTag from './trip-tag';
+import CardTag from './card-tag';
 
-const CardLink = ({ imgUrl, imgTitle, tag }) => {
+const CardLink = ({ imgUrl, imgTitle, tagData }) => {
     return (
         <div className='container w-full h-full flex flex-col items-center shadow-lg rounded-lg overflow-clip'>
             <div className="container flex justify-center 
@@ -20,7 +20,7 @@ const CardLink = ({ imgUrl, imgTitle, tag }) => {
                 </h4>
                 <div className='flex flex-col flex-wrap space-y-2
                 lg:flex-row lg:space-x-1 lg:space-y-0'>
-                    <TripTag category={'Season'} label={tag} color={tag} />
+                    <CardTag category={tagData[0]} label={tagData[1]} />
                 </div>
                 <p className='text-left py-4 text-slate-100 text-sm 
                 lg:text-base'>

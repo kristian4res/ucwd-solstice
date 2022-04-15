@@ -24,7 +24,7 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
     return (
         <>
             <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
-            <button className='form-input text-left h-full w-full'
+            <button className='form-input text-left whitespace-nowrap h-full w-full'
                 onFocus={() => setIsFocused(true)}
                 onClick={() => {
                     toggleModal(true);
@@ -51,15 +51,18 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                     autoComplete={'off'}
                     required 
                 />
-                <ul className={``}
-                >
-                    {
+                <ul>
+                    {   
+                        // Filter and loop through data, then display data by rendering list elements
                         data.filter((val) => {
                             if (inputValue === '' || !isFocused) {
                                 return null;
                             }
                             else if (val.name.toLowerCase().includes(inputValue.toLowerCase()))  {
                                 return val;
+                            }
+                            else {
+                                return null;
                             }
                         }).map((val, key) => {
                             return <ButtonSearchResult key={key} 

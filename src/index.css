@@ -26,7 +26,7 @@
 
 .form-input-dropdown {
     @apply container flex-col min-h-fit w-full
-    absolute top-[50%] left-4 
+    absolute top-[45%] left-2 
     rounded-lg overflow-hidden drop-shadow-2xl 
     bg-slate-100 text-dark z-10;
 }

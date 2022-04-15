@@ -1,7 +1,8 @@
 import React from 'react';
 
 import ButtonSolid from './button-solid';
-import { ChevronRightIcon } from '@heroicons/react/solid';
+
+import { HiChevronRight } from 'react-icons/hi';
 // import TripTag from './trip-tag';
 
 const CardArticle = ({ imgUrl, imgTitle, tag }) => {
@@ -33,7 +34,7 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                 md:justify-end ">
                   <ButtonSolid btnTitle={'Learn more'} 
                     icon={
-                      <ChevronRightIcon className='h-6 w-6 lg:h-8 lg:w-8' />
+                      <HiChevronRight className='h-6 w-6 lg:h-8 lg:w-8' />
                     } 
                   />
                 </div>

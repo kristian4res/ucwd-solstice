@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { SearchIcon } from '@heroicons/react/solid';
+import { HiSearch } from 'react-icons/hi';
 
 const NavigationSearch = ({ navClass }) => {
     let location = useLocation();
@@ -19,7 +19,7 @@ const NavigationSearch = ({ navClass }) => {
             <div className='flex justify-center mx-2 my-2 w-10 
                 md:w-fit md:items-center'>
                 <button className='flex h-full justify-center items-center text-white bg-primary rounded-full p-2 md:w-14'>
-                    <SearchIcon className='h-5 w-5 md:h-6 md:w-6' />
+                    <HiSearch className='h-5 w-5 md:h-6 md:w-6' />
                 </button>
             </div>
         </div>

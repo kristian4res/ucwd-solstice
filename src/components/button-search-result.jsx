@@ -12,7 +12,7 @@ const ButtonSearchResult = ({ val, handleClick, icon }) => {
                     <span className='ml-2 text-sm text-left'>
                         {val.name ? val.name : 'NAME'}
                     </span>
-                    <span className='ml-2 text-sm font-thin text-left'>
+                    <span className=' bg-red ml-2 text-sm font-thin text-left'>
                         {val.country ? val.country : 'COUNTRY'}
                     </span>
                 </div>

@@ -9,11 +9,11 @@ module.exports = {
         'custom-gray': '#E6E6E6',
         'primary': '#E99A27',
         'secondary': '#457B9D',
+        'secondary-pastel': '#7CAFD4',
         'success': '#00B998',
         'failure': '#D51A52',
         'summer': '#FFB319',
         'winter': '#42C2FF',
-        'selected-text': '#89e497'
       },
       fontFamily: {
         'poppins': ['"Poppins"', 'sans-serif']

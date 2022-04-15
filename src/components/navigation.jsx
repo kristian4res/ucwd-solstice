@@ -14,7 +14,6 @@ const Navigation = () => {
 
   // Mobile nav
   const [isNavOpen, setNavOpen] = useState(false);
-
   const handleMobileNav = () => {
     setNavOpen(prevState => !prevState);
   }
@@ -22,7 +21,6 @@ const Navigation = () => {
   // Detecting scroll
   const [y, setY] = useState(100);
   const [navClass, setNavClass] = useState('');
-  
   const handleNavBackdrop = useCallback(
     e => {
       const window = e.currentTarget;
@@ -33,6 +31,7 @@ const Navigation = () => {
       }
     }, [y]
   );
+  
   // Detects scrolling and changes navigation look
   useEffect(() => {
     setY(window.scrollY);
@@ -46,9 +45,12 @@ const Navigation = () => {
   return (
     <div className={`w-full ${navClass} z-20 fixed top-0 text-white`}>
       <div className={`flex ${location.pathname === '/' ? 'transparent' : 'bg-dark' } 
-        items-center w-full transition-all ease-in mx-auto py-4 px-6 md:px-14 lg:px-24`
+        items-center w-full transition-all ease-in mx-auto py-4 px-6 
+        md:px-14 lg:px-24`
       }>
-        <div className='w-full flex justify-between items-center space-x-2 md:space-x-4'>
+        <div className='w-full flex justify-between items-center space-x-2 
+          md:space-x-4'
+        >
           <LogoAdaptive pageLocation={location.pathname} navStatus={navClass} />
           <NavigationSearch navClass={navClass} />
           <BurgerMenuBtn isNavOpen={isNavOpen} handleMobileNav={handleMobileNav} />
@@ -61,18 +63,18 @@ const Navigation = () => {
             lg:bg-transparent lg:static lg:flex lg:h-fit lg:w-fit`
           }>
             <ul className='flex flex-col h-full items-start 
-              px-16 pt-4 mt-[5.3rem] space-y-2 bg-dark
-              lg:space-y-0 lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-8 lg:flex-row lg:justify-center lg:items-center'
+              px-16 pt-4 mt-[5.28rem] space-y-2 bg-dark
+              lg:space-y-0 lg:bg-transparent lg:m-0 lg:p-0 lg:space-x-8 lg:flex-row 
+              lg:justify-center lg:items-center'
             >
               <LinkUnderline label='Home' route='/' />
               <LinkUnderline label='Explore' route='/explore' />
               <LinkUnderline label='Support' route='/support' />
-              <LinkUnderline label='' route='/signin' />
               <div className='flex flex-col justify-between space-y-4 pt-6 
-              lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'
+                lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'
               >
                 <LinkSolid label='Sign Up' route='/signup' color='bg-success' />
-                <LinkSolid label='Sign In' route='/signin' color='bg-secondary' />
+                <LinkSolid label='Sign In' route='/signin' color='bg-secondary-pastel' />
               </div>
             </ul>
           </nav>

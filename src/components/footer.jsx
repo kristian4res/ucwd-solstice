@@ -1,7 +1,10 @@
 import React from 'react';
 
 import Logo from './logo';
+
 import LinkUnderline from './link-underline';
+
+import { FaLinkedin, FaGithub, FaFigma } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -49,18 +52,26 @@ const Footer = () => {
       <div className="flex flex-col w-full 
       justify-between items-center 
       lg:flex-row lg:px-28">
-        <p className='flex'>
+        <p className='flex mb-4
+          lg:mb-0
+        '>
           © 2022 Solstice, Inc.
         </p>
-        <ul className='flex flex-row space-x-2'>
+        <ul className='flex flex-row space-x-4'>
           <li>
-            👋
+            <a href="https://www.linkedin.com/in/kristian-torres-en-cloud/" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className='h-6 w-6'/>
+            </a>
           </li>
           <li>
-            👋
+            <a href="https://github.com/Enigma-cloud" target="_blank" rel="noopener noreferrer">
+              <FaGithub className='h-6 w-6'/>
+            </a>
           </li>
           <li>
-            👋
+            <a href="https://www.figma.com/file/vjJAhUY8zzaj8DMcEZHcBF/UCWB%3A-Solstice?node-id=19%3A3" target="_blank" rel="noopener noreferrer">
+              <FaFigma className='h-6 w-6'/>
+            </a>
           </li>
         </ul>
       </div>
