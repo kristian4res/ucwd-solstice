@@ -20,7 +20,7 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
         <button className={`btn-solid items-center bg-white rounded-full 
           ${btnStyles ? btnStyles : ''}
         `}
-        onClick={handleClick ? handleClick : undefined}>
+        onClick={handleClick ? () => handleClick() : undefined}>
             <span className='text-sm  
             xl:text-lg'>
               {btnTitle}

@@ -25,11 +25,19 @@
 }
 
 .form-input-dropdown {
+    @apply container flex-col min-h-fit w-full
+    absolute top-[50%] left-4 
+    rounded-lg overflow-hidden drop-shadow-2xl 
+    bg-slate-100 text-dark z-10;
+}
+
+.form-input-dropdown-original {
     @apply container min-h-fit w-full
     absolute top-[92%] left-1
     rounded-b-lg overflow-hidden drop-shadow-xl 
     bg-slate-100 text-dark z-10;
 }
+
 
 .btn-solid {
     @apply container flex font-bold text-current transition-all duration-[25] ease-out 
