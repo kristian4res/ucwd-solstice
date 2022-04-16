@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import tripsData from '../dev-data/trips.json';
 
 import { getTomorrowsDate } from "../utils/utils";
 
@@ -22,7 +23,7 @@ export function SearchFormProvider({ children }) {
     };
 
     return (
-        <SearchFormContext.Provider value={{ searchFormDetails, submitSearchForm }}>
+        <SearchFormContext.Provider value={{ tripsData, searchFormDetails, submitSearchForm }}>
             {children}
         </SearchFormContext.Provider>
     )

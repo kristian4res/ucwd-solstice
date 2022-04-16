@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import tripsData from '../dev-data/trips.json';
 import SearchFormContext from '../contexts/search-form-context';
 
 import PageContainer from '../components/page-container';
@@ -10,7 +9,7 @@ import CardTrip from '../components/card-trip';
 import { HiChevronDoubleRight } from 'react-icons/hi';
 
 const ExplorePage = () => {
-  const { searchFormDetails } = useContext(SearchFormContext);
+  const { tripsData, searchFormDetails } = useContext(SearchFormContext);
 
   return (
     <PageContainer>
