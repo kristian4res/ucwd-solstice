@@ -2,17 +2,18 @@ import React from 'react';
 
 import CardTag from './card-tag';
 
-const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, tagData }) => {
+const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
     return (
         <div className='container w-full h-full shadow-lg rounded-lg overflow-hidden
-            grid grid-cols-3
+            flex flex-col 
+            md:grid md:grid-cols-3
         '>
             <div className={`container h-full bg-dark flex justify-center
               relative col-span-1`}
             >   
                 <img
-                    src={require(`../assets/${imgUrl}`)}
-                    alt={'Sports'}
+                    src={imgUrl ? require(`../assets/${imgUrl}`) : ''}
+                    alt={'trip-cover'}
                     className={`object-cover w-full
                         lg:h-72
                     `}
@@ -25,15 +26,15 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, tagData }) => {
                     <div className='container mb-1 text-current'>
                         <h4 className={`uppercase text-lg font-semibold text-current drop-shadow-xl 
                         md:text-xl lg:text-3xl`}>
-                            {cardTitle}
+                            {cardTitle ? cardTitle : 'Title'}
                         </h4>
                         <h5 className={`uppercase text-sm font-medium text-current drop-shadow-lg 
                         md:text-lg lg:text-xl`}>
-                            {cardSubTitle}
+                            {cardSubTitle ? cardSubTitle : 'Subtitle'}
                         </h5>
                     </div>
-                    <div className='flex flex-col flex-wrap space-y-2 
-                        lg:flex-row lg:space-x-1 lg:space-y-0'
+                    <div className='flex justify-start items-center gap-2
+                        lg:flex-row'
                     >
                         {   
                             tagData.map((arr, key) => {
@@ -47,17 +48,33 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, tagData }) => {
                             })
                         }
                     </div>
-                    <p className='text-left py-4 text-current text-sm 
-                    xl:text-base'>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!
+                    <p className={`text-left py-4 text-current text-sm
+                    xl:text-base`}>
+                        {cardText ? cardText : ''}
                     </p>
                 </div>
                 <div className='container h-fit w-full 
                     text-white flex justify-between items-center
                     bg-success px-4 py-2
                 '>
-                    <span className='text-base font-semibold'>4.5/5 - Worth it</span>
-                    <span className='text-2xl font-bold'>£1000</span>
+                    <div className='flex flex-col items-start'>
+                        <span className='text-[0.9rem] font-semibold
+                            lg:text-lg
+                        '>
+                            {cardDetails[0][0] ? cardDetails[0][0] : '' }/5.0
+                        </span>
+                        <span className='text-[0.8rem] font-thin'>
+                            ({cardDetails[0][1] ? cardDetails[0][1] : '' } Reviews)
+                        </span>
+                    </div>
+                    <div className='flex flex-col items-end'>
+                        <span className='text-lg font-bold
+                            lg:text-2xl
+                        '>
+                            £{cardDetails[1][0] ? cardDetails[1][0] : '' }
+                        </span>
+                        <span className='text-[0.8rem] font-thin'>includes taxes &amp; fees</span>
+                    </div>
                 </div>
             </div>
         </div>

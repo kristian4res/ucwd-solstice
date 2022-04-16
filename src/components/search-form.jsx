@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
@@ -13,16 +13,36 @@ import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 const SearchForm = () => {
     /** CONTEXTS */
     const { devData: { trips, sports } } = useContext(AppContext);
-    const { inputHooks, submitSearchForm } = useContext(SearchFormContext);
+    const { submitSearchForm } = useContext(SearchFormContext);
+
+    /** STATES */
+    const [locationInput, setLocationInput] = useState('');
+    const [sportInput, setSportInput] = useState('');
+
+    const [checkInVal, setCheckInVal] = useState(getTomorrowsDate());
+    const [checkOutVal, setCheckOutVal] = useState(getTomorrowsDate('checkOut'));
+
+    const submitDetails = () => {
+        // Get input values
+        const details = {
+            location: locationInput,
+            sport: sportInput,
+            checkIn: checkInVal,
+            checkOut: checkOutVal
+        }
+
+        submitSearchForm(details);
+    }
 
     return (
         <>   
             <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 
                 rounded-lg bg-white mt-8 text-dark
-                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-fit xl:grid-cols-5'
+                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[70rem] xl:grid-cols-5'
             >
                 <div className='form-group'>
-                    <SearchFormInput 
+                    <SearchFormInput
+                        state={[locationInput, setLocationInput]} 
                         label={'location'}
                         placeholder={'Search a location'}
                         data={trips}
@@ -30,7 +50,8 @@ const SearchForm = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <SearchFormInput 
+                    <SearchFormInput
+                        state={[sportInput, setSportInput]} 
                         label={'sport'}
                         placeholder={'Pick a sport'}
                         data={sports}
@@ -39,16 +60,16 @@ const SearchForm = () => {
                 <div className='form-group'>
                     <label htmlFor="trip-check-in" className='form-label'>Check In</label>
                     <input className='form-input' type="date" 
-                        value={inputHooks['checkIn'][0]}
-                        onChange={(e) => inputHooks['checkIn'][1](e.target.value)}
+                        value={checkInVal}
+                        onChange={(e) => setCheckInVal(e.target.value)}
                         min={getTomorrowsDate()} 
                     />
                 </div>
                 <div className='form-group'>
                     <label htmlFor="trip-check-out" className='form-label'>Check Out</label>
                     <input className='form-input' type="date"
-                        value={inputHooks['checkOut'][0]}
-                        onChange={(e) => inputHooks['checkOut'][1](e.target.value)}
+                        value={checkOutVal}
+                        onChange={(e) => setCheckOutVal(e.target.value)}
                         min={getTomorrowsDate('checkOut')} 
                     />
                 </div>
@@ -60,7 +81,7 @@ const SearchForm = () => {
                         icon={
                             <HiSearch className='h-6 w-6 lg:h-8 lg:w-8' />
                         }
-                        handleClick={submitSearchForm}
+                        handleClick={submitDetails}
                     />
                 </div>
             </div>

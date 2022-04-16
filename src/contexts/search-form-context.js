@@ -6,25 +6,23 @@ const SearchFormContext = createContext();
 
 export function SearchFormProvider({ children }) {
     /** STATES */
-    const [location, setLocation] = useState(null);
-    const [sport, setSport] = useState(null);
-    const [checkIn, setCheckIn] = useState(getTomorrowsDate());
-    const [checkOut, setCheckOut] = useState(getTomorrowsDate('checkOut'));
+    const [searchFormDetails, setSearchFormDetails] = useState({
+        location: null,
+        sport: null,
+        checkIn: getTomorrowsDate(),
+        checkOut: getTomorrowsDate('checkOut')
+    });
 
-    const inputHooks = { 
-        location: [location, setLocation], 
-        sport: [sport, setSport],
-        checkIn: [checkIn, setCheckIn],
-        checkOut: [checkOut, setCheckOut]
-    }
-
-    const submitSearchForm = () => {
-        const inputArr = [location, sport, checkIn, checkOut];
-        console.log(inputArr);
+    const submitSearchForm = (details) => {
+        // Destructure details object
+        // const { locationInput, sportInput, checkInVal, checkOutVal } = details;
+        // Update searchFormDetails
+        setSearchFormDetails(details)
+        console.log(details);
     };
 
     return (
-        <SearchFormContext.Provider value={{ inputHooks, submitSearchForm }}>
+        <SearchFormContext.Provider value={{ searchFormDetails, submitSearchForm }}>
             {children}
         </SearchFormContext.Provider>
     )

@@ -1,49 +1,74 @@
 [
     {
-        "tripId": "ABC1",
+        "tripId": "T1",
         "tripName": "Wavez",
         "tripTags": [
             ["season", "summer"],
             ["sport", "surfing"]
         ],
-        "tripTotalPrice": "1000",
-        "tripLocation": "Honolulu, Hawaii (US)",
+        "tripTotalPrice": "765",
+        "tripRating": "4.3",
+        "tripReviews": "36",
+        "tripLocation": "Honolulu, Hawaii",
         "tripAddress": "218 Puapihi St Lahaina, Hawaii",
-        "accomodationId": "ABC1",
+        "accomodationId": "A1",
         "tripImages": ["surfing-md-1.jpg"],
-        "tripStartDate": "2021-06-19T09:00:00.000Z",
-        "tripEndDate": "2021-07-19T09:00:00.000Z"
+        "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripStartDate": "2022-05-19",
+        "tripEndDate": "2022-07-19"
     },
     {
-        "tripId": "ABC2",
-        "tripName": "YETI SPORTS",
+        "tripId": "T2",
+        "tripName": "Fuji Sports",
         "tripTags": [
             ["season", "winter"],
             ["sport", "snowboarding"]
         ],
-        "tripTotalPrice": "1200",
-        "tripLocation": "Bern, Switzerland",
-        "tripAddress": "21 Maven Rd, Switzerland",
-        "accomodationId": "ABC1",
+        "tripTotalPrice": "873",
+        "tripRating": "4.8",
+        "tripReviews": "79",
+        "tripLocation": "Hakuba Valley, Japan",
+        "tripAddress": "12 Ichiban Rd, Japan",
+        "accomodationId": "A1",
         "tripImages": ["snowboarding-md-1.jpg"],
-        "tripStartDate": "2021-06-19T09:00:00.000Z",
-        "tripEndDate": "2021-07-19T09:00:00.000Z"
+        "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripStartDate": "2022-11-19",
+        "tripEndDate": "2023-02-19"
     },
     {
-        "tripId": "ABC3",
+        "tripId": "T3",
         "tripName": "Rapids",
         "tripTags": [
             ["season", "summer"],
             ["sport", "kayaking"]
         ],
-        "tripSport": "Kayaking",
-        "tripSeason": "Summer",
-        "tripTotalPrice": "999",
+        "tripTotalPrice": "547",
+        "tripRating": "4.4",
+        "tripReviews": "52",
         "tripLocation": "Kaituna River, New Zealand",
-        "tripAddress": "Kaituna River Estuary, New Zealand",
-        "accomodationId": "ABC1",
+        "tripAddress": "7 Estuary Rd, New Zealand",
+        "accomodationId": "A1",
         "tripImages": ["kayaking-md-1.jpg"],
-        "tripStartDate": "2021-06-19T09:00:00.000Z",
-        "tripEndDate": "2021-07-19T09:00:00.000Z"
+        "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripStartDate": "2022-05-19",
+        "tripEndDate": "2022-07-19"
+    },
+    {
+        "tripId": "T4",
+        "tripName": "Frost",
+        "tripTags": [
+            ["season", "winter"],
+            ["sport", "skiing"]
+        ],
+        "tripTotalPrice": "450",
+        "tripRating": "4.7",
+        "tripReviews": "49",
+        "tripLocation": "Zermatt, Switzerland",
+        "tripAddress": "261 Kirchweg, Switzerland",
+        "accomodationId": "A1",
+        "tripImages": ["ski-resort-img-1.jpg"],
+        "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripStartDate": "2022-05-19",
+        "tripEndDate": "2022-07-19"
     }
 ]

@@ -1,14 +1,12 @@
 import React, { useState, useRef, useContext } from 'react';
 
 import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
 
 import ButtonSearchResult from './button-search-result';
 
-const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) => {
+const SearchFormInput = ({ state, label, placeholder, data, iconEl, inputType='text'}) => {
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
-    const { inputHooks } = useContext(SearchFormContext);
 
     /** ELEMENT REFERENCES */
     const inputRef = useRef();
@@ -16,10 +14,6 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
     /** STATES */
     // Handle input state
     const [isFocused, setIsFocused] = useState(false);
-    const [inputValue, setInputValue] = useState('');
-
-    const contextInputValue = inputHooks[`${label}`][0];
-    const contextSetInputValue = inputHooks[`${label}`][1];
 
     return (
         <>
@@ -32,7 +26,7 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                     setTimeout(() => inputRef.current.focus(), 100)
                 }}
             >
-                { contextInputValue ? contextInputValue : `${placeholder}`}
+                { state[0] ? state[0] : `${placeholder}`}
             </button>
             <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
                 form-input-dropdown
@@ -42,12 +36,17 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                     type={inputType} 
                     placeholder={placeholder}
                     ref={inputRef}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    onChange={(e) => {
+                        // Set input value and context value
+                        state[1](e.target.value);
+                    }}
                     onBlur={() => {
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
                         setTimeout(() => setIsFocused(false), 100)
                     }}
-                    value={inputValue}
+                    value={
+                        state[0]
+                    }
                     autoComplete={'off'}
                     required 
                 />
@@ -55,10 +54,10 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                     {   
                         // Filter and loop through data, then display data by rendering list elements
                         data.filter((val) => {
-                            if (inputValue === '' || !isFocused) {
+                            if (state[0] === '' || !isFocused) {
                                 return null;
                             }
-                            else if (val.name.toLowerCase().includes(inputValue.toLowerCase()))  {
+                            else if (val.name.toLowerCase().includes(state[0].toLowerCase()))  {
                                 return val;
                             }
                             else {
@@ -69,8 +68,7 @@ const SearchFormInput = ({ label, placeholder, data, iconEl, inputType='text'}) 
                                 val={val}
                                 handleClick={() => {
                                     // Set input value and context value
-                                    setInputValue(val.name);
-                                    contextSetInputValue(val.name);
+                                    state[1](val.name);
                                     // Toggle input focus and modal
                                     setIsFocused(false);
                                     toggleModal(false);
