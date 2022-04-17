@@ -20,24 +20,23 @@
 }
 
 .form-input {
-    @apply px-2 py-1 text-base
-    hover:brightness-95;
+    @apply px-2 py-1 text-base whitespace-pre-wrap
+    hover:bg-slate-200;
 }
 
 .form-input-dropdown {
-    @apply container flex-col min-h-fit w-full
+    @apply container flex-col min-h-full w-full
     absolute top-[45%] left-2 
     rounded-lg overflow-hidden drop-shadow-2xl 
     bg-slate-100 text-dark z-10;
 }
 
-.form-input-dropdown-original {
+.form-input-dropdown-navigation {
     @apply container min-h-fit w-full
-    absolute top-[92%] left-1
-    rounded-b-lg overflow-hidden drop-shadow-xl 
-    bg-slate-100 text-dark z-10;
+    absolute top-[120%] left-0
+    rounded-b-lg overflow-hidden shadow-xl 
+    bg-slate-50 text-dark z-10;
 }
-
 
 .btn-solid {
     @apply container flex font-bold text-current transition-all duration-[25] ease-out 

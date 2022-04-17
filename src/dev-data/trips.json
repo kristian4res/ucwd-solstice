@@ -2,6 +2,14 @@
     {
         "tripId": "T1",
         "tripName": "Wavez",
+        "tripSport": [
+            {
+                "sportID": "S1",
+                "sportName": "Surfing",
+                "sportSeason": "Summer",
+                "icon": "🏄‍♀️"
+            }
+        ],
         "tripTags": [
             ["season", "summer"],
             ["sport", "surfing"]
@@ -20,6 +28,14 @@
     {
         "tripId": "T2",
         "tripName": "Fuji Sports",
+        "tripSport": [
+            {
+                "sportID": "S4",
+                "sportName": "Snowboarding",
+                "sportSeason": "Winter",
+                "icon": "🏂"
+            }
+        ],
         "tripTags": [
             ["season", "winter"],
             ["sport", "snowboarding"]
@@ -38,6 +54,14 @@
     {
         "tripId": "T3",
         "tripName": "Rapids",
+        "tripSport": [
+            {
+                "sportID": "S2",
+                "sportName": "Kayaking",
+                "sportSeason": "Summer",
+                "icon": "🛶"
+            }
+        ],
         "tripTags": [
             ["season", "summer"],
             ["sport", "kayaking"]
@@ -56,6 +80,14 @@
     {
         "tripId": "T4",
         "tripName": "Frost",
+        "tripSport": [
+            {
+                "sportID": "S3",
+                "sportName": "Skiing",
+                "sportSeason": "Winter",
+                "icon": "🎿"
+            }
+        ],
         "tripTags": [
             ["season", "winter"],
             ["sport", "skiing"]

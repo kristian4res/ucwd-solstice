@@ -1,5 +1,4 @@
 import { useState, createContext } from "react";
-import tripsData from '../dev-data/trips.json';
 
 import { getTomorrowsDate } from "../utils/utils";
 
@@ -16,14 +15,20 @@ export function SearchFormProvider({ children }) {
 
     const submitSearchForm = (details) => {
         // Destructure details object
-        // const { locationInput, sportInput, checkInVal, checkOutVal } = details;
+        const { location, sport, checkIn, checkOut } = details;
         // Update searchFormDetails
-        setSearchFormDetails(details)
-        console.log(details);
+        setSearchFormDetails(prevState => {
+            return {...prevState, 
+                location: location,
+                sport: sport, 
+                checkIn: checkIn, 
+                checkOut: checkOut, 
+            } 
+        });
     };
 
     return (
-        <SearchFormContext.Provider value={{ tripsData, searchFormDetails, submitSearchForm }}>
+        <SearchFormContext.Provider value={{ searchFormDetails, submitSearchForm }}>
             {children}
         </SearchFormContext.Provider>
     )

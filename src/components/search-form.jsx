@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
@@ -16,6 +17,10 @@ const SearchForm = () => {
     const { submitSearchForm } = useContext(SearchFormContext);
 
     /** STATES */
+    // Routing
+    const routeLocation = useLocation();
+    const routeNavigate = useNavigate();
+
     const [locationInput, setLocationInput] = useState('');
     const [sportInput, setSportInput] = useState('');
 
@@ -30,6 +35,10 @@ const SearchForm = () => {
             checkIn: checkInVal,
             checkOut: checkOutVal
         }
+        // Redirect to explore page (if in a different page)
+        if (routeLocation.pathname !== '/explore') {
+            routeNavigate('/explore');
+        }
 
         submitSearchForm(details);
     }
@@ -38,14 +47,14 @@ const SearchForm = () => {
         <>   
             <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 
                 rounded-lg bg-white mt-8 text-dark
-                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[70rem] xl:grid-cols-5'
+                sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[63rem] xl:grid-cols-5'
             >
                 <div className='form-group'>
                     <SearchFormInput
                         state={[locationInput, setLocationInput]} 
                         label={'location'}
                         placeholder={'Search a location'}
-                        data={trips}
+                        data={{ dataset: trips, fieldname: 'tripLocation' }}
                         iconEl={<HiLocationMarker className='h-6 w-6 xl:h-8 xl:w-8' />}
                     />
                 </div>
@@ -54,7 +63,7 @@ const SearchForm = () => {
                         state={[sportInput, setSportInput]} 
                         label={'sport'}
                         placeholder={'Pick a sport'}
-                        data={sports}
+                        data={{ dataset: sports, fieldname: 'sportName' }}
                     />
                 </div>
                 <div className='form-group'>

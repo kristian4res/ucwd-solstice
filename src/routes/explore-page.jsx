@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+
+import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
 
 import PageContainer from '../components/page-container';
@@ -9,7 +11,38 @@ import CardTrip from '../components/card-trip';
 import { HiChevronDoubleRight } from 'react-icons/hi';
 
 const ExplorePage = () => {
-  const { tripsData, searchFormDetails } = useContext(SearchFormContext);
+  const { devData: { trips }} = useContext(AppContext);
+  const { searchFormDetails } = useContext(SearchFormContext);
+
+  const filterData = (location, sport, data) => {
+    if (!location || !sport) {
+      return data;
+    }
+    else {
+      return data.filter((val) => {
+        if (location && sport) {
+          if (
+            (val.tripLocation.split(', ')[1].toLowerCase().includes(location.split(', ')[1].toLowerCase()))
+            &&
+            (val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase()))
+          ) {
+            return val;
+          }
+        }
+        else if (location)
+        {
+          if (val.tripLocation.split(', ')[1].toLowerCase().includes(location.split(', ')[1].toLowerCase())) {
+            return val;
+          }
+        }
+        else if (sport) {
+          if (val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase())) {
+            return val;
+          }
+        }
+      }) 
+    }
+  }
 
   return (
     <PageContainer>
@@ -32,11 +65,20 @@ const ExplorePage = () => {
         <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
           {
             // Filter data based on search form 
-            tripsData.filter((val) => {
-              if (!searchFormDetails['location'] || searchFormDetails['location'] === '') {
+            trips.filter((val) => {
+              if ((!searchFormDetails['location'] || searchFormDetails['location'] === '') 
+              || (!searchFormDetails['sport'] || searchFormDetails['sport']  === ''))
+              {
                 return null;
               }
-              else if (val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'][0].toLowerCase())) {
+              // MAKE SURE THE SEARCH PARAMS ARE LINKED
+              else if (
+                (val.tripLocation.split(', ')[1].toLowerCase().includes(
+                  searchFormDetails['location'].split(', ')[1].toLowerCase()))
+                ||  (val.tripSport[0].sportName.toLowerCase().includes(
+                  searchFormDetails['sport'].toLowerCase()))
+              ) 
+              {
                 return val;
               }
               else {
