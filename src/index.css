@@ -24,6 +24,14 @@
     hover:bg-slate-200;
 }
 
+.form-input-success {
+    @apply border-success border-2;
+}
+
+.form-input-failure {
+    @apply border-failure border-2;
+}
+
 .form-input-dropdown {
     @apply container flex-col min-h-full w-full
     absolute top-[45%] left-2 

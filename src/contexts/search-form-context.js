@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import validator from 'validator'; 
 
 import { getTomorrowsDate } from "../utils/utils";
 
@@ -25,21 +26,39 @@ export function SearchFormProvider({ children }) {
         const { location, sport, checkIn, checkOut } = details;
 
         // Validate inputs
-        if (location)
-
-        // Update searchFormDetails
-        setSearchFormDetails(prevState => {
-            return {...prevState, 
-                location: location,
-                sport: sport, 
-                checkIn: checkIn, 
-                checkOut: checkOut, 
-            } 
-        });
+        if (!validator.isAlpha(location) || !validator.isAlpha(sport)) {
+             // Update input style
+            setSearchInputStyle(prevState => {
+                return {...prevState,
+                    location: `${validator.isAlpha(location) ? 'form-input-success' : 'form-input-failure'}`,
+                    sport: `${validator.isAlpha(sport) ? 'form-input-success' : 'form-input-failure'}`,
+                }
+            });
+        }  
+        else {
+            // Update searchFormDetails
+            setSearchFormDetails(prevState => {
+                return {...prevState, 
+                    location: location,
+                    sport: sport, 
+                    checkIn: checkIn, 
+                    checkOut: checkOut, 
+                } 
+            });
+            
+            // Update input style
+            setSearchInputStyle(prevState => {
+                return {...prevState,
+                    location: `${location ? 'form-input-success' : 'form-input-failure'}`,
+                    sport: `${sport ? 'form-input-success' : 'form-input-failure'}`,
+                }
+            });
+        }
+        return null;
     };
 
     return (
-        <SearchFormContext.Provider value={{ searchFormDetails, searchInputStyle, submitSearchForm }}>
+        <SearchFormContext.Provider value={{ searchFormDetails, searchInputStyle, setSearchInputStyle, submitSearchForm }}>
             {children}
         </SearchFormContext.Provider>
     )

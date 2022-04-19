@@ -8,7 +8,7 @@ import ButtonSearchResult from './button-search-result';
 const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldname }, iconEl, withLabel=true, inputType='text'}) => {
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
-    const { searchFormDetails } = useContext(SearchFormContext);
+    const { searchFormDetails, searchInputStyle } = useContext(SearchFormContext);
 
     /** ELEMENT REFERENCES */
     const inputRef = useRef();
@@ -24,7 +24,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 withLabel ? <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
                 : ''
             }
-            <button className='form-input text-left whitespace-nowrap h-full w-full'
+            <button className={`${searchInputStyle[label]} pl-2 form-input text-left whitespace-wrap h-full w-full`}
                 onFocus={() => setIsFocused(true)}
                 onClick={() => {
                     toggleModal(true);
@@ -32,18 +32,19 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     setTimeout(() => inputRef.current.focus(), 100)
                 }}
             >   
-                <span>
-                    {/* {searchFormDetails[`${label}`] ? searchFormDetails[`${label}`] : state[0]} */}
+                <p className='truncate'>
                     {state[0] ? state[0] : searchFormDetails[`${label}`]}
-                </span>
-                <span>
+                </p>
+                <p className='truncate'>
                     {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
-                </span>
+                </p>
             </button>
             <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
                 form-input-dropdown
             `}>
-                <input className={`form-input ${(!isFocused) ? 'hidden' : 'flex'}`} 
+                <input className={`form-input 
+                    ${(!isFocused) ? 'hidden' : 'flex'}`
+                } 
                     name={`search-form-${label}`} 
                     type={inputType} 
                     placeholder={placeholder}
@@ -52,14 +53,14 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                         // Set input value and context value
                         state[1](e.target.value);
                     }}
-                    onBlur={() => {
+                    onBlur={(e) => {
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
-                        setTimeout(() => setIsFocused(false), 100)
+                        setTimeout(() => {
+                            setIsFocused(false);
+                        }, 100)
                     }}
-                    // value={state[0]}
-                    value={state[0] ? state[0] : searchFormDetails[`${label}`]}
+                    value={state[0]}
                     autoComplete={'off'}
-                    required 
                 />
                 <ul>
                     {   
@@ -92,7 +93,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                             />
                         })
                         :
-                        <li className={`${state[0] ? 'hidden' : 'flex justify-center items-center pt-2'}`}>
+                        <li className={`${state[0] === '' ? 'hidden' : 'flex justify-center items-center pt-2'}`}>
                             <span className='w-full h-full text-center'>No results</span> 
                         </li>
                     }

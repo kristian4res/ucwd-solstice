@@ -14,7 +14,7 @@ import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 const SearchForm = () => {
     /** CONTEXTS */
     const { devData: { trips, sports } } = useContext(AppContext);
-    const { submitSearchForm } = useContext(SearchFormContext);
+    const { submitSearchForm, setSearchInputStyle } = useContext(SearchFormContext);
 
     /** STATES */
     // Routing
@@ -27,13 +27,17 @@ const SearchForm = () => {
     const [checkInVal, setCheckInVal] = useState(getTomorrowsDate());
     const [checkOutVal, setCheckOutVal] = useState(getTomorrowsDate('checkOut'));
 
-    // Input validation formatting
-    // const 
-
     /** FUNCTIONS */
     const submitDetails = () => {
         // Deny request if location and sport are empty
         if (!locationInput && !sportInput) {
+            // Update input style
+            setSearchInputStyle(prevState => {
+                return {...prevState,
+                    location: 'form-input-failure',
+                    sport: 'form-input-failure',
+                }
+            });
             return false;
         }
 
@@ -44,13 +48,14 @@ const SearchForm = () => {
             checkIn: checkInVal,
             checkOut: checkOutVal
         }
+
+        // Update context
+        submitSearchForm(details);
+        
         // Redirect to explore page (if in a different page)
         if (routeLocation.pathname !== '/explore') {
             routeNavigate('/explore');
         }
-
-        submitSearchForm(details);
-        return true;
     }
 
     return (
