@@ -37,7 +37,7 @@ const NavigationSearch = ({ navClass }) => {
     }
 
     return (
-        <div className={`flex shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-dark md:max-w-4xl ${navClass.length === 0 && isHomepage ? 'invisible' : 'visible'}`}>
+        <div className={`flex shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-custom-dark md:max-w-4xl ${navClass.length === 0 && isHomepage ? 'invisible' : 'visible'}`}>
             <div className='flex flex-col ml-2 relative'>
                 <input className='flex px-2 w-full text-sm 
                     md:text-base lg:text-lg'

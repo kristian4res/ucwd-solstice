@@ -9,13 +9,16 @@ import ButtonOutline from '../components/button-outline';
 import CardTrip from '../components/card-trip';
 
 import { HiChevronDoubleRight } from 'react-icons/hi';
+import FilterForm from '../components/filter-form';
 
 const ExplorePage = () => {
+  /** CONTEXTS */
   const { devData: { trips }} = useContext(AppContext);
   const { searchFormDetails } = useContext(SearchFormContext);
 
-  // Filter data based on the location and sport parameters search form 
-  const filterData = (location, sport, data) => {
+  /** FUNCTIONS */
+  // Fetch data based on the location and sport parameters from the search form 
+  const searchedData = (location, sport, data) => {
     if (!location && !sport) {
       return data;
     }
@@ -42,6 +45,10 @@ const ExplorePage = () => {
         return null;
       }
   }); 
+
+  const filterData = (params) => {
+    return null;
+  }
 }
 
   return (
@@ -55,16 +62,11 @@ const ExplorePage = () => {
         xl:flex-row xl:justify-center xl:items-start xl:px-28 xl:pt-8
       '>
         <div className='flex flex-col w-fit h-full text-dark mt-2'>
-          <ButtonOutline btnTitle={'Explore More'} 
-            icon={
-              <HiChevronDoubleRight className='h-6 w-6 lg:h-8 lg:w-8' />
-            }
-            route='/explore'
-          />
+          <FilterForm />
         </div>
         <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
           {
-            filterData(searchFormDetails['location'], searchFormDetails['sport'], trips).map((val, key) => {
+            searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips).map((val, key) => {
               return (
                 <CardTrip key={key} 
                   imgUrl={val.tripImages[0]} 

@@ -61,7 +61,7 @@ const SearchForm = () => {
     return (
         <>   
             <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 
-                rounded-lg bg-white mt-8 text-dark
+                rounded-lg bg-white mt-8 text-custom-dark
                 sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[63rem] xl:grid-cols-5'
             >
                 <div className='form-group'>

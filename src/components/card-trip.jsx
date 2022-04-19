@@ -8,7 +8,7 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
             flex flex-col 
             md:grid md:grid-cols-3
         '>
-            <div className={`container h-full bg-dark flex justify-center
+            <div className={`container h-full bg-main flex justify-center
               relative col-span-1`}
             >   
                 <img
@@ -19,7 +19,7 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                     `}
                 />
             </div>
-            <div className='container h-full w-full bg-dark col-span-2 
+            <div className='container h-full w-full bg-main col-span-2 
                 flex flex-col justify-between
             '>
                 <div className="w-full h-fit px-4 py-2 text-white">

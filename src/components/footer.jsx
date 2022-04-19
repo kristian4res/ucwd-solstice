@@ -8,7 +8,7 @@ import { FaLinkedin, FaGithub, FaFigma } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className='flex flex-col justify-center items-center p-4 w-full bg-dark text-white
+    <footer className='flex flex-col justify-center items-center p-4 w-full bg-main text-white
     md:justify-center'>
       <div className='w-full mt-2'>
         <Logo isColoured={true} />

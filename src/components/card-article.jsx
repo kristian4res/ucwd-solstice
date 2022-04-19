@@ -17,7 +17,7 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                     className='w-full h-56 lg:h-72 object-cover'
                 />
             </div>
-            <div className='w-full bg-dark px-4 py-2'>
+            <div className='w-full bg-main px-4 py-2'>
                 <h4 className={`container mb-1 uppercase text-lg font-semibold text-white drop-shadow-xl 
                 md:text-xl lg:text-3xl`}>
                     {imgTitle}
@@ -30,7 +30,7 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                 lg:text-base'>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!
                 </p>
-                <div className="flex w-fit justify-end text-dark ml-auto mt-1 mb-2 
+                <div className="flex w-fit justify-end text-custom-dark ml-auto mt-1 mb-2 
                 md:justify-end ">
                   <ButtonSolid btnTitle={'Learn more'} 
                     icon={

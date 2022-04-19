@@ -8,4 +8,4 @@ const SectionTitle = ({ title, textColor }) => {
   )
 }
 
-export default SectionTitle
+export default SectionTitle;

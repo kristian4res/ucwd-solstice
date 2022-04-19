@@ -3,7 +3,7 @@ import React from 'react';
 const ButtonSearchResult = ({ val: { title, subtitle }, handleClick, icon }) => {
 
     return (
-        <li className='text-dark hover:bg-slate-200 cursor-pointer'>
+        <li className='text-custom-dark hover:bg-slate-200 cursor-pointer'>
             <button className='btn-solid items-center px-2'
                 onClick={() => handleClick()}
             >
