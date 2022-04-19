@@ -29,8 +29,16 @@ const SearchForm = () => {
 
     /** FUNCTIONS */
     const submitDetails = () => {
+        // Get input values
+        const details = {
+            location: locationInput,
+            sport: sportInput,
+            checkIn: checkInVal,
+            checkOut: checkOutVal
+        }
+
         // Deny request if location and sport are empty
-        if (!locationInput && !sportInput) {
+        if (!details.location&& !details.sport) {
             // Update input style
             setSearchInputStyle(prevState => {
                 return {...prevState,
@@ -39,14 +47,6 @@ const SearchForm = () => {
                 }
             });
             return false;
-        }
-
-        // Get input values
-        const details = {
-            location: locationInput,
-            sport: sportInput,
-            checkIn: checkInVal,
-            checkOut: checkOutVal
         }
 
         // Update context
@@ -98,7 +98,7 @@ const SearchForm = () => {
                     />
                 </div>
                 <div className='flex justify-center text-white px-2 py-2 h-full w-full col-span-full
-                md:items-center md:justify-self-center xl:col-span-1'>
+                md:items-center md:justify-center xl:col-span-1'>
                     <ButtonSolid
                         btnStyles={'flex flex-row-reverse justify-center items-center bg-primary'}
                         btnTitle='Search'

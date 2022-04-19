@@ -19,12 +19,13 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
     const [field, setField] = useState(fieldname);
 
     return (
-        <>
+        <>  
             {
+                // Show label if specified
                 withLabel ? <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
                 : ''
             }
-            <button className={`${searchInputStyle[label]} pl-2 form-input text-left whitespace-wrap h-full w-full`}
+            <button className={`${searchInputStyle[label]} pl-2 form-input text-left max-h-full w-full`}
                 onFocus={() => setIsFocused(true)}
                 onClick={() => {
                     toggleModal(true);
@@ -39,6 +40,15 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
                 </p>
             </button>
+            <div className={`${searchInputStyle[label] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
+                <span className='text-[0.7rem] text-failure'>
+                    {
+                        label === 'location' 
+                        ? `Please ensure you've inputted using the correct format, e.g. Hawaii or hawaii`
+                        : `Please ensure you've inputted using the correct format, e.g. Surfing or surfing`
+                    }
+                </span>
+            </div>
             <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
                 form-input-dropdown
             `}>
@@ -64,8 +74,8 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 />
                 <ul>
                     {   
-                        // Filter and loop through data, then display data by rendering list elements
                         dataset ? 
+                        // Filter and loop through data, then display data by rendering list elements
                         dataset.filter((val) => {
                             if (state[0] === '' || !isFocused) {
                                 return val;
@@ -81,7 +91,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                             }
                         }).map((val, key) => {
                             return <ButtonSearchResult key={key} 
-                                val={{ title: val[field], subtitle: val[field]}}
+                                val={{ title: val[field], subtitle: val[`${label === 'location' ? 'tripFullLocation' : 'sportName'}`]}}
                                 handleClick={() => {
                                     // Set input value and context value
                                     state[1](val[field]);

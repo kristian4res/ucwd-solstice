@@ -1,5 +1,4 @@
 import React from 'react';
-import tripsData from '../dev-data/trips.json';
 
 import imgSnowboarding1 from '../assets/snowboarding-md-1.jpg';
 import imgKayaking1 from '../assets/kayaking-md-1.jpg';

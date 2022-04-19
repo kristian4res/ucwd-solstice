@@ -10,8 +10,9 @@ const Modal = () => {
             `}
             onClick={() => {
                 toggleModal(false);
-            }}
-        />
+        }}>
+            {/* <h1 className='fixed top-[50%] left-[50%] -translate-x-[100%] text-slate-500'>Click to remove</h1> */}
+        </div>
   )
 }
 

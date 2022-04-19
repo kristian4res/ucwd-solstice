@@ -26,7 +26,7 @@ export function SearchFormProvider({ children }) {
         const { location, sport, checkIn, checkOut } = details;
 
         // Validate inputs
-        if (!validator.isAlpha(location) || !validator.isAlpha(sport)) {
+        if (!validator.isAlpha(location) && !validator.isAlpha(sport)) {
              // Update input style
             setSearchInputStyle(prevState => {
                 return {...prevState,
@@ -54,7 +54,6 @@ export function SearchFormProvider({ children }) {
                 }
             });
         }
-        return null;
     };
 
     return (
