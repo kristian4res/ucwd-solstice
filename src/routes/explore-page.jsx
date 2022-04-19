@@ -66,19 +66,31 @@ const ExplorePage = () => {
           {
             // Filter data based on search form 
             trips.filter((val) => {
-              if ((!searchFormDetails['location'] || searchFormDetails['location'] === '') 
-              || (!searchFormDetails['sport'] || searchFormDetails['sport']  === ''))
-              {
+              if ((!searchFormDetails['location']) && (!searchFormDetails['sport'])) { 
                 return null;
               }
-              // MAKE SURE THE SEARCH PARAMS ARE LINKED
+              // If given both location and sport, check filter for specific trips
+              else if ((searchFormDetails['location']) && (searchFormDetails['sport'])) {
+                if (
+                  val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
+                  && 
+                  val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
+                ) {
+                  return val;
+                }
+                return null;
+              }
+              // If invidivual parameters, check location parameter first
               else if (
-                (val.tripLocation.split(', ')[1].toLowerCase().includes(
-                  searchFormDetails['location'].split(', ')[1].toLowerCase()))
-                ||  (val.tripSport[0].sportName.toLowerCase().includes(
-                  searchFormDetails['sport'].toLowerCase()))
-              ) 
-              {
+                (searchFormDetails['location']) &&
+                val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
+              ) {
+                return val;
+              }
+              else if (
+                (searchFormDetails['sport']) &&
+                val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
+              ) {
                 return val;
               }
               else {

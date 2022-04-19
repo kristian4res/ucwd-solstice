@@ -55,9 +55,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
                         setTimeout(() => setIsFocused(false), 100)
                     }}
-                    value={
-                        state[0]
-                    }
+                    value={state[0]}
                     autoComplete={'off'}
                     required 
                 />
