@@ -13,9 +13,20 @@ export function SearchFormProvider({ children }) {
         checkOut: getTomorrowsDate('checkOut')
     });
 
+    const [searchInputStyle, setSearchInputStyle] = useState({
+        location: '',
+        sport: '',
+        checkIn: '',
+        checkOut: ''
+    });
+
     const submitSearchForm = (details) => {
         // Destructure details object
         const { location, sport, checkIn, checkOut } = details;
+
+        // Validate inputs
+        if (location)
+
         // Update searchFormDetails
         setSearchFormDetails(prevState => {
             return {...prevState, 
@@ -28,7 +39,7 @@ export function SearchFormProvider({ children }) {
     };
 
     return (
-        <SearchFormContext.Provider value={{ searchFormDetails, submitSearchForm }}>
+        <SearchFormContext.Provider value={{ searchFormDetails, searchInputStyle, submitSearchForm }}>
             {children}
         </SearchFormContext.Provider>
     )

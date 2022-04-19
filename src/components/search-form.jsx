@@ -21,13 +21,22 @@ const SearchForm = () => {
     const routeLocation = useLocation();
     const routeNavigate = useNavigate();
 
+    // Input states
     const [locationInput, setLocationInput] = useState('');
     const [sportInput, setSportInput] = useState('');
-
     const [checkInVal, setCheckInVal] = useState(getTomorrowsDate());
     const [checkOutVal, setCheckOutVal] = useState(getTomorrowsDate('checkOut'));
 
+    // Input validation formatting
+    // const 
+
+    /** FUNCTIONS */
     const submitDetails = () => {
+        // Deny request if location and sport are empty
+        if (!locationInput && !sportInput) {
+            return false;
+        }
+
         // Get input values
         const details = {
             location: locationInput,
@@ -41,6 +50,7 @@ const SearchForm = () => {
         }
 
         submitSearchForm(details);
+        return true;
     }
 
     return (

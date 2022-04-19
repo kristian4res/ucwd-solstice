@@ -14,35 +14,35 @@ const ExplorePage = () => {
   const { devData: { trips }} = useContext(AppContext);
   const { searchFormDetails } = useContext(SearchFormContext);
 
+  // Filter data based on the location and sport parameters search form 
   const filterData = (location, sport, data) => {
-    if (!location || !sport) {
+    if (!location && !sport) {
       return data;
     }
-    else {
-      return data.filter((val) => {
-        if (location && sport) {
-          if (
-            (val.tripLocation.split(', ')[1].toLowerCase().includes(location.split(', ')[1].toLowerCase()))
-            &&
-            (val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase()))
-          ) {
-            return val;
-          }
+    return data.filter((val) => {
+      // If given both location and sport, check filter for specific trips
+      if (location && sport) {
+        if (
+          (val.tripLocation.toLowerCase().includes(location.toLowerCase()))
+          &&
+          (val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase()))
+        ) {
+          return val;
         }
-        else if (location)
-        {
-          if (val.tripLocation.split(', ')[1].toLowerCase().includes(location.split(', ')[1].toLowerCase())) {
-            return val;
-          }
-        }
-        else if (sport) {
-          if (val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase())) {
-            return val;
-          }
-        }
-      }) 
-    }
-  }
+        return null;
+      }
+      // If invidivual parameters, check location parameter first then sport parameter
+      else if (location && val.tripLocation.toLowerCase().includes(location.toLowerCase())) {
+        return val;
+      }
+      else if (sport && val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase())) {
+          return val;
+      }
+      else {
+        return null;
+      }
+  }); 
+}
 
   return (
     <PageContainer>
@@ -64,45 +64,45 @@ const ExplorePage = () => {
         </div>
         <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
           {
-            // Filter data based on search form 
-            trips.filter((val) => {
-              if ((!searchFormDetails['location']) && (!searchFormDetails['sport'])) { 
-                return null;
-              }
-              // If given both location and sport, check filter for specific trips
-              else if ((searchFormDetails['location']) && (searchFormDetails['sport'])) {
-                if (
-                  val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
-                  && 
-                  val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
-                ) {
-                  return val;
-                }
-                return null;
-              }
-              // If invidivual parameters, check location parameter first
-              else if (
-                (searchFormDetails['location']) &&
-                val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
-              ) {
-                return val;
-              }
-              else if (
-                (searchFormDetails['sport']) &&
-                val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
-              ) {
-                return val;
-              }
-              else {
-                return null;
-              }
-            })
-            .map((val, key) => {
+            // // Filter data based on search form 
+            // trips.filter((val) => {
+            //   if ((!searchFormDetails['location']) && (!searchFormDetails['sport'])) { 
+            //     return null;
+            //   }
+            //   // If given both location and sport, check filter for specific trips
+            //   else if ((searchFormDetails['location']) && (searchFormDetails['sport'])) {
+            //     if (
+            //       val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
+            //       && 
+            //       val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
+            //     ) {
+            //       return val;
+            //     }
+            //     return null;
+            //   }
+            //   // If invidivual parameters, check location parameter first
+            //   else if (
+            //     (searchFormDetails['location']) &&
+            //     val.tripLocation.split(', ')[1].toLowerCase().includes(searchFormDetails['location'].split(', ')[1].toLowerCase())
+            //   ) {
+            //     return val;
+            //   }
+            //   else if (
+            //     (searchFormDetails['sport']) &&
+            //     val.tripSport[0].sportName.toLowerCase().includes(searchFormDetails['sport'].toLowerCase())
+            //   ) {
+            //     return val;
+            //   }
+            //   else {
+            //     return null;
+            //   }
+            // })
+            filterData(searchFormDetails['location'], searchFormDetails['sport'], trips).map((val, key) => {
               return (
                 <CardTrip key={key} 
                   imgUrl={val.tripImages[0]} 
                   cardTitle={val.tripName}
-                  cardSubTitle={val.tripLocation}
+                  cardSubTitle={val.tripFullLocation}
                   cardText={val.tripDescription}
                   cardDetails={[[val.tripRating, val.tripReviews], [val.tripTotalPrice]]}
                   tagData={val.tripTags} 

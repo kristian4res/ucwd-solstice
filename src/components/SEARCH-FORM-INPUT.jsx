@@ -33,10 +33,11 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 }}
             >   
                 <span>
-                    {searchFormDetails[`${label}`] ? searchFormDetails[`${label}`] : state[0]}
+                    {/* {searchFormDetails[`${label}`] ? searchFormDetails[`${label}`] : state[0]} */}
+                    {state[0] ? state[0] : searchFormDetails[`${label}`]}
                 </span>
                 <span>
-                    {searchFormDetails[`${label}`] || state[0] ? '' : placeholder}
+                    {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
                 </span>
             </button>
             <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
@@ -55,22 +56,27 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
                         setTimeout(() => setIsFocused(false), 100)
                     }}
-                    value={state[0]}
+                    // value={state[0]}
+                    value={state[0] ? state[0] : searchFormDetails[`${label}`]}
                     autoComplete={'off'}
                     required 
                 />
                 <ul>
                     {   
                         // Filter and loop through data, then display data by rendering list elements
+                        dataset ? 
                         dataset.filter((val) => {
                             if (state[0] === '' || !isFocused) {
-                                return null;
-                            }
-                            else if (val[field].toLowerCase().includes(state[0].toLowerCase()))  {
                                 return val;
                             }
-                            else {
+                            else if (state[0] !== '') {
+                                if (val[field].toLowerCase().includes(state[0].toLowerCase()))  {
+                                    return val;
+                                }
                                 return null;
+                            }
+                            else {
+                                return val;
                             }
                         }).map((val, key) => {
                             return <ButtonSearchResult key={key} 
@@ -85,6 +91,10 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                                 icon={iconEl ? iconEl : val.icon}
                             />
                         })
+                        :
+                        <li className={`${state[0] ? 'hidden' : 'flex justify-center items-center pt-2'}`}>
+                            <span className='w-full h-full text-center'>No results</span> 
+                        </li>
                     }
                 </ul>
             </div>
