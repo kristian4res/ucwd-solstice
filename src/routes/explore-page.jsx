@@ -5,10 +5,8 @@ import SearchFormContext from '../contexts/search-form-context';
 
 import PageContainer from '../components/page-container';
 import SearchForm from '../components/search-form';
-import ButtonOutline from '../components/button-outline';
 import CardTrip from '../components/card-trip';
 
-import { HiChevronDoubleRight } from 'react-icons/hi';
 import FilterForm from '../components/filter-form';
 
 const ExplorePage = () => {

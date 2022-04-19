@@ -11,6 +11,11 @@
     background: linear-gradient(335deg, rgba(124,175,212,1) 30%, rgba(233,154,39,1) 96%);
 }
 
+.filter-select {
+    @apply border-2 border-custom-gray
+    hover:bg-slate-200;
+}
+
 .form-group {
     @apply flex flex-col h-full mx-2 py-2 px-2 relative;
 }

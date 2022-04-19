@@ -15,9 +15,9 @@ const NavigationSearch = ({ navClass }) => {
 
     /** STATES */
     // Routing
-    const navigate = useNavigate();
-    const location = useLocation();
-    const isHomepage = location.pathname === '/'; 
+    const routeNavigate = useNavigate();
+    const routeLocation = useLocation();
+    const isHomepage = routeLocation.pathname === '/'; 
     // Input handlers
     const [locationInput, setLocationInput] = useState('');
     const [isFocused, setIsFocused] = useState(false);
@@ -28,10 +28,17 @@ const NavigationSearch = ({ navClass }) => {
         const details = {
             location: locationInput
         }
+        // Reject request if no input
+        if (!details.location) {
+            return 'hello';
+        }
+
         // Clear input
         setLocationInput('');
-        // Redirect to the explore page
-        navigate('/explore');
+        // Redirect to explore page (if in a different page)
+        if (routeLocation.pathname !== '/explore') {
+            routeNavigate('/explore');
+        }
 
         submitSearchForm(details);
     }
@@ -57,10 +64,10 @@ const NavigationSearch = ({ navClass }) => {
                     {   
                         // Filter and loop through data, then display data by rendering list elements
                         trips.filter((val) => {
-                            if (locationInput === '') {
+                            if (!locationInput || locationInput === '') {
                                 return null;
                             }
-                            else if (val.name.toLowerCase().includes(locationInput.toLowerCase()))  {
+                            else if (val.tripLocation.toLowerCase().includes(locationInput.toLowerCase()))  {
                                 return val;
                             }
                             else {
@@ -68,10 +75,10 @@ const NavigationSearch = ({ navClass }) => {
                             }
                         }).map((val, key) => {
                             return <ButtonSearchResult key={key} 
-                                val={val}
+                                val={{ title: val.tripLocation, subtitle: val.tripFullLocation}}
                                 handleClick={() => {
-                                    // Set input value and context value
-                                    setLocationInput(val.name);
+                                    // Set input value
+                                    setLocationInput(val.tripLocation);
                                 }}
                                 icon={<HiLocationMarker className='h-6 w-6 xl:h-8 xl:w-8' />}
                             />
