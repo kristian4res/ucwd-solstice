@@ -38,7 +38,7 @@ const SearchForm = () => {
         }
 
         // Deny request if location and sport are empty
-        if (!details.location&& !details.sport) {
+        if (!details.location && !details.sport) {
             // Update input style
             setSearchInputStyle(prevState => {
                 return {...prevState,

@@ -27,11 +27,21 @@ export function SearchFormProvider({ children }) {
 
         // Validate inputs
         if (!validator.isAlpha(location) && !validator.isAlpha(sport)) {
+            let locationStyle, sportStyle;
+
+            if (location !== '' && validator.isAlpha(location)) {
+                locationStyle = 'form-input-success';
+            }
+
+            if (sport !== '' && validator.isAlpha(sport)) {
+                sportStyle = 'form-input-success';
+            }
+
              // Update input style
             setSearchInputStyle(prevState => {
                 return {...prevState,
-                    location: `${validator.isAlpha(location) ? 'form-input-success' : 'form-input-failure'}`,
-                    sport: `${validator.isAlpha(sport) ? 'form-input-success' : 'form-input-failure'}`,
+                    location: `${locationStyle ? locationStyle : ''}`,
+                    sport: `${sportStyle ? sportStyle : ''}`,
                 }
             });
         }  
@@ -49,8 +59,8 @@ export function SearchFormProvider({ children }) {
             // Update input style
             setSearchInputStyle(prevState => {
                 return {...prevState,
-                    location: `${location ? 'form-input-success' : 'form-input-failure'}`,
-                    sport: `${sport ? 'form-input-success' : 'form-input-failure'}`,
+                    location: `${location ? 'form-input-success' : ''}`,
+                    sport: `${sport ? 'form-input-success' : ''}`,
                 }
             });
         }

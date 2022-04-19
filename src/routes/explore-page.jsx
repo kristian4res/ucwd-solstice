@@ -13,7 +13,6 @@ import { HiChevronDoubleRight } from 'react-icons/hi';
 const ExplorePage = () => {
   const { devData: { trips }} = useContext(AppContext);
   const { searchFormDetails } = useContext(SearchFormContext);
-  console.log(searchFormDetails)
 
   // Filter data based on the location and sport parameters search form 
   const filterData = (location, sport, data) => {
