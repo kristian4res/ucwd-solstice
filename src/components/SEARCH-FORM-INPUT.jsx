@@ -42,10 +42,8 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
             </button>
             <div className={`${searchInputStyle[label] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
                 <span className='text-[0.7rem] text-failure'>
-                    {
-                        label === 'location' 
-                        ? `Please ensure you've inputted using the correct format, e.g. Hawaii or hawaii`
-                        : `Please ensure you've inputted using the correct format, e.g. Surfing or surfing`
+                    {   
+                        `Please ensure the input contains only letters, e.g. Location: Hawaii or Sport: Surfing`
                     }
                 </span>
             </div>
