@@ -26,15 +26,15 @@ export function SearchFormProvider({ children }) {
         const { location, sport, checkIn, checkOut } = details;
 
         // Validate inputs
-        if (!validator.isAlpha(location) && !validator.isAlpha(sport)) {
+        if (!validator.isAlpha(location) || !validator.isAlpha(sport)) {
             let locationStyle, sportStyle;
 
-            if (location !== '' && validator.isAlpha(location)) {
-                locationStyle = 'form-input-success';
+            if (location !== '' && !validator.isAlpha(location)) {
+                locationStyle = 'form-input-failure';
             }
 
-            if (sport !== '' && validator.isAlpha(sport)) {
-                sportStyle = 'form-input-success';
+            if (sport !== '' && !validator.isAlpha(sport)) {
+                sportStyle = 'form-input-failure';
             }
 
              // Update input style

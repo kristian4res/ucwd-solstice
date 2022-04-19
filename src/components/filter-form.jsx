@@ -14,16 +14,16 @@ const FilterForm = () => {
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2">
           <h4 className='text-base font-semibold'>Season:</h4>
-          <select className='filter-select max-w-full' name="season">
-            <option value="summer" selected>Any</option>
+          <select className='filter-select max-w-full' name="season" defaultValue={'any'}>
+            <option value="any">Any</option>
             <option value="summer">Summer</option>
             <option value="winter">Winter</option>
           </select>
         </div>
         <div className="flex flex-col gap-2">
           <h4 className='text-base font-semibold'>Continent:</h4>
-          <select className='filter-select max-w-full' name="continent">
-            <option value="summer" selected>Any</option>
+          <select className='filter-select max-w-full' name="continent" defaultValue={'any'}>
+            <option value="any">Any</option>
             <option value="europe">Europe</option>
             <option value="oceania">Asia</option>
             <option value="oceania">Oceania</option>
@@ -32,8 +32,8 @@ const FilterForm = () => {
         </div>
         <div className="flex flex-col gap-2">
           <h4 className='text-base font-semibold'>Rating:</h4>
-          <select className='filter-select max-w-full' name="continent">
-            <option value="europe">Any</option>
+          <select className='filter-select max-w-full' name="continent" defaultValue={'any'}>
+            <option value="any">Any</option>
             <option value="oceania">Good (3.5+)</option>
             <option value="oceania">Amazing (4+)</option>
             <option value="america">Exceptional (4.5+)</option>

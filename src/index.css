@@ -53,7 +53,7 @@
 
 .btn-solid {
     @apply container flex font-bold text-current transition-all duration-[25] ease-out 
-    py-2 px-4 rounded-lg 
+    py-2 px-4 
     brightness-100 
     hover:brightness-90 active:brightness-75; 
 }

@@ -5,6 +5,7 @@ import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
 
 import ButtonSearchResult from './button-search-result';
+import ButtonSolid from './button-solid';
 
 import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 
@@ -21,6 +22,8 @@ const NavigationSearch = ({ navClass }) => {
     // Input handlers
     const [locationInput, setLocationInput] = useState('');
     const [isFocused, setIsFocused] = useState(false);
+    // Input styles
+    const [inputStyle, setInputStyle] = useState('llloo');
 
     /** FUNCTIONS */
     const submitDetails = () => {
@@ -44,9 +47,11 @@ const NavigationSearch = ({ navClass }) => {
     }
 
     return (
-        <div className={`flex shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-custom-dark md:max-w-4xl ${navClass.length === 0 && isHomepage ? 'invisible' : 'visible'}`}>
-            <div className='flex flex-col ml-2 relative'>
-                <input className='flex px-2 w-full text-sm 
+        <div className={`flex w-full shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-custom-dark 
+            md:w-[40%] md:max-w-full 
+            ${navClass.length === 0 && isHomepage ? 'invisible' : 'visible'}`}>
+            <div className='flex flex-col ml-2 w-full relative'>
+                <input className='flex px-2 w-full text-sm rounded-full
                     md:text-base lg:text-lg'
                     type="text" 
                     value={locationInput}
@@ -56,8 +61,15 @@ const NavigationSearch = ({ navClass }) => {
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
                         setTimeout(() => setIsFocused(false), 100)
                     }}
-                    placeholder='Search a location' 
+                    placeholder='Where do you want to go?' 
                 />
+                {/* <div className={`${inputStyle ? 'flex items-center absolute top-[150%] left-0 w-full h-full' : 'hidden'}`}>
+                    <span className='ml-2 text-[0.7rem] text-failure bg-white'>
+                        {   
+                            `Ensure the input contains only letters`
+                        }
+                    </span>
+                </div> */}
                 <ul className={`${(!isFocused) ? 'hidden' : 'flex flex-col'}
                     form-input-dropdown-navigation
                 `}>
@@ -86,14 +98,17 @@ const NavigationSearch = ({ navClass }) => {
                     }
                 </ul>
             </div>
-            <div className='flex justify-center mx-2 my-2 w-10 
-                md:w-fit md:items-center'>
-                <button className='flex h-full justify-center items-center text-white bg-primary rounded-full p-2 
-                md:w-14'
-                    onClick={submitDetails}
-                >
-                    <HiSearch className='h-5 w-5 md:h-6 md:w-6' />
-                </button>
+            <div className={`'justify-center px-2 py-2 w-fit text-white
+                    md:w-fit md:items-center'
+                `}>
+                <ButtonSolid
+                    btnStyles={`flex h-full justify-center items-center text-white bg-primary p-2
+                        md:w-14`}
+                    icon={
+                        <HiSearch className='h-5 w-5 md:h-6 md:w-6' />
+                    }
+                    handleClick={submitDetails}
+                />
             </div>
         </div>
     )
