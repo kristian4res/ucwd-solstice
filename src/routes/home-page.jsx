@@ -19,7 +19,7 @@ import { HiChevronDoubleRight } from 'react-icons/hi'
 const Homepage = () => {
   return (
     <PageContainer>
-      <section id="recommendations-section" className='flex flex-col mt-2 w-full h-full mb-6 md:mt-4 md:h-1/3'>
+      <section id="recommendations-section" className='flex flex-col mt-6 w-full h-full mb-6 md:mt-4 md:h-1/3'>
         <SectionTitle title='Inspiration for your next trip' textColor='text-custom-black' />
         <div className='grid grid-cols-1 gap-6 place-content-center mx-10 md:grid-cols-3'>
           <CardLink imgUrl={imgKayaking1} imgTitle={'Kayaking'} tagData={['Summer', 'summer']} />

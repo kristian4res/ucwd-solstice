@@ -37,7 +37,7 @@ const SearchForm = () => {
             checkOut: checkOutVal
         }
 
-        // Deny request if location and sport are empty
+        // Reject request if location and sport are empty
         if (!details.location && !details.sport) {
             // Update input style
             setSearchInputStyle(prevState => {
@@ -60,11 +60,11 @@ const SearchForm = () => {
 
     return (
         <>   
-            <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 
+            <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 justify-items-center
                 rounded-lg bg-white mt-8 text-custom-dark
                 sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[63rem] xl:grid-cols-5'
             >
-                <div className='form-group'>
+                <div className='form-group w-full'>
                     <SearchFormInput
                         state={[locationInput, setLocationInput]} 
                         label={'location'}
@@ -73,7 +73,7 @@ const SearchForm = () => {
                         iconEl={<HiLocationMarker className='h-6 w-6 xl:h-8 xl:w-8' />}
                     />
                 </div>
-                <div className='form-group'>
+                <div className='form-group w-full'>
                     <SearchFormInput
                         state={[sportInput, setSportInput]} 
                         label={'sport'}
@@ -81,7 +81,7 @@ const SearchForm = () => {
                         data={{ dataset: sports, fieldname: 'sportName' }}
                     />
                 </div>
-                <div className='form-group'>
+                <div className='form-group w-full'>
                     <label htmlFor="trip-check-in" className='form-label'>Check In</label>
                     <input className='form-input' type="date" 
                         value={checkInVal}
@@ -89,7 +89,7 @@ const SearchForm = () => {
                         min={getTomorrowsDate()} 
                     />
                 </div>
-                <div className='form-group'>
+                <div className='form-group w-full'>
                     <label htmlFor="trip-check-out" className='form-label'>Check Out</label>
                     <input className='form-input' type="date"
                         value={checkOutVal}

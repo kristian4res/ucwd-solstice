@@ -5,6 +5,8 @@ import SearchFormContext from '../contexts/search-form-context';
 
 import ButtonSearchResult from './button-search-result';
 
+import { IoMdCloseCircle } from 'react-icons/io';
+
 const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldname }, iconEl, withLabel=true, inputType='text'}) => {
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
@@ -25,25 +27,36 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 withLabel ? <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
                 : ''
             }
-            <button className={`${searchInputStyle[label]} pl-2 form-input text-left max-h-full w-full`}
-                onFocus={() => setIsFocused(true)}
-                onClick={() => {
-                    toggleModal(true);
-                    // Timeout to delay the function execution (i.e. give time for other functions to execute)
-                    setTimeout(() => inputRef.current.focus(), 100)
-                }}
-            >   
-                <p className='truncate'>
-                    {state[0] ? state[0] : searchFormDetails[`${label}`]}
-                </p>
-                <p className='truncate'>
-                    {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
-                </p>
-            </button>
+            {/* <div className='grid grid-cols-5 justify-items-center w-full'> */}
+            <div className='relative w-full'>
+                <button className={`${searchInputStyle[label]} pl-2 form-input text-left max-h-full w-full`}
+                    onFocus={() => setIsFocused(true)}
+                    onClick={() => {
+                        toggleModal(true);
+                        // Timeout to delay the function execution (i.e. give time for other functions to execute)
+                        setTimeout(() => inputRef.current.focus(), 100)
+                    }}
+                >   
+                    <p className='truncate pr-8'>
+                        {state[0] ? state[0] : searchFormDetails[`${label}`]}
+                    </p>
+                    <p className='truncate pr-8'>
+                        {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
+                    </p>
+                </button>
+                <button className='absolute top-[8.5%] right-[1.5%] p-2 text-custom-gray-dark'
+                    onClick={() => {
+                        // Clear input
+                        state[1]('');
+                    }}
+                >
+                    <IoMdCloseCircle className='h-[.9rem] w-[.9rem]' />
+                </button>
+            </div>
             <div className={`${searchInputStyle[label] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
                 <span className='text-[0.7rem] text-failure'>
                     {   
-                        `Please ensure the input contains only letters, e.g. Location: Hawaii or Sport: Surfing`
+                        `Please ensure you use only letters, e.g. Location: Hawaii or Sport: Surfing`
                     }
                 </span>
             </div>

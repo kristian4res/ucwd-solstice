@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import validator from 'validator';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
@@ -9,7 +10,7 @@ import ButtonSolid from './button-solid';
 
 import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 
-const NavigationSearch = ({ navClass }) => {
+const NavigationSearch = () => {
     /** CONTEXTS */
     const { devData: { trips } } = useContext(AppContext);
     const { submitSearchForm } = useContext(SearchFormContext);
@@ -18,12 +19,11 @@ const NavigationSearch = ({ navClass }) => {
     // Routing
     const routeNavigate = useNavigate();
     const routeLocation = useLocation();
-    const isHomepage = routeLocation.pathname === '/'; 
     // Input handlers
     const [locationInput, setLocationInput] = useState('');
     const [isFocused, setIsFocused] = useState(false);
     // Input styles
-    const [inputStyle, setInputStyle] = useState('llloo');
+    const [inputInvalid, setInputInvalid] = useState(null);
 
     /** FUNCTIONS */
     const submitDetails = () => {
@@ -31,13 +31,19 @@ const NavigationSearch = ({ navClass }) => {
         const details = {
             location: locationInput
         }
+
+        console.log(details.location, validator.isAlpha(details.location, "en-GB", { ignore: " " }))
+
         // Reject request if no input
-        if (!details.location) {
-            return 'hello';
+        if (!details.location || !validator.isAlpha(details.location, "en-GB", { ignore: " " })) {
+            setInputInvalid(true);
+            return null;
         }
 
-        // Clear input
+        // Clear input and reset input UI
         setLocationInput('');
+        setInputInvalid(false);
+
         // Redirect to explore page (if in a different page)
         if (routeLocation.pathname !== '/explore') {
             routeNavigate('/explore');
@@ -49,13 +55,19 @@ const NavigationSearch = ({ navClass }) => {
     return (
         <div className={`flex w-full shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-custom-dark 
             md:w-[40%] md:max-w-full 
-            ${navClass.length === 0 && isHomepage ? 'invisible' : 'visible'}`}>
+            `
+        }>
             <div className='flex flex-col ml-2 w-full relative'>
-                <input className='flex px-2 w-full text-sm rounded-full
+                <input className='flex p-2 w-full text-sm rounded-full
                     md:text-base lg:text-lg'
                     type="text" 
                     value={locationInput}
-                    onChange={(e) => setLocationInput(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value === '') {
+                            setInputInvalid(null);
+                        }
+                        setLocationInput(e.target.value);
+                    }}
                     onClick={() => setIsFocused(true)}
                     onBlur={() => {
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
@@ -63,13 +75,13 @@ const NavigationSearch = ({ navClass }) => {
                     }}
                     placeholder='Where do you want to go?' 
                 />
-                {/* <div className={`${inputStyle ? 'flex items-center absolute top-[150%] left-0 w-full h-full' : 'hidden'}`}>
-                    <span className='ml-2 text-[0.7rem] text-failure bg-white'>
+                <div className={`${inputInvalid ? 'flex custom-message-bubble' : 'hidden'}`}>
+                    <span className='ml-2 text-[0.7rem] w-full text-failure'>
                         {   
-                            `Ensure the input contains only letters`
+                            `Please ensure you only use letters, e.g. Honolulu`
                         }
                     </span>
-                </div> */}
+                </div>
                 <ul className={`${(!isFocused) ? 'hidden' : 'flex flex-col'}
                     form-input-dropdown-navigation
                 `}>

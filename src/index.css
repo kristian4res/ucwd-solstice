@@ -6,9 +6,18 @@
     scroll-behavior: smooth;
 }
 
+.navigation-background {
+    @apply backdrop-blur bg-main shadow-xl;
+}
+
 .custom-bg-gradient {
     background: rgb(124,175,212);
     background: linear-gradient(335deg, rgba(124,175,212,1) 30%, rgba(233,154,39,1) 96%);
+}
+
+.custom-message-bubble {
+    @apply items-center absolute top-[150%] left-4 w-full h-full 
+    border-2 border-main rounded-b-lg bg-white py-4 px-2;
 }
 
 .filter-select {

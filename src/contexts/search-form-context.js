@@ -1,4 +1,5 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import validator from 'validator'; 
 
 import { getTomorrowsDate } from "../utils/utils";
@@ -25,46 +26,55 @@ export function SearchFormProvider({ children }) {
         // Destructure details object
         const { location, sport, checkIn, checkOut } = details;
 
-        // Validate inputs
-        if (!validator.isAlpha(location) || !validator.isAlpha(sport)) {
-            let locationStyle, sportStyle;
+        let locationStyle, sportStyle;
 
-            if (location !== '' && !validator.isAlpha(location)) {
+        // Validate inputs and set input mssages
+        if (location) {
+            locationStyle = 'form-input-success';
+
+            if (!validator.isAlpha(location, "en-GB", { ignore: " " })) {
                 locationStyle = 'form-input-failure';
             }
+        }
+        
+        if (sport) {
+            sportStyle = 'form-input-success';
 
-            if (sport !== '' && !validator.isAlpha(sport)) {
+            if (!validator.isAlpha(sport, "en-GB", { ignore: " " })) {
                 sportStyle = 'form-input-failure';
             }
-
-             // Update input style
-            setSearchInputStyle(prevState => {
-                return {...prevState,
-                    location: `${locationStyle ? locationStyle : ''}`,
-                    sport: `${sportStyle ? sportStyle : ''}`,
-                }
-            });
-        }  
-        else {
-            // Update searchFormDetails
-            setSearchFormDetails(prevState => {
-                return {...prevState, 
-                    location: location,
-                    sport: sport, 
-                    checkIn: checkIn, 
-                    checkOut: checkOut, 
-                } 
-            });
-            
-            // Update input style
-            setSearchInputStyle(prevState => {
-                return {...prevState,
-                    location: `${location ? 'form-input-success' : ''}`,
-                    sport: `${sport ? 'form-input-success' : ''}`,
-                }
-            });
         }
+        
+        // Update searchFormDetails
+        setSearchFormDetails(prevState => {
+            return {...prevState, 
+                location: location,
+                sport: sport, 
+                checkIn: checkIn, 
+                checkOut: checkOut, 
+            } 
+        });
+        
+        // Update input style
+        setSearchInputStyle(prevState => {
+            return {...prevState,
+                location: `${locationStyle}`,
+                sport: `${sportStyle}`,
+            }
+        });
     };
+
+    // Reset input UI when changing routes
+    const routeLocation = useLocation();
+    useEffect(() => {
+        // When changing routes, reset input messages
+        setSearchInputStyle({
+            location: '',
+            sport: '',
+            checkIn: '',
+            checkOut: ''
+        });
+    }, [routeLocation])
 
     return (
         <SearchFormContext.Provider value={{ searchFormDetails, searchInputStyle, setSearchInputStyle, submitSearchForm }}>
