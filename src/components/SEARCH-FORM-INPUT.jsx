@@ -21,7 +21,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
     const [field, setField] = useState(fieldname);
 
     return (
-        <>  
+        <div>  
             {
                 // Show label if specified
                 withLabel ? <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
@@ -62,7 +62,10 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
             </div>
             <div className={`${(!showModal || !isFocused) ? 'hidden' : 'flex'}
                 form-input-dropdown
-            `}>
+            `}
+                aria-haspopup={true}
+                aria-expanded={isFocused}
+            >
                 <input className={`form-input 
                     ${(!isFocused) ? 'hidden' : 'flex'}`
                 } 
@@ -120,7 +123,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     }
                 </ul>
             </div>
-        </>
+        </div>
     )
 }
 

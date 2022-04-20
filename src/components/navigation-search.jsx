@@ -51,13 +51,23 @@ const NavigationSearch = () => {
 
         submitSearchForm(details);
     }
+    
+    // Timeout to delay the function execution (i.e. give time for other functions to execute)
+    const onBlurHandler = () => {
+        return setTimeout(() => setIsFocused(false), 100);
+    }
 
     return (
         <div className={`flex w-full shrink justify-center items-center z-10 shadow-lg rounded-full bg-white text-custom-dark 
             md:w-[40%] md:max-w-full 
             `
         }>
-            <div className='flex flex-col ml-2 w-full relative'>
+            <div className='flex flex-col ml-2 w-full relative'
+                aria-haspopup={true}
+                aria-expanded={isFocused}
+                onBlur={onBlurHandler}
+                onFocus={clearTimeout(onBlurHandler)}
+            >
                 <input className='flex p-2 w-full text-sm rounded-full
                     md:text-base lg:text-lg'
                     type="text" 
@@ -69,10 +79,6 @@ const NavigationSearch = () => {
                         setLocationInput(e.target.value);
                     }}
                     onClick={() => setIsFocused(true)}
-                    onBlur={() => {
-                        // Timeout to delay the function execution (i.e. give time for other functions to execute)
-                        setTimeout(() => setIsFocused(false), 100)
-                    }}
                     placeholder='Where do you want to go?' 
                 />
                 <div className={`${inputInvalid ? 'flex custom-message-bubble' : 'hidden'}`}>
