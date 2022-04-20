@@ -39,8 +39,6 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 >   
                     <p className='truncate pr-8'>
                         {state[0] ? state[0] : searchFormDetails[`${label}`]}
-                    </p>
-                    <p className='truncate pr-8'>
                         {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
                     </p>
                 </button>

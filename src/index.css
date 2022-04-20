@@ -34,7 +34,8 @@
 }
 
 .form-input {
-    @apply px-2 py-1 text-base whitespace-normal border-2 border-transparent transition-colors
+    @apply px-2 py-1 text-base whitespace-normal border-2 
+    border-transparent transition-colors cursor-pointer
     hover:bg-slate-200;
 }
 

@@ -9,8 +9,8 @@ const SearchFormContext = createContext();
 export function SearchFormProvider({ children }) {
     /** STATES */
     const [searchFormDetails, setSearchFormDetails] = useState({
-        location: null,
-        sport: null,
+        location: '',
+        sport: '',
         checkIn: getTomorrowsDate(),
         checkOut: getTomorrowsDate('checkOut')
     });

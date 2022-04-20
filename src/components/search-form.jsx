@@ -13,19 +13,24 @@ import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 
 const SearchForm = () => {
     /** CONTEXTS */
-    const { devData: { trips, sports } } = useContext(AppContext);
-    const { submitSearchForm, setSearchInputStyle } = useContext(SearchFormContext);
+    const { toggleModal, devData: { trips, sports } } = useContext(AppContext);
+    const { searchFormDetails, submitSearchForm, setSearchInputStyle } = useContext(SearchFormContext);
 
     /** STATES */
     // Routing
     const routeLocation = useLocation();
     const routeNavigate = useNavigate();
 
-    // Input states
-    const [locationInput, setLocationInput] = useState('');
-    const [sportInput, setSportInput] = useState('');
+    // Pass down input states
+    const [locationInput, setLocationInput] = useState(searchFormDetails['location']);
+    const [sportInput, setSportInput] = useState(searchFormDetails['sport']);
     const [checkInVal, setCheckInVal] = useState(getTomorrowsDate());
     const [checkOutVal, setCheckOutVal] = useState(getTomorrowsDate('checkOut'));
+    // Toggling date input modal
+    const [dateInputFocus, setDateInputFocus] = useState({
+        'checkIn': '',
+        'checkOut': ''
+    });
 
     /** FUNCTIONS */
     const submitDetails = () => {
@@ -58,8 +63,9 @@ const SearchForm = () => {
         }
     }
 
+
     return (
-        <>   
+        <form title="Solstice search form" onSubmit={(e) => e.preventDefault()}>   
             <div className='container shadow-2xl w-[80%] px-2 py-2 grid auto-rows-auto grid-cols-1 justify-items-center
                 rounded-lg bg-white mt-8 text-custom-dark
                 sm:grid-cols-2 md:place-content-evenly md:mt-4 xl:w-[63rem] xl:grid-cols-5'
@@ -82,24 +88,53 @@ const SearchForm = () => {
                     />
                 </div>
                 <div className='form-group w-full'>
-                    <label htmlFor="trip-check-in" className='form-label'>Check In</label>
-                    <input className='form-input' type="date" 
+                    <label htmlFor="search-form-check-in" className='form-label'>Check In</label>
+                    <input className={`form-input ${dateInputFocus['checkIn']}`} 
+                        name='search-form-check-in'
+                        type="date" 
                         value={checkInVal}
                         onChange={(e) => setCheckInVal(e.target.value)}
-                        min={getTomorrowsDate()} 
+                        min={getTomorrowsDate()}
+                        onFocus={() => {
+                            setDateInputFocus(prevState => {
+                                return {...prevState, checkIn: 'z-10'}
+                            });
+                            toggleModal(true)
+                        }}
+                        onBlur={() => { 
+                            setDateInputFocus(prevState => {
+                                return {...prevState, checkIn: ''}
+                            });
+                            toggleModal(false);
+                        }} 
                     />
                 </div>
                 <div className='form-group w-full'>
-                    <label htmlFor="trip-check-out" className='form-label'>Check Out</label>
-                    <input className='form-input' type="date"
+                    <label htmlFor="search-form-check-out" className='form-label'>Check Out</label>
+                    <input className={`form-input ${dateInputFocus['checkOut']}`} 
+                        name='search-form-check-out'
+                        type="date"
                         value={checkOutVal}
                         onChange={(e) => setCheckOutVal(e.target.value)}
-                        min={getTomorrowsDate('checkOut')} 
+                        min={getTomorrowsDate('checkOut')}
+                        onFocus={() => {
+                            setDateInputFocus(prevState => {
+                                return {...prevState, checkOut: 'z-10'}
+                            });
+                            toggleModal(true);
+                        }}
+                        onBlur={() => {
+                            setDateInputFocus(prevState => {
+                                return {...prevState, checkOut: ''}
+                            });
+                            toggleModal(false);
+                        }} 
                     />
                 </div>
                 <div className='flex justify-center text-white px-2 py-2 h-full w-full col-span-full
                 md:items-center md:justify-center xl:col-span-1'>
                     <ButtonSolid
+                        type="submit"
                         btnStyles={'flex flex-row-reverse justify-center items-center bg-primary'}
                         btnTitle='Search'
                         icon={
@@ -109,7 +144,7 @@ const SearchForm = () => {
                     />
                 </div>
             </div>
-        </>
+        </form>
     )
 }
 

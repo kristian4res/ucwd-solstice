@@ -7,13 +7,15 @@ const ButtonSearchResult = ({ val: { title, subtitle }, handleClick, icon }) => 
             <button className='btn-solid items-center px-2'
                 onClick={() => handleClick()}
             >
-                {icon ? icon : '🥞'}
+                <span aria-hidden={true}>
+                    {icon ? icon : 'Icon'}
+                </span>
                 <div className='flex flex-col items-start justify-start w-full'>
                     <span className='ml-2 text-sm text-left'>
-                        {title ? title : 'NAME'}
+                        {title ? title : 'Title'}
                     </span>
-                    <span className=' bg-red ml-2 text-sm font-thin text-left'>
-                        {subtitle ? subtitle : 'COUNTRY'}
+                    <span className='bg-red ml-2 text-sm font-thin text-left'>
+                        {subtitle ? subtitle : 'Subtitle'}
                     </span>
                 </div>
             </button>
