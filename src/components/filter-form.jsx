@@ -19,7 +19,7 @@ const FilterForm = () => {
     };
 
     updateFilterForm(specifiedFilters);
-  }, [updateFilterForm, season, continent, rating])
+  }, [season, continent, rating])
 
   return (
     <div className='flex flex-row justify-center items-center gap-4 w-full h-full flex-wrap

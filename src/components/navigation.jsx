@@ -20,7 +20,7 @@ const Navigation = () => {
   }
 
   // Detecting scroll (Y axis)
-  const [y, setY] = useState(80);
+  const [y, setY] = useState(100);
   const [navClass, setNavClass] = useState('');
   const handleNavBackdrop = useCallback((e) => {
       const window = e.currentTarget;

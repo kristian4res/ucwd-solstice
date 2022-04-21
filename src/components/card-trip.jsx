@@ -4,7 +4,7 @@ import CardTag from './card-tag';
 
 const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
     return (
-        <div className='w-full h-full shadow-lg rounded-lg overflow-hidden
+        <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
             flex flex-col 
             md:grid md:grid-cols-3
         '>
@@ -13,9 +13,9 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
             >   
                 <img
                     src={imgUrl ? require(`../assets/${imgUrl}`) : ''}
-                    alt={'trip-cover'}
+                    alt={'people on an adventure'}
                     className={`object-cover w-full
-                        lg:h-72
+                        lg:h-80
                     `}
                 />
             </div>
