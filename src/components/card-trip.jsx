@@ -4,7 +4,7 @@ import CardTag from './card-tag';
 
 const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
     return (
-        <div className='container w-full h-full shadow-lg rounded-lg overflow-hidden
+        <div className='w-full h-full shadow-lg rounded-lg overflow-hidden
             flex flex-col 
             md:grid md:grid-cols-3
         '>
@@ -33,7 +33,7 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                             {cardSubTitle ? cardSubTitle : 'Subtitle'}
                         </h5>
                     </div>
-                    <div className='flex justify-start items-center gap-2
+                    <div className='flex justify-start items-center gap-2 flex-wrap
                         lg:flex-row'
                     >
                         {   

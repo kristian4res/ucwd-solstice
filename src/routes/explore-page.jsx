@@ -78,13 +78,17 @@ const ExplorePage = () => {
     return result;
   }
 
+  /** DATA */
+  let displayData = filterData(filterFormDetails, searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips));
+  let dataLength = displayData.length;
+
   return (
     <PageContainer>
       <section className='container bg-custom-gray pt-28 pb-10 text-dark min-w-full flex flex-col items-center w-3/5 shadow-2xl'>
         <SearchForm />
       </section>
       <section className='container pt-6 text-dark 
-        min-w-full flex flex-col justify-center items-center bg-white
+        min-w-full flex flex-col justify-center items-start bg-white
         gap-6 px-10
         xl:flex-row xl:justify-center xl:items-start xl:px-28 xl:pt-8
       '>
@@ -92,10 +96,11 @@ const ExplorePage = () => {
           <FilterForm />
         </div>
         <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
+          <div className='flex justify-start'>
+            Number of results - {dataLength}
+          </div>
           {
-            filterData(filterFormDetails, 
-              searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips)
-            )
+            displayData
             .map((val, key) => {
               return (
                 <CardTrip key={key} 

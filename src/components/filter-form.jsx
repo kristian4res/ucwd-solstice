@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import FilterFormContext from '../contexts/filter-form-context';
+
+import { BiSliderAlt } from 'react-icons/bi';
 
 const FilterForm = () => {
   const { filterFormDetails, updateFilterForm } = useContext(FilterFormContext);
@@ -16,19 +19,22 @@ const FilterForm = () => {
     };
 
     updateFilterForm(specifiedFilters);
-  }, [season, continent, rating])
+  }, [updateFilterForm, season, continent, rating])
 
   return (
     <div className='flex flex-row justify-center items-center gap-4 w-full h-full flex-wrap
       xl:flex-col xl:items-start
     '>
-      <h3 className='text-xl font-semibold pr-4 border-r-2 border-main
+      <h3 className='flex justify-center items-center gap-2 text-xl font-semibold pr-4  border-main
+        md:border-r-2
         xl:flex xl:border-b-2 xl:pb-4 xl:border-r-0 xl:pr-0 
       '>
-        Filter by
+        <span title='Filters'>Filters</span>
+        <BiSliderAlt className='h-6 w-6' aria-hidden />
       </h3>
-      {/* FILTER OPTIONS */}
-      <form className="flex flex-col gap-2"
+      <form className="flex flex-row gap-2 flex-wrap
+        xl:flex-col xl:flex-nowrap
+      "
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="flex flex-col gap-2">
