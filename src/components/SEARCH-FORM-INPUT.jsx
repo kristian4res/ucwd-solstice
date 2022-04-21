@@ -20,6 +20,19 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
     const [isFocused, setIsFocused] = useState(false);
     const [field, setField] = useState(fieldname);
 
+    /** FUNCTIONS */
+    const updateStateAndClose = (newVal) => {
+        // Set input value and context value
+        state[1](newVal);
+        // Toggle input focus and modal
+        setIsFocused(false);
+        // Delay function to make sure it executes
+        setTimeout(() => {
+            toggleModal(false);
+        }, 80)
+    }
+
+
     return (
         <div>  
             {
@@ -75,7 +88,12 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                         // Set input value and context value
                         state[1](e.target.value);
                     }}
-                    onBlur={(e) => {
+                    onKeyDown={(e) => {
+                        if (e.code === 'Enter') {
+                            updateStateAndClose(e.target.value);
+                        }
+                    }}
+                    onBlur={() => {
                         // Timeout to delay the function execution (i.e. give time for other functions to execute)
                         setTimeout(() => {
                             setIsFocused(false);
@@ -105,11 +123,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                             return <ButtonSearchResult key={key} 
                                 val={{ title: val[field], subtitle: val[`${label === 'location' ? 'tripFullLocation' : 'sportName'}`]}}
                                 handleClick={() => {
-                                    // Set input value and context value
-                                    state[1](val[field]);
-                                    // Toggle input focus and modal
-                                    setIsFocused(false);
-                                    toggleModal(false);
+                                    updateStateAndClose(val[field]);
                                 }}
                                 icon={iconEl ? iconEl : val.icon}
                             />

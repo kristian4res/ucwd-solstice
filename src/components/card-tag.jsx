@@ -4,6 +4,7 @@ const CardTag = ({ category, label }) => {
   const colors = {
     "summer": 'bg-primary',
     "winter": 'bg-secondary-pastel',
+    "continent": 'bg-primary'
   }
 
   return (

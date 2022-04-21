@@ -6,6 +6,7 @@ import {
 
 import { AppProvider } from './contexts/app-context';
 import { SearchFormProvider } from './contexts/search-form-context';
+import { FilterFormProvider } from './contexts/filter-form-context';
 
 import Homepage from './routes/home-page';
 import Explore from './routes/explore-page';
@@ -25,22 +26,24 @@ function App() {
     <div className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
       <AppProvider>
         <SearchFormProvider>
-          <Navigation />
-          <main id="main-content" className='flex flex-col justify-evenly w-full'>
-            <Routes>
-              <Route exact path="/" element={
-                <>
-                  <Hero />
-                  <Homepage />
-                </>
-              }/>
-              <Route exact path="/explore" element={<Explore />}/>
-              <Route exact path="/support" element={<Contacts />}/>
-              <Route exact path="/signin" element={<SignIn />}/>
-              <Route exact path="/signup" element={<SignUp />}/>
-            </Routes>
-          </main>
-          <Footer />
+          <FilterFormProvider>
+            <Navigation />
+            <main id="main-content" className='flex flex-col justify-evenly w-full'>
+              <Routes>
+                <Route exact path="/" element={
+                  <>
+                    <Hero />
+                    <Homepage />
+                  </>
+                }/>
+                <Route exact path="/explore" element={<Explore />}/>
+                <Route exact path="/support" element={<Contacts />}/>
+                <Route exact path="/signin" element={<SignIn />}/>
+                <Route exact path="/signup" element={<SignUp />}/>
+              </Routes>
+            </main>
+            <Footer />
+          </FilterFormProvider>
         </SearchFormProvider>
         <Modal />
       </AppProvider>

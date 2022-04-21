@@ -79,6 +79,11 @@ const NavigationSearch = () => {
                         setLocationInput(e.target.value);
                     }}
                     onClick={() => setIsFocused(true)}
+                    onKeyDown={(e) => {
+                        if (e.code === 'Enter') {
+                            submitDetails();
+                        }
+                    }}
                     placeholder='Where do you want to go?' 
                 />
                 <div className={`${inputInvalid ? 'flex custom-message-bubble' : 'hidden'}`}>

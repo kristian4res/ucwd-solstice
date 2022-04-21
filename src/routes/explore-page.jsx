@@ -2,20 +2,22 @@ import React, { useContext } from 'react';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
+import FilterFormContext from '../contexts/filter-form-context';
 
 import PageContainer from '../components/page-container';
 import SearchForm from '../components/search-form';
 import CardTrip from '../components/card-trip';
-
 import FilterForm from '../components/filter-form';
+
 
 const ExplorePage = () => {
   /** CONTEXTS */
   const { devData: { trips }} = useContext(AppContext);
   const { searchFormDetails } = useContext(SearchFormContext);
+  const { filterFormDetails } = useContext(FilterFormContext);
 
   /** FUNCTIONS */
-  // Fetch data based on the location and sport parameters from the search form 
+  // Filter data based on the location and sport parameters from the search form 
   const searchedData = (location, sport, data) => {
     if (!location && !sport) {
       return data;
@@ -42,12 +44,39 @@ const ExplorePage = () => {
       else {
         return null;
       }
-  }); 
-
-  const filterData = (params) => {
-    return null;
+    });
   }
-}
+  
+  // Filter data based on the user specified filters
+  const filterData = (params, data) => {
+    let result = data;
+
+    for (const param in params) {
+      result = result.filter((val) => {
+        if (params[param] !== 'any') {
+          if (param === 'tripSeason' || param === 'tripContinent') {
+            if (params[param].toLowerCase().includes(val[param].toLowerCase())) {
+              return val;
+            }
+            return null;
+          }
+          else if (param === 'tripRating') {
+            if (Number.parseFloat(val[param]) >= Number.parseFloat(params[param])) {
+              return val;
+            }
+            return null;
+          }
+          else {
+            return null;
+          }
+        }
+        else {
+          return val;
+        }
+      });
+    }
+    return result;
+  }
 
   return (
     <PageContainer>
@@ -64,7 +93,10 @@ const ExplorePage = () => {
         </div>
         <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
           {
-            searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips).map((val, key) => {
+            filterData(filterFormDetails, 
+              searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips)
+            )
+            .map((val, key) => {
               return (
                 <CardTrip key={key} 
                   imgUrl={val.tripImages[0]} 
@@ -83,4 +115,4 @@ const ExplorePage = () => {
   )
 }
 
-export default ExplorePage
+export default ExplorePage;
