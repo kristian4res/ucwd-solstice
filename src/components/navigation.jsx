@@ -76,8 +76,8 @@ const Navigation = () => {
               <div className='flex flex-col justify-between space-y-4 pt-6 
                 lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'
               >
-                <LinkSolid label='Sign Up' route='/signup' color='bg-success' />
-                <LinkSolid label='Sign In' route='/signin' color='bg-secondary-pastel' />
+                <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg' />
+                <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg' />
               </div>
             </ul>
           </nav>

@@ -18,7 +18,7 @@ module.exports = {
         'winter': '#42C2FF',
       },
       fontFamily: {
-        'poppins': ['"Poppins"', 'sans-serif']
+        'poppins': ['"Poppins"']
       }
     }
   },

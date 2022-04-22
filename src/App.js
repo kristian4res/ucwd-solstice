@@ -7,6 +7,7 @@ import {
 import { AppProvider } from './contexts/app-context';
 import { SearchFormProvider } from './contexts/search-form-context';
 import { FilterFormProvider } from './contexts/filter-form-context';
+import { SignInSignUpProvider } from './contexts/sign-in-sign-up-context';
 
 import Homepage from './routes/home-page';
 import Explore from './routes/explore-page';
@@ -20,7 +21,6 @@ import Footer from './components/footer';
 import Modal from './components/modal';
 
 import './App.css';
-import { SignUpFormProvider } from './contexts/sign-up-context';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
       <AppProvider>
         <SearchFormProvider>
           <FilterFormProvider>
-            <SignUpFormProvider>
+            <SignInSignUpProvider>
               <Navigation />
               <main id="main-content" className='flex flex-col justify-evenly w-full'>
                 <Routes>
@@ -45,7 +45,7 @@ function App() {
                 </Routes>
               </main>
               <Footer />
-            </SignUpFormProvider>
+            </SignInSignUpProvider>
           </FilterFormProvider>
         </SearchFormProvider>
         <Modal />

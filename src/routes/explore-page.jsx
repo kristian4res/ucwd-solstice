@@ -5,13 +5,16 @@ import SearchForm from '../components/search-form';
 import FilterForm from '../components/filter-form';
 import TripList from '../components/trip-list';
 import WithTrip from '../components/with-trip';
-// import CardTripSkeleton from '../components/card-trip-skeleton';
+
 
 const ExplorePage = () => {
+  /** STATES */
   const [loadingData, setLoadingData] = useState(true);
+
+  /** LOADERS */
   const TripListWithLoader = WithTrip(TripList);
 
-  // Simulate asynchronous API calls when fetching data
+  // Simulate asynchronous API calls
   useEffect(() => {
     setTimeout(() => setLoadingData(false), Math.floor(Math.random() * 500));
   }, []);

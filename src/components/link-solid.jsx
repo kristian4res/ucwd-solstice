@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-const LinkSolid= ({ label, route, color }) => {
+const LinkSolid= ({ label, route, extraStyles }) => {
   return (
     <li className='relative'>
-        <Link className={`btn-solid
-            ${color ? color : 'bg-primary'}`} 
+        <Link className={`btn-solid 
+            ${extraStyles ? extraStyles : 'bg-primary rounded-none'}`} 
             to={route}
         >
             <span className='whitespace-nowrap'>
