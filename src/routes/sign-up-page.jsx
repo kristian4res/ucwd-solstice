@@ -37,6 +37,14 @@ const SignUpPage = () => {
   });
 
   /** FUNCTIONS */
+  const clearInputs = () => {
+    setEmailAddress({value: '', isInvalid: false});
+    setFirstName({value: '', isInvalid: false});
+    setSurname({value: '', isInvalid: false});
+    setPassword({value: '', isInvalid: false});
+    setConfirmPassword({value: '', isInvalid: false});
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -65,58 +73,73 @@ const SignUpPage = () => {
       })
     }
 
-    if ((validator.isEmpty(password.value) || validator.isEmpty(confirmPassword.value)) 
-        ||  (password.value !== confirmPassword.value)
-        ||  (!validator.isStrongPassword(password.value, {
-              minLength: 8, 
-              minLowercase: 1, 
-              minUppercase: 1, 
-              minNumbers: 1, 
-              minSymbols: 1,
-            }))
-      ) {
-      setPassword((prevState) => {
-        return {...prevState,
-          isInvalid: true
-        }
-      });
-      setConfirmPassword((prevState) => {
-        return {...prevState,
-          isInvalid: true
-        }
-      });
+    if ((validator.isEmpty(password.value) || validator.isEmpty(confirmPassword.value)) || (password.value !== confirmPassword.value) || (!validator.isStrongPassword(password.value, {
+      minLength: 8, 
+      minLowercase: 1, 
+      minUppercase: 1, 
+      minNumbers: 1, 
+      minSymbols: 1,
+    }))
+    ) {
+      if (!validator.isStrongPassword(password.value, {
+        minLength: 8, 
+        minLowercase: 1, 
+        minUppercase: 1, 
+        minNumbers: 1, 
+        minSymbols: 1,
+      })) {
+        setPassword((prevState) => {
+          return {...prevState,
+            isInvalid: true
+          }
+        });
+      }
+      else if (password.value !== confirmPassword.value) {
+        setConfirmPassword((prevState) => {
+          return {...prevState,
+            isInvalid: true
+          }
+        });
+      }
+      else {
+        setPassword((prevState) => {
+          return {...prevState,
+            isInvalid: true
+          }
+        });
+        setConfirmPassword((prevState) => {
+          return {...prevState,
+            isInvalid: true
+          }
+        });
+      }
     }
-
     // Do not submit if any input is invalid
     if ([emailAddress.isInvalid, firstName.isInvalid, surname.isInvalid, password.isInvalid, confirmPassword.isInvalid].some((val) => val === true)) {
       return false;
     }
     else {
-      const signUpDetails = {
-        emailAddress: emailAddress.value,
-        firstName: firstName.value,
-        surname: surname.value,
-        password: password.value
-      };
-
-      // Clear inputs
-      setEmailAddress({value: '', isInvalid: false});
-      setFirstName({value: '', isInvalid: false});
-      setSurname({value: '', isInvalid: false});
-      setPassword({value: '', isInvalid: false});
-      setConfirmPassword({value: '', isInvalid: false});
-
-      // Send sign up details
-      updateSignUpForm(signUpDetails);
+        const signUpDetails = {
+          emailAddress: emailAddress.value,
+          firstName: firstName.value,
+          surname: surname.value,
+          password: password.value
+        };
+    
+        // Send sign up details
+        updateSignUpForm(signUpDetails);
+    
+        // Clear inputs
+        setTimeout(() => clearInputs, 100);
     }
   }
+
 
   return (
     <PageContainer>
       <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 relative'>
-        {/* Create Successful Sign Up Modal
-        <div className="absolute">
-
+        {/* <div className="fixed top-1/2 left-1/2 -translate-x-[50%] bg-white drop-shadow-xl z-10 h-[8rem] w-[30rem]">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque voluptatem, sunt doloribus fuga pariatur consequatur quia sed corrupti explicabo repudiandae, dolorum totam inventore optio quaerat ab quibusdam. Odit, exercitationem nam.
         </div> */}
         <form className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'
           onSubmit={handleSubmit}
