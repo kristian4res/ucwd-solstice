@@ -7,14 +7,21 @@ export function SignUpFormProvider({ children }) {
         emailAddress: '',
         firstName: '',
         surname: '',
-        password: '',
-        confirmPassword: '',
+        password: ''    
     });
 
-    const updateSignUpForm = (filterData) => {
+    const updateSignUpForm = (signUpDetails) => {
         setSignUpFormDetails((prevState) => {
-            return {...prevState, ...filterData}
+            return {...signUpDetails, 
+                // ENCRYPT PASSWORD BEFORE STORING IN DATABASE
+                password: signUpDetails.password
+            }
         });
+        console.log(signUpDetails);
+    };
+
+    const createAccount = (signUpDetails) => {
+        return null;
     };
 
     return (

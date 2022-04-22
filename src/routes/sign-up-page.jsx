@@ -12,14 +12,6 @@ const SignUpPage = () => {
   const { updateSignUpForm } = useContext(SignUpFormContext);
 
   /** STATES */
-  const [signUpDetails, setSignUpDetails] = useState({
-    emailAddress: ['', false],
-    firstName: ['', false],
-    surname: ['', false],
-    password: ['', false],
-    confirmPassword: ['', false],
-  });
-
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -49,8 +41,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     // Validate inputs
-
-    if (validator.isEmpty(emailAddress) || !validator.isEmail(emailAddress)) {
+    if (validator.isEmpty(emailAddress.value) || !validator.isEmail(emailAddress.value)) {
       setEmailAddress((prevState) => {
         return {...prevState,
           isInvalid: true
@@ -58,7 +49,7 @@ const SignUpPage = () => {
       })
     }
 
-    if (validator.isEmpty(firstName) || !validator.isAlpha(firstName)) {
+    if (validator.isEmpty(firstName.value) || !validator.isAlpha(firstName.value)) {
       setFirstName((prevState) => {
         return {...prevState,
           isInvalid: true
@@ -66,53 +57,69 @@ const SignUpPage = () => {
       })
     }
 
-    if (validator.isEmpty(emailAddress) || !validator.isAlpha(surname)) {
-      setFirstName((prevState) => {
+    if (validator.isEmpty(surname.value) || !validator.isAlpha(surname.value)) {
+      setSurname((prevState) => {
         return {...prevState,
           isInvalid: true
         }
       })
     }
 
-    if (validator.isEmpty(emailAddress) || !validator.isAlpha(surname)) {
-      setFirstName((prevState) => {
-        return {...prevState,
-          isInvalid: true
-        }
-      })
-    }
-
-    if ((!validator.isEmpty(password) && !validator.isEmpty(confirmPassword)) 
-      || password === confirmPassword) {
-      if (!validator.isStrongPassword(password, {
-        minLength: 8, 
-        minLowercase: 1, 
-        minUppercase: 1, 
-        minNumbers: 1, 
-        minSymbols: 1,
-      })) {
-        setPassword((prevState) => {
-          return {...prevState,
-            isInvalid: true
-          }
-        })
-      }
-    }
-    else {
+    if ((validator.isEmpty(password.value) || validator.isEmpty(confirmPassword.value)) 
+        ||  (password.value !== confirmPassword.value)
+        ||  (!validator.isStrongPassword(password.value, {
+              minLength: 8, 
+              minLowercase: 1, 
+              minUppercase: 1, 
+              minNumbers: 1, 
+              minSymbols: 1,
+            }))
+      ) {
       setPassword((prevState) => {
         return {...prevState,
           isInvalid: true
         }
-      })
+      });
+      setConfirmPassword((prevState) => {
+        return {...prevState,
+          isInvalid: true
+        }
+      });
     }
 
+    // Do not submit if any input is invalid
+    if ([emailAddress.isInvalid, firstName.isInvalid, surname.isInvalid, password.isInvalid, confirmPassword.isInvalid].some((val) => val === true)) {
+      return false;
+    }
+    else {
+      const signUpDetails = {
+        emailAddress: emailAddress.value,
+        firstName: firstName.value,
+        surname: surname.value,
+        password: password.value
+      };
+
+      // Clear inputs
+      setEmailAddress({value: '', isInvalid: false});
+      setFirstName({value: '', isInvalid: false});
+      setSurname({value: '', isInvalid: false});
+      setPassword({value: '', isInvalid: false});
+      setConfirmPassword({value: '', isInvalid: false});
+
+      // Send sign up details
+      updateSignUpForm(signUpDetails);
+    }
   }
 
   return (
     <PageContainer>
-      <section className='container flex justify-center items-center min-h-screen min-w-full pt-28'>
+      <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 relative'>
+        {/* Create Successful Sign Up Modal
+        <div className="absolute">
+
+        </div> */}
         <form className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'
-          onClick={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <div className="form-group mt-4 border-b-2 border-primary">
             <h1 className='text-2xl font-semibold'>Create an account</h1>
@@ -122,7 +129,7 @@ const SignUpPage = () => {
               type={'text'} 
               label='Email address' 
               name={'sign-up-email'} 
-              state={[signUpDetails, setSignUpDetails]}
+              state={[emailAddress, setEmailAddress]}
               errMessage={'Please ensure you enter a valid email address, e.g. name@example.co.uk'}
              />
           </div>
@@ -165,7 +172,7 @@ const SignUpPage = () => {
               `}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mt-4">
             <p className='text-center text-sm'>
               By creating an account, 
               I agree to the <Link title='Solstice terms and conditions' className='text-primary' to='/'> Solstice Terms and Conditions  </Link> 

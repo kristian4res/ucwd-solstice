@@ -43,7 +43,7 @@
 .form-input-border {
     @apply px-2 py-1 text-base whitespace-normal border-2
     rounded-md 
-    border-custom-gray transition-colors cursor-pointer
+    transition-colors cursor-pointer
     hover:bg-slate-200;
 }
 
