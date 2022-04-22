@@ -4,7 +4,9 @@ import PageContainer from '../components/page-container'
 const ContactsPage = () => {
   return (
     <PageContainer>
-      HELLO
+      <section className='container min-h-screen'>
+        
+      </section>
     </PageContainer>
   )
 }

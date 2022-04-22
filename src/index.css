@@ -30,13 +30,20 @@
 }
 
 .form-label {
-    @apply mb-1 mx-2 font-semibold;
+    @apply mb-1 px-2 font-semibold;
 }
 
 .form-input {
     @apply px-2 py-1 text-base whitespace-normal border-2
     rounded-md 
     border-transparent transition-colors cursor-pointer
+    hover:bg-slate-200;
+}
+
+.form-input-border {
+    @apply px-2 py-1 text-base whitespace-normal border-2
+    rounded-md 
+    border-custom-gray transition-colors cursor-pointer
     hover:bg-slate-200;
 }
 

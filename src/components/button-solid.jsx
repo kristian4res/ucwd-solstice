@@ -21,7 +21,7 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
           ${btnStyles ? btnStyles : ''}
         `}
         onClick={handleClick ? () => handleClick() : undefined}>
-            <span className='text-sm  
+            <span className='text-sm text-current 
             xl:text-lg'>
               {btnTitle}
             </span>

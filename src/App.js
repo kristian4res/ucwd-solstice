@@ -20,6 +20,7 @@ import Footer from './components/footer';
 import Modal from './components/modal';
 
 import './App.css';
+import { SignUpFormProvider } from './contexts/sign-up-context';
 
 function App() {
   return (
@@ -27,22 +28,24 @@ function App() {
       <AppProvider>
         <SearchFormProvider>
           <FilterFormProvider>
-            <Navigation />
-            <main id="main-content" className='flex flex-col justify-evenly w-full'>
-              <Routes>
-                <Route exact path="/" element={
-                  <>
-                    <Hero />
-                    <Homepage />
-                  </>
-                }/>
-                <Route exact path="/explore" element={<Explore />}/>
-                <Route exact path="/support" element={<Contacts />}/>
-                <Route exact path="/signin" element={<SignIn />}/>
-                <Route exact path="/signup" element={<SignUp />}/>
-              </Routes>
-            </main>
-            <Footer />
+            <SignUpFormProvider>
+              <Navigation />
+              <main id="main-content" className='flex flex-col justify-evenly w-full'>
+                <Routes>
+                  <Route exact path="/" element={
+                    <>
+                      <Hero />
+                      <Homepage />
+                    </>
+                  }/>
+                  <Route exact path="/explore" element={<Explore />}/>
+                  <Route exact path="/support" element={<Contacts />}/>
+                  <Route exact path="/signin" element={<SignIn />}/>
+                  <Route exact path="/signup" element={<SignUp />}/>
+                </Routes>
+              </main>
+              <Footer />
+            </SignUpFormProvider>
           </FilterFormProvider>
         </SearchFormProvider>
         <Modal />
