@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import validator from 'validator';
 
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 import AppContext from '../contexts/app-context';
@@ -13,15 +14,13 @@ import StatusMessage from '../components/status-message';
 
 const SignInPage = () => {
   /** CONTEXTS */
-  const { user } = useContext(SignInSignUpContext);
+  const { signIn: { sendSignInDetails, processSignIn, user } } = useContext(SignInSignUpContext);
   const { showModal, toggleModal } = useContext(AppContext);
 
   /** LOADERS */
   const StatusMessageWithSpinner = WithSpinner(StatusMessage);
 
   /** STATES */
-  const [processingData, setProcessingData] = useState(true);
-
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -30,6 +29,75 @@ const SignInPage = () => {
     value: '',
     isInvalid: false 
   });
+
+  /** FUNCTIONS */
+  const clearInputs = () => {
+    setEmailAddress({value: '', isInvalid: false});
+    setPassword({value: '', isInvalid: false});
+  }
+
+  const validateInputs = async () => {
+    let allInputsValid = true;
+
+    if (validator.isEmpty(emailAddress.value) || !validator.isEmail(emailAddress.value)) {
+      setEmailAddress((prevState) => {
+        return {...prevState,
+          isInvalid: true
+        }
+      });
+
+      allInputsValid = false;
+    }
+    else {
+      setEmailAddress((prevState) => {
+        return {...prevState,
+          isInvalid: false
+        }
+      });
+    }
+
+    if (validator.isEmpty(password.value) || !validator.isStrongPassword(password.value)) {
+      setPassword((prevState) => {
+        return {...prevState,
+          isInvalid: true
+        }
+      });
+
+      allInputsValid = false;
+    }
+    else {
+      setPassword((prevState) => {
+        return {...prevState,
+          isInvalid: false
+        }
+      });
+    }
+
+    return allInputsValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const allInputsValid = await validateInputs();
+
+    if (allInputsValid) {
+      const signInDetails = {
+        emailAddress: emailAddress.value,
+        password: password.value
+      };
+
+      // Send sign in details
+      sendSignInDetails(signInDetails);
+
+      // Clear inputs
+      setTimeout(() => {
+        toggleModal(true);
+        clearInputs();
+      }, 800);
+    }
+  };
+
   return (
     <PageContainer>
       <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 relative'>
@@ -38,10 +106,10 @@ const SignInPage = () => {
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processingData} status={user} toggleModal={toggleModal} />
+          <StatusMessageWithSpinner isLoading={processSignIn} status={user} toggleModal={toggleModal} />
         </div>
         <form className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <div className="form-group mt-4 border-b-2 border-primary">
             <h1 className='text-2xl font-semibold'>Sign in</h1>

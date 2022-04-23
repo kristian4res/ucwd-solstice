@@ -3,8 +3,12 @@ import React, { createContext, useState } from 'react';
 const SignInSignUpContext = createContext();
 
 export function SignInSignUpProvider({ children }) {
+    /** STATES */
     const [user, setUser] = useState({});
+    const [processSignUp, setProcessSignUp] = useState(true);
+    const [processSignIn, setProcessSignIn] = useState(true);
 
+    /** FUNCTIONS */
     const sendSignUpDetails = (signUpDetails) => {
         // setSignUpFormDetails((prevState) => {
         //     return {...signUpDetails, 
@@ -13,18 +17,29 @@ export function SignInSignUpProvider({ children }) {
         //     }
         // });
 
-        // Once a user object is received, set the user
-        setTimeout(() => {
-            setUser(signUpDetails); 
-        }, 800);
-    };
+        // Send out details to Firebase
 
-    const createAccount = (signUpDetails) => {
-        return null;
+        setTimeout(() => {
+            setProcessSignUp(false); 
+        }, 5000);
+    }; 
+
+    const sendSignInDetails = (signInDetails) => {
+        // Get user object
+
+        // Once a user object is received, set the user
+        setUser(signInDetails); 
+        setTimeout(() => {
+            setProcessSignIn(false);
+        }, 3000);
     };
 
     return (
-        <SignInSignUpContext.Provider value={{ sendSignUpDetails, user }}>
+        <SignInSignUpContext.Provider value={{ 
+                signUp: { sendSignUpDetails, processSignUp }, 
+                signIn: { sendSignInDetails, processSignIn, user } 
+            }}
+        >
             {children}
         </SignInSignUpContext.Provider>
     )

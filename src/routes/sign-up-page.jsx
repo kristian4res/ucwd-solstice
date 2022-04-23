@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import validator from 'validator';
 
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
@@ -14,15 +14,13 @@ import StatusMessage from '../components/status-message';
 
 const SignUpPage = () => {
   /** CONTEXTS */
-  const { sendSignUpDetails, user } = useContext(SignInSignUpContext);
+  const { signUp: { sendSignUpDetails, processSignUp }, signIn: { user } } = useContext(SignInSignUpContext);
   const { showModal, toggleModal } = useContext(AppContext);
 
   /** LOADERS */
   const StatusMessageWithSpinner = WithSpinner(StatusMessage);
 
   /** STATES */
-  const [processingData, setProcessingData] = useState(true);
-
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -193,11 +191,6 @@ const SignUpPage = () => {
         toggleModal(true);
         clearInputs();
       }, 800);
-
-      // Simulate asynchronous API calls
-      setTimeout(() => {
-        setProcessingData(false);
-      }, 9999);
     }
     else {
       return false;
@@ -213,7 +206,7 @@ const SignUpPage = () => {
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processingData} status={user} toggleModal={toggleModal} />
+          <StatusMessageWithSpinner isLoading={processSignUp} status={user} toggleModal={toggleModal} />
         </div>
         <form className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'
           onSubmit={handleSubmit}

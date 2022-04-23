@@ -13,16 +13,17 @@ const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
       backgroundPosition: 'center',
       backgroundSize: 'cover',
     }}>
-      <article className='container flex flex-col mb-8 text-white w-3/4 min-h-60
-      md:h-96 md:mb-4'>
-        <h2 className="text-2xl font-bold mt-6 mx-10">
+      <article className='container flex flex-col items-start p-10 mb-8 text-white w-full min-h-60
+        md:w-3/4 md:h-96 md:mb-4'
+      >
+        <h2 className="text-2xl font-bold">
           {
             articleTitle ? articleTitle 
             :
             'Make the most out of your trip'
           }
         </h2>
-        <p className='text-left mt-4 mx-10 pb-4 text-sm w-full
+        <p className='text-left mt-6 pb-4 text-sm w-full
           md:w-[80%] lg:text-base'>
           {
             articleText ? articleText 
@@ -34,6 +35,7 @@ const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
             `
           }
         </p>
+        <small className='mt-4'>By John Doe</small>
       </article>
     </section>
   )
