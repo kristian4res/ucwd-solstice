@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Routes,
   Route
 } from 'react-router-dom';
 
-import { AppProvider } from './contexts/app-context';
-import { SearchFormProvider } from './contexts/search-form-context';
-import { FilterFormProvider } from './contexts/filter-form-context';
-import { SignInSignUpProvider } from './contexts/sign-in-sign-up-context';
+import SignInSignUpContext from './contexts/sign-in-sign-up-context';
 
 import Homepage from './routes/home-page';
 import Explore from './routes/explore-page';
@@ -23,33 +20,33 @@ import Modal from './components/modal';
 import './App.css';
 
 function App() {
+  const { signIn: { currentUser }} = useContext(SignInSignUpContext);
+
   return (
     <div className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
-      <AppProvider>
-        <SearchFormProvider>
-          <FilterFormProvider>
-            <SignInSignUpProvider>
-              <Navigation />
-              <main id="main-content" className='flex flex-col justify-evenly w-full'>
-                <Routes>
-                  <Route exact path="/" element={
-                    <>
-                      <Hero />
-                      <Homepage />
-                    </>
-                  }/>
-                  <Route exact path="/explore" element={<Explore />}/>
-                  <Route exact path="/support" element={<Contacts />}/>
-                  <Route exact path="/signin" element={<SignIn />}/>
-                  <Route exact path="/signup" element={<SignUp />}/>
-                </Routes>
-              </main>
-              <Footer />
-            </SignInSignUpProvider>
-          </FilterFormProvider>
-        </SearchFormProvider>
-        <Modal />
-      </AppProvider>
+      <Navigation />
+      <main id="main-content" className='flex flex-col justify-evenly w-full'>
+        <Routes>
+          <Route exact path="/" element={
+              <>
+                <Hero />
+                <Homepage />
+              </>
+            }
+          />
+          <Route exact path="/explore" element={<Explore />}/>
+          <Route exact path="/support" element={<Contacts />}/>
+          { 
+            !currentUser && 
+              <>
+                <Route exact path="/signin" element={<SignIn />}/>
+                <Route exact path="/signup" element={<SignUp />}/>
+              </>
+          }
+        </Routes>
+      </main>
+      <Footer />
+      <Modal />
     </div>
   );
 }

@@ -1,43 +1,78 @@
 import React, { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { signUpUsingEmail, 
+    useAuth, 
+    signOutUser, 
+    signInUserUsingEmail,
+    googleSignIn, 
+} from '../firebase/firebase-app';
 
 const SignInSignUpContext = createContext();
 
 export function SignInSignUpProvider({ children }) {
     /** STATES */
-    const [user, setUser] = useState({});
+    const navigateTo = useNavigate();
+    const currentUser = useAuth();
     const [processSignUp, setProcessSignUp] = useState(true);
     const [processSignIn, setProcessSignIn] = useState(true);
 
     /** FUNCTIONS */
-    const sendSignUpDetails = (signUpDetails) => {
-        // setSignUpFormDetails((prevState) => {
-        //     return {...signUpDetails, 
-        //         // ENCRYPT PASSWORD BEFORE STORING IN DATABASE
-        //         password: signUpDetails.password
-        //     }
-        // });
+    const handleSignUpDetails = async (signUpDetails) => {
+        // Encrypt password
 
         // Send out details to Firebase
+        try {
+            await signUpUsingEmail(signUpDetails);
+            navigateTo('/');
+            setProcessSignUp(false);
+            return true;
+        }
+        catch(err) {
+            alert('Unexpected error occured whilst signing up. Please try again.');
+        }
+    };
 
-        setTimeout(() => {
-            setProcessSignUp(false); 
-        }, 5000);
-    }; 
-
-    const sendSignInDetails = (signInDetails) => {
-        // Get user object
-
-        // Once a user object is received, set the user
-        setUser(signInDetails); 
-        setTimeout(() => {
+    const handleSignInDetails = async (signInDetails) => {
+        // Send out details to Firebase
+        try {
+            await signInUserUsingEmail(signInDetails);
+            navigateTo('/');
             setProcessSignIn(false);
-        }, 3000);
+            return true;
+        }
+        catch(err) {
+            alert('Unexpected error occured whilst signing in. Please try again.');
+        }
+    };
+
+    const signInUsingGoogle = async () => {
+        try {
+            await googleSignIn();
+            navigateTo('/');
+            return true;
+        }
+        catch(err) {
+            alert('Unexpected error occured whilst signing in with Google. Please try again.');
+        }
+    }
+
+    const signOutCurrentUser= async () => {
+        try {
+            await signOutUser();
+            navigateTo('/');
+            return true;
+        }
+        catch(err) {
+            alert('Unexpected error occured whilst signing out. Please try again.');
+        }
     };
 
     return (
         <SignInSignUpContext.Provider value={{ 
-                signUp: { sendSignUpDetails, processSignUp }, 
-                signIn: { sendSignInDetails, processSignIn, user } 
+                signUp: { handleSignUpDetails, processSignUp }, 
+                signIn: { handleSignInDetails, signInUsingGoogle, processSignIn, currentUser },
+                signOut: { signOutCurrentUser }
             }}
         >
             {children}

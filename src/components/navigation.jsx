@@ -1,13 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 
 import BurgerMenuBtn from './burger-menu-btn';
 import NavigationSearch from './navigation-search';
 import LinkUnderline from './link-underline';
 import LinkSolid from './link-solid';
 import LogoAdaptive from './logo-adaptive';
+import ButtonSolid from './button-solid';
 
 const Navigation = () => {
+  /** CONTEXTS */
+  const { signIn: { currentUser }, signOut: { signOutCurrentUser } } = useContext(SignInSignUpContext);
+
   /** STATES */
   // Routing
   const routeLocation = useLocation();
@@ -76,8 +82,14 @@ const Navigation = () => {
               <div className='flex flex-col justify-between space-y-4 pt-6 
                 lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'
               >
-                <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg' />
-                <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg' />
+                {
+                  !currentUser 
+                  ? <>
+                      <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg' />
+                      <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg' />
+                    </>
+                  : <LinkSolid label='Sign Out' isBtn={true} handleClick={signOutCurrentUser} extraStyles='bg-secondary rounded-lg' />
+                }
               </div>
             </ul>
           </nav>

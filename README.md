@@ -16,3 +16,4 @@ To visit the latest live version of the app, go to this [link]().
   - [Getting Future Date](https://flaviocopes.com/how-to-get-tomorrow-date-javascript/)
   - [Input Validator Package](https://www.npmjs.com/package/validator)
   - [React Icons Package](https://react-icons.github.io/react-icons)
+  - [Implementing Firebase Email/Password Authentication](https://www.youtube.com/watch?v=_Kv965pA-j8)

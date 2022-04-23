@@ -19,13 +19,16 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
     hover:-translate-y-[2px] active:translate-y-[2px]'>
         <button className={`btn-solid items-center bg-white rounded-full 
           ${btnStyles ? btnStyles : ''}
-        `}
-        onClick={handleClick ? () => handleClick() : undefined}>
-            <span className='text-sm text-current 
-            xl:text-lg'>
-              {btnTitle}
-            </span>
-            {icon}    
+          `}
+          onClick={handleClick ? () => handleClick() : undefined}
+        >
+          <span className='text-sm text-current 
+          xl:text-lg'>
+            {btnTitle}
+          </span>
+          <i>
+            {icon}
+          </i>   
         </button>
     </div>
   )

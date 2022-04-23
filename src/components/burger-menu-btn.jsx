@@ -11,7 +11,7 @@ const BurgerMenuBtn = ({ isNavOpen, handleMobileNav }) => {
     onClick={handleMobileNav}>
         {
         isNavOpen ? <HiX className='h-6 w-6 sm:h-8 sm:w-8' />
-        : <HiMenuAlt3 className='h-6 w-6 sm:h-8 sm:w-8'/>
+        : <HiMenuAlt3 className='h-6 w-6 sm:h-8 sm:w-8' />
         }
     </div>
   )
