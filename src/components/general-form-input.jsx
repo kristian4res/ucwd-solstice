@@ -8,7 +8,7 @@ const GeneralFormInput = ({ type, label, name, state, errMessage }) => {
                 {label}
             </label>
             {
-                label === 'Password' 
+                name === 'sign-up-password' 
                 && (<div className='px-2 mb-2 text-left text-[.7rem] font-normal text-custom-gray-dark'>
                     Must be at least 8 characters and 
                     consists of at least one special character, 

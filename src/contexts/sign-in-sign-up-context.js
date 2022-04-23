@@ -14,7 +14,9 @@ export function SignInSignUpProvider({ children }) {
         // });
 
         // Once a user object is received, set the user
-        setUser(signUpDetails); 
+        setTimeout(() => {
+            setUser(signUpDetails); 
+        }, 800);
     };
 
     const createAccount = (signUpDetails) => {

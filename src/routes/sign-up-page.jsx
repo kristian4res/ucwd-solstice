@@ -23,13 +23,6 @@ const SignUpPage = () => {
   /** STATES */
   const [processingData, setProcessingData] = useState(true);
 
-  // Simulate asynchronous API calls when fetching data
-  useEffect(() => {
-    setTimeout(() => {
-      setProcessingData(false);
-    }, 1000);
-  }, []);
-
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -199,10 +192,15 @@ const SignUpPage = () => {
       setTimeout(() => {
         toggleModal(true);
         clearInputs();
-      }, 100);
+      }, 800);
+
+      // Simulate asynchronous API calls
+      setTimeout(() => {
+        setProcessingData(false);
+      }, 9999);
     }
     else {
-      return;
+      return false;
     }
   }
 
@@ -211,11 +209,11 @@ const SignUpPage = () => {
     <PageContainer>
       <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 relative'>
         <div className={`fixed top-1/2 left-1/2 -translate-x-[50%] 
-        bg-white drop-shadow-xl rounded-lg z-10 h-[6rem] w-[24rem] p-2
+        bg-white drop-shadow-xl rounded-lg z-10 max-h-[20rem] w-[24rem] p-8 pb-6
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processingData} status={user} />
+          <StatusMessageWithSpinner isLoading={processingData} status={user} toggleModal={toggleModal} />
         </div>
         <form className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'
           onSubmit={handleSubmit}
