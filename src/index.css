@@ -83,3 +83,7 @@
     after:origin-bottom-right after:h-[2px]
     hover:after:scale-100 hover:after:origin-bottom-left;
 }
+
+.btn-underline-active {
+    @apply after:scale-100;
+}

@@ -23,7 +23,7 @@ const PageNotFound = () => {
                 <p className='text-base text-center  whitespace-pre-wrap
                     md:text-xl
                 '>
-                    Unfortunately, the page you were looking for doesn't exists, please go back.
+                    Unfortunately, the page you were looking for is not available, please go back.
                 </p>
             </div>
         </section>
