@@ -26,6 +26,7 @@
         "accomodationId": "A1",
         "tripImages": ["surfing-md-1.jpg"],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripAmenities": ["Breakfast & Dinner included", "Free Pool", "Free Gym"],
         "tripStartDate": "2022-05-19",
         "tripEndDate": "2022-07-19"
     },
@@ -56,6 +57,7 @@
         "accomodationId": "A1",
         "tripImages": ["snowboarding-md-1.jpg"],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripAmenities": ["Breakfast & Dinner included", "Free Hot Spring", "Equipment provided"],
         "tripStartDate": "2022-11-19",
         "tripEndDate": "2023-02-19"
     },
@@ -86,6 +88,7 @@
         "accomodationId": "A1",
         "tripImages": ["kayaking-md-1.jpg"],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripAmenities": ["Breakfast included", "Equipment provided", "Certified Guide included"],
         "tripStartDate": "2022-05-19",
         "tripEndDate": "2022-07-19"
     },
@@ -116,6 +119,7 @@
         "accomodationId": "A1",
         "tripImages": ["ski-resort-img-1.jpg"],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
+        "tripAmenities": ["Breakfast & Dinner included", "Free Transportation (with conditions)"],
         "tripStartDate": "2022-05-19",
         "tripEndDate": "2022-07-19"
     }

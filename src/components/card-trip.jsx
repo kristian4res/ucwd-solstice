@@ -1,11 +1,14 @@
 import React from 'react';
 
 import CardTag from './card-tag';
+import ButtonSolid from './button-solid';
+
+import { FaStar } from 'react-icons/fa';
 
 const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
     return (
         <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
-            flex flex-col 
+            flex flex-col
             md:grid md:grid-cols-3
         '>
             <div className={`container h-full bg-main flex justify-center
@@ -14,8 +17,8 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                 <img
                     src={imgUrl ? require(`../assets/${imgUrl}`) : ''}
                     alt={'people on an adventure'}
-                    className={`object-cover w-full
-                        lg:h-80
+                    className={`object-cover w-full h-72
+                        md:h-full
                     `}
                 />
             </div>
@@ -50,22 +53,56 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                     </div>
                     <p className={`text-left py-4 text-current text-sm
                     xl:text-base`}>
-                        {cardText ? cardText : ''}
+                        {cardText[0] ? cardText[0] : ''}
                     </p>
+                    <div className='flex flex-col w-full border-t-2 border-custom-gray rounded-t-md py-2'>
+                        <h1 className='text-[.9rem] font-semibold capitalize
+                            md:text-base
+                        '>
+                            Amenities
+                        </h1>
+                        <ul className='px-4 grid auto-cols-max justify-start items-start list-disc
+                            md:grid-cols-2 lg:w-fit lg:gap-x-12
+                        '>
+                            {
+                                cardText[1] 
+                                ? cardText[1].map((val, key) => {
+                                    return (
+                                        <li key={key}
+                                            className='text-sm font-light'
+                                        >
+                                            {val}
+                                        </li>
+                                    )
+                                })
+                                : ''
+                            }
+                        </ul>
+                    </div>
+                    <div className="flex w-fit justify-end text-custom-dark ml-auto mt-1 mb-2 
+                        md:justify-end "
+                    >
+                        <ButtonSolid 
+                            btnTitle={'View'}             
+                        />
+                    </div>
                 </div>
                 <div className='container h-fit w-full 
                     text-white flex justify-between items-center
                     bg-success px-4 py-2
                 '>
                     <div className='flex flex-col items-start'>
-                        <span className='text-[0.9rem] font-semibold
-                            lg:text-lg
+                        <div className='flex flex-row justify-center items-center gap-[4px]
                         '>
-                            {cardDetails[0][0] ? cardDetails[0][0] : '' }/5.0
-                        </span>
-                        <span className='text-[0.8rem] font-thin'>
+                            <FaStar className='h-[.9rem] w-[.9rem] md:h-4 md:w-4' />
+                            <span className='text-[0.9rem] font-semibold
+                            lg:text-lg'>
+                                {cardDetails[0][0] ? cardDetails[0][0] : '' }/5.0
+                            </span>
+                        </div>
+                        <small className='text-[0.8rem] font-thin'>
                             ({cardDetails[0][1] ? cardDetails[0][1] : '' } Reviews)
-                        </span>
+                        </small>
                     </div>
                     <div className='flex flex-col items-end'>
                         <span className='text-lg font-bold
@@ -73,7 +110,7 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                         '>
                             £{cardDetails[1][0] ? cardDetails[1][0] : '' }
                         </span>
-                        <span className='text-[0.8rem] font-thin'>includes taxes &amp; fees</span>
+                        <small className='text-[0.8rem] font-thin'>includes taxes &amp; fees</small>
                     </div>
                 </div>
             </div>

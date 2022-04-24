@@ -92,7 +92,7 @@ const TripList = () => {
                 imgUrl={val.tripImages[0]} 
                 cardTitle={val.tripName}
                 cardSubTitle={val.tripFullLocation}
-                cardText={val.tripDescription}
+                cardText={[val.tripDescription, val.tripAmenities]}
                 cardDetails={[[val.tripRating, val.tripReviews], [val.tripTotalPrice]]}
                 tagData={val.tripTags} 
             />

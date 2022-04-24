@@ -16,6 +16,7 @@ import Navigation from './components/navigation';
 import Hero from './components/hero';
 import Footer from './components/footer';
 import Modal from './components/modal';
+import PageNotFound from './components/page-not-found';
 
 import './App.css';
 
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
       <Navigation />
-      <main id="main-content" className='flex flex-col justify-evenly w-full'>
+      <main id="main-content" className='flex flex-col justify-evenly w-full m-h-screen'>
         <Routes>
           <Route exact path="/" element={
               <>
@@ -43,6 +44,7 @@ function App() {
                 <Route exact path="/signup" element={<SignUp />}/>
               </>
           }
+          <Route path='*' element={<PageNotFound />}/>
         </Routes>
       </main>
       <Footer />

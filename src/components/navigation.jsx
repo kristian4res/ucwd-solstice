@@ -49,7 +49,7 @@ const Navigation = () => {
   }, [handleNavBackdrop]);
 
   return (
-    <div className={`w-full ${navClass} z-20 fixed top-0 text-white`}>
+    <header className={`w-full ${navClass} z-20 fixed top-0 text-white`}>
       <div className={`flex ${routeLocation.pathname === '/' ? 'transparent' : 'bg-main' } 
         items-center w-full transition-all ease-in mx-auto py-4 px-6
         md:px-14 lg:px-24`
@@ -95,7 +95,7 @@ const Navigation = () => {
           </nav>
         </div>
       </div> 
-    </div>
+    </header>
   )
 }
 
