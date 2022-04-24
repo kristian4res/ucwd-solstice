@@ -12,6 +12,7 @@ function PageLayout() {
     <div className="flex flex-col items-center min-h-screen relative font-poppins overflow-x-hidden">
       <Navigation />
       <main id="main-content" className='flex flex-col justify-evenly w-full m-h-screen'>
+        {/* Renders the component associated with a route */}
         <Outlet />
       </main>
       <Footer />

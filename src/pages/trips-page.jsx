@@ -7,7 +7,7 @@ import TripList from '../components/trip-list';
 import WithTrip from '../components/with-trip';
 
 
-const ExplorePage = () => {
+const Trips = () => {
   /** STATES */
   const [loadingData, setLoadingData] = useState(true);
 
@@ -38,4 +38,4 @@ const ExplorePage = () => {
   )
 }
 
-export default ExplorePage;
+export default Trips;

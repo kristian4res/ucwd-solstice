@@ -35,7 +35,7 @@ const Homepage = () => {
               icon={
                 <HiChevronDoubleRight className='h-6 w-6 lg:h-8 lg:w-8' />
               }
-              route='/explore'
+              route='/trips'
             />
           </div>
         </section>

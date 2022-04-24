@@ -15,6 +15,22 @@
     background: linear-gradient(335deg, rgba(124,175,212,1) 30%, rgba(233,154,39,1) 96%);
 }
 
+.trip-image-gallery {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1.4fr 0.8fr 0.8fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "image1 image2 image3"
+      "image1 image4 image5"; 
+}
+.trip-gallery-image1 { grid-area: image1; }
+.trip-gallery-image2 { grid-area: image2; }
+.trip-gallery-image3 { grid-area: image3; }
+.trip-gallery-image4 { grid-area: image4; }
+.trip-gallery-image5 { grid-area: image5; }
+
 .custom-message-bubble {
     @apply items-center absolute top-[114%] left-4 w-full h-fit 
     border-2 border-main rounded-b-lg bg-white py-2 px-1;

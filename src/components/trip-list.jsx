@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
@@ -88,8 +88,9 @@ const TripList = () => {
         displayData
         .map((val, key) => {
             return (
-            <CardTrip key={key} 
+            <CardTrip key={key}
                 imgUrl={val.tripImages[0]} 
+                cardId={key + 1}
                 cardTitle={val.tripName}
                 cardSubTitle={val.tripFullLocation}
                 cardText={[val.tripDescription, val.tripAmenities]}

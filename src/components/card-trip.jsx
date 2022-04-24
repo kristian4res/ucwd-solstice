@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import CardTag from './card-tag';
-import ButtonSolid from './button-solid';
 
 import { FaStar } from 'react-icons/fa';
 
-const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
+const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
     return (
         <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
             flex flex-col
@@ -80,11 +80,16 @@ const CardTrip = ({ imgUrl, cardTitle, cardSubTitle, cardText, cardDetails, tagD
                         </ul>
                     </div>
                     <div className="flex w-fit justify-end text-custom-dark ml-auto mt-1 mb-2 
-                        md:justify-end "
+                        md:justify-end"
                     >
-                        <ButtonSolid 
-                            btnTitle={'View'}             
-                        />
+                        <button className='shadow-md transition-transform text-current 
+                             btn-solid items-center bg-white rounded-full
+                            hover:-translate-y-[2px] active:translate-y-[2px]
+                        '>
+                            <Link className='font-semibold' to={`${cardId}`}>
+                                View
+                            </Link>
+                        </button>
                     </div>
                 </div>
                 <div className='container h-fit w-full 

@@ -77,7 +77,7 @@ const Navigation = () => {
               lg:justify-center lg:items-center'
             >
               <LinkUnderline label='Home' route='/' />
-              <LinkUnderline label='Explore' route='/explore' />
+              <LinkUnderline label='Trips' route='/trips' />
               <LinkUnderline label='Support' route='/support' />
               <div className='flex flex-col justify-between space-y-4 pt-6 
                 lg:flex-row lg:space-y-0 lg:space-x-4 lg:pt-0'

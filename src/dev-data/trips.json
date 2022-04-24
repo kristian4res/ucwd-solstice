@@ -1,6 +1,6 @@
 [
     {
-        "tripId": "T1",
+        "tripId": "t1",
         "tripName": "Wavez",
         "tripSport": [
             {
@@ -31,7 +31,7 @@
         "tripEndDate": "2022-07-19"
     },
     {
-        "tripId": "T2",
+        "tripId": "t2",
         "tripName": "Fuji Sports",
         "tripSport": [
             {
@@ -62,7 +62,7 @@
         "tripEndDate": "2023-02-19"
     },
     {
-        "tripId": "T3",
+        "tripId": "t3",
         "tripName": "Rapids",
         "tripSport": [
             {
@@ -93,7 +93,7 @@
         "tripEndDate": "2022-07-19"
     },
     {
-        "tripId": "T4",
+        "tripId": "t4",
         "tripName": "Frost",
         "tripSport": [
             {
