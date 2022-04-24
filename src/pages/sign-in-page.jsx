@@ -104,7 +104,7 @@ const SignInPage = () => {
 
   return (
     <PageContainer>
-      <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 relative'>
+      <section className='container flex justify-center items-center min-h-screen min-w-full pt-28 px-6 relative'>
         <div className={`fixed top-1/2 left-1/2 -translate-x-[50%] 
         bg-white drop-shadow-xl rounded-lg z-10 max-h-[20rem] w-[24rem] p-8 pb-6
           justify-center items-center
