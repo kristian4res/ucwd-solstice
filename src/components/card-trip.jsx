@@ -55,7 +55,7 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
                     xl:text-base`}>
                         {cardText[0] ? cardText[0] : ''}
                     </p>
-                    <div className='flex flex-col w-full border-t-2 border-custom-gray rounded-t-md py-2'>
+                    <div className='flex flex-col w-full border-t-[1px] border-custom-gray py-2'>
                         <h1 className='text-[.9rem] font-semibold capitalize
                             md:text-base
                         '>

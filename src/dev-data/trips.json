@@ -28,7 +28,9 @@
         "tripGuides": [
             {
                 "guideId": "g4",
-                "guideName": "James Alton"
+                "guideName": "James Alton",
+                "guideYearsOfExperience": 3,
+                "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             }
         ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
@@ -65,7 +67,9 @@
         "tripGuides": [
             {
                 "guideId": "g5",
-                "guideName": "Shosei Yamamura"
+                "guideName": "Shosei Yamamura",
+                "guideYearsOfExperience": 8,
+                "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             }
         ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
@@ -102,11 +106,15 @@
         "tripGuides": [
             {
                 "guideId": "g1",
-                "guideName": "Jose Gonzales"
+                "guideName": "Jose Gonzales",
+                "guideYearsOfExperience": 8,
+                "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             },
             {
                 "guideId": "g2",
-                "guideName": "Andrea de la Torre"
+                "guideName": "Andrea de la Torre",
+                "guideYearsOfExperience": 5,
+                "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             }
         ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
@@ -143,7 +151,9 @@
         "tripGuides": [
             {
                 "guideId": "g3",
-                "guideName": "Raj <Surname>"
+                "guideName": "Raj <Surname>",
+                "guideYearsOfExperience": 4,
+                "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             }
         ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",

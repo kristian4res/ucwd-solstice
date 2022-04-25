@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import AppContext from '../contexts/app-context';
 
 import PageContainer from './page-container';
+import CardMiniProfile from './card-mini-profile';
 
 import { FaStar } from 'react-icons/fa';
+import { IoMdPerson } from 'react-icons/io';
 
 
 const TripPage = () => {
@@ -125,7 +127,24 @@ const TripPage = () => {
               '>
                   Guides
               </h1>
-              {trips[tripIndex].tripGuides[0].guideName}
+              <ul className='flex flex-col gap-8 w-full
+                md:flex-row
+              '>
+                  {
+                    trips[tripIndex].tripGuides?.map((val, key) => {
+                      return (
+                        <CardMiniProfile 
+                          key={key}
+                          cardIcon={<IoMdPerson className='h-8 w-8' />}
+                          cardTitle={val.guideName}
+                          cardSubtitle={val.guideYearsOfExperience + ' years of experience'}
+                          cardContent={val.guideDescription}
+                        />
+                      )
+                    })
+                  }
+              </ul>
+              
             </div>
           </div>
           <div className="flex flex-col justify-center items-center w-full h-[600px] 
