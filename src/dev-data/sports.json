@@ -1,0 +1,26 @@
+[
+    {
+        "sportID": "S1",
+        "sportName": "Surfing",
+        "sportSeason": "Summer",
+        "icon": "🏄‍♀️"
+    },
+    {
+        "sportID": "S2",
+        "sportName": "Kayaking",
+        "sportSeason": "Summer",
+        "icon": "🛶"
+    },
+    {
+        "sportID": "S3",
+        "sportName": "Skiing",
+        "sportSeason": "Winter",
+        "icon": "🎿"
+    },
+    {
+        "sportID": "S4",
+        "sportName": "Snowboarding",
+        "sportSeason": "Winter",
+        "icon": "🏂"
+    }
+]

@@ -1,29 +1,47 @@
-import { Routes, Route } from 'react-router-dom';
-import Homepage from './pages/homepage/homepage';
-import Explore from './pages/explore/explore';
-import FAQ from './pages/faq/faq';
-import Checkout from './pages/checkout/checkout';
-import Support from './pages/support/support';
-import SignIn from './pages/signin/signin';
-import SignUp from './pages/signup/signup';
+import React, { useContext } from 'react';
+import {
+  Routes,
+  Route
+} from 'react-router-dom';
+
+import SignInSignUpContext from './contexts/sign-in-sign-up-context';
+
+import Homepage from './pages/home-page';
+import Trips from './pages/trips-page';
+import Contacts from './pages/support-page';
+import SignIn from './pages/sign-in-page';
+import SignUp from './pages/sign-up-page';
+import TripPage from './components/trip-page';
+
+import PageNotFound from './components/page-not-found';
+import PageLayout from './pages/page-layout';
 
 import './App.css';
-import NavigationBar from './components/navigation-bar/navigationBar';
 
 function App() {
+  const { signIn: { currentUser }} = useContext(SignInSignUpContext);
+
   return (
-    <div className="App">
-      <NavigationBar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<PageLayout />}>
+        {/* Default page component */}
+        <Route index element={<Homepage />} />
+        {/* Custom routes and their respective page components */}
+        <Route path="trips">
+          <Route index element={<Trips />} />
+          <Route path=":tripId" element={<TripPage />} />
+        </Route>
+        <Route path="support" element={<Contacts />} />
+        { 
+          !currentUser && 
+            <>
+              <Route path="signin" element={<SignIn />} />
+              <Route path="signup" element={<SignUp />} />
+            </>
+        }
+        <Route path='*' element={<PageNotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
