@@ -59,7 +59,7 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
                         <h1 className='text-[.9rem] font-semibold capitalize
                             md:text-base
                         '>
-                            Amenities
+                            Accommodation Amenities
                         </h1>
                         <ul className='px-4 grid auto-cols-max justify-start items-start list-disc
                             md:grid-cols-2 lg:w-fit lg:gap-x-12

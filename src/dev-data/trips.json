@@ -23,7 +23,14 @@
         "tripAddress": "218 Puapihi St Lahaina, Hawaii",
         "tripContinent": "America",
         "tripSeason": "Summer",
-        "accomodationId": "A1",
+        "tripAccommodation": {
+            "id": "a1",
+            "name": "Bright Sun Resort Hotel",
+            "address": "220 Puapihi St Lahaina, Hawaii",
+            "averageRatings": "4.7",
+            "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
+            "generalDescription": "Best hotel in Hawaii"
+        },
         "tripImages": ["surfing-md-1.jpg"],
         "tripGuides": [
             {
@@ -62,12 +69,19 @@
         "tripAddress": "12 Ichiban Rd, Japan",
         "tripContinent": "Asia",
         "tripSeason": "Winter",
-        "accomodationId": "A1",
+        "tripAccommodation": {
+            "id": "a4",
+            "name": "Yamamoto Inn",
+            "address": "22 Ichiban Rd, Japan",
+            "averageRatings": "4.9",
+            "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
+            "generalDescription": "Best hotel in Japan"
+        },
         "tripImages": ["snowboarding-md-1.jpg"],
         "tripGuides": [
             {
                 "guideId": "g5",
-                "guideName": "Shosei Yamamura",
+                "guideName": "Kazuma Miura",
                 "guideYearsOfExperience": 8,
                 "guideDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!"
             }
@@ -101,7 +115,14 @@
         "tripAddress": "7 Estuary Rd, New Zealand",
         "tripContinent": "Oceania",
         "tripSeason": "Summer",
-        "accomodationId": "A1",
+        "tripAccommodation":   {
+            "id": "a3",
+            "name": "Palm Resort Hotel",
+            "address": "10 Estuary Rd, New Zealand",
+            "averageRatings": "4.6",
+            "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
+            "generalDescription": "Best hotel in New Zealand"
+        },
         "tripImages": ["kayaking-md-1.jpg"],
         "tripGuides": [
             {
@@ -146,7 +167,14 @@
         "tripAddress": "261 Kirchweg, Switzerland",
         "tripContinent": "Europe",
         "tripSeason": "Winter",
-        "accomodationId": "A1",
+        "tripAccommodation": {
+            "id": "a2",
+            "name": "Pine Resort Hotel",
+            "address": "263 Kirchweg, Switzerland",
+            "averageRatings": "4.4",
+            "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
+            "generalDescription": "Best hotel in Switzerland"
+        },
         "tripImages": ["ski-resort-img-1.jpg"],
         "tripGuides": [
             {
