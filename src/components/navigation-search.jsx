@@ -45,8 +45,8 @@ const NavigationSearch = () => {
         setInputInvalid(false);
 
         // Redirect to explore page (if in a different page)
-        if (routeLocation.pathname !== '/explore') {
-            routeNavigate('/explore');
+        if (routeLocation.pathname !== '/trips') {
+            routeNavigate('/trips');
         }
 
         submitSearchForm(details);
