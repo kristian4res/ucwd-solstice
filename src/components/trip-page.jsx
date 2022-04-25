@@ -15,7 +15,9 @@ const TripPage = () => {
   const { devData: { trips }} = useContext(AppContext);
 
   const urlParams = useParams();
-  const tripIndex = urlParams.tripId - 1;
+  const paramId = urlParams.tripId;
+  const tripData = trips.find(trip => trip.tripId === paramId);
+
   
   return (
     <PageContainer>
@@ -30,35 +32,35 @@ const TripPage = () => {
             <div className="image1 image-animation">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${trips[tripIndex].tripImages[0]}`)} 
+                src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="image2">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${trips[tripIndex].tripImages[0]}`)} 
+                src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="image3">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${trips[tripIndex].tripImages[0]}`)} 
+                src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="image4">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${trips[tripIndex].tripImages[0]}`)} 
+                src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="image5">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${trips[tripIndex].tripImages[0]}`)} 
+                src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
@@ -74,28 +76,28 @@ const TripPage = () => {
             <h1 className='text-3xl font-semibold
               md:text-4xl
             '>
-              {trips[tripIndex].tripName}
+              {tripData.tripName}
             </h1>
             <h2 className='text-xl font-normal
               md:text-2xl
             '>
-              {trips[tripIndex].tripAddress}
+              {tripData.tripAddress}
             </h2>
             <div className='flex items-center gap-2'>
-              <FaStar className='h-4 w-4' />
+              <FaStar className='h-4 w-4 text-primary' />
               <h2 className='flex items-end gap-2 text-xl'>
-                {trips[tripIndex].tripRating}/5
+                {tripData.tripRating}/5
                 <span className='text-base font-light text-custom-gray-dark'>
-                  ({trips[tripIndex].tripReviews} reviews)
+                  ({tripData.tripReviews} reviews)
                 </span>
               </h2>
             </div>
             <div className='flex flex-col items-center gap-2 mt-6'>
               <p className='text-base'>
-                {trips[tripIndex].tripDescription}
+                {tripData.tripDescription}
               </p>
               <p className='text-base'>
-                {trips[tripIndex].tripDescription}
+                {tripData.tripDescription}
               </p>
             </div>
             <div className='flex flex-col justify-start gap-2 mt-6'>
@@ -108,8 +110,8 @@ const TripPage = () => {
                   md:grid-cols-2 lg:w-fit lg:gap-x-12
               '>
                 {
-                  trips[tripIndex].tripAmenities &&
-                  trips[tripIndex].tripAmenities.map((val, key) => {
+                  tripData.tripAmenities &&
+                  tripData.tripAmenities.map((val, key) => {
                       return (
                           <li key={key}
                               className='text-lg font-light'
@@ -131,7 +133,7 @@ const TripPage = () => {
                 md:flex-row
               '>
                   {
-                    trips[tripIndex].tripGuides?.map((val, key) => {
+                    tripData.tripGuides?.map((val, key) => {
                       return (
                         <CardMiniProfile 
                           key={key}

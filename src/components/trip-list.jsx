@@ -109,7 +109,7 @@ const TripList = () => {
               <CardTrip 
                 key={key}
                 imgUrl={val.tripImages[0]} 
-                cardId={key + 1}
+                cardId={val.tripId}
                 cardTitle={val.tripName}
                 cardSubTitle={val.tripFullLocation}
                 cardText={[val.tripDescription, val.tripAmenities]}
