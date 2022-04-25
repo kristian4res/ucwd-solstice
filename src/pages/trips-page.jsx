@@ -29,7 +29,7 @@ const Trips = () => {
         gap-6 px-10
         xl:flex-row xl:justify-center xl:items-start xl:px-28 xl:pt-8
       '>
-        <div className='flex flex-col w-fit h-full text-dark mt-2'>
+        <div className='flex flex-col w-[20rem] h-full text-dark mt-2'>
           <FilterForm />
         </div>
         <TripListWithLoader isLoading={loadingData} />

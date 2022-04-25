@@ -4,7 +4,7 @@
 
 @layer base {
     *, html {
-        scroll-behavior: smooth;
+        @apply scroll-smooth;
     }
 }
 
@@ -24,7 +24,7 @@
     }
 
     .image-gallery {
-        @apply grid grid-flow-col grid-flow-row
+        @apply grid grid-flow-row
         lg:image-gallery-container;
     }
     

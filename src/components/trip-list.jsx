@@ -4,6 +4,7 @@ import AppContext from '../contexts/app-context';
 import SearchFormContext from '../contexts/search-form-context';
 import FilterFormContext from '../contexts/filter-form-context';
 
+import { ReactComponent as NoDataFoundSVG } from '../assets/no-data.svg';
 import CardTrip from '../components/card-trip';
 
 
@@ -80,15 +81,33 @@ const TripList = () => {
   let dataLength = displayData.length;
 
   return (
-    <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen'>
+    <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen w-[95%]'>
         <div className='flex justify-start'>
             <h4 className='font-semibold'>{dataLength} results found</h4>
         </div>
         {
-        displayData
-        .map((val, key) => {
+          dataLength === 0 &&
+          <div className="flex flex-col justify-center items-center h-[20rem] max-w-full">
+            <NoDataFoundSVG title='No data found' className='h-[14rem] w-[14rem]' />
+              <h1 className='text-xl font-semibold mt-2 text-main
+                  md:text-2xl
+                  lg:text-3xl
+              '>
+                  Oops!
+              </h1>
+              <p className='text-base text-center mt-4  whitespace-pre-wrap
+                  md:text-xl
+              '>
+                  Unfortunately, there are no trips that matches your search.
+              </p>
+          </div>
+        }
+        {
+          displayData
+          .map((val, key) => {
             return (
-            <CardTrip key={key}
+              <CardTrip 
+                key={key}
                 imgUrl={val.tripImages[0]} 
                 cardId={key + 1}
                 cardTitle={val.tripName}
@@ -96,9 +115,9 @@ const TripList = () => {
                 cardText={[val.tripDescription, val.tripAmenities]}
                 cardDetails={[[val.tripRating, val.tripReviews], [val.tripTotalPrice]]}
                 tagData={val.tripTags} 
-            />
+              />
             )
-        })
+          })
         }
     </div>
   )
