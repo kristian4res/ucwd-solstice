@@ -1,6 +1,6 @@
 [
     {
-        "accommodationId": "A1",
+        "accommodationId": "a1",
         "accommodationName": "Bright Sun Resort Hotel",
         "accommodationAddress": "220 Puapihi St Lahaina, Hawaii",
         "averageRatings": "4.7",
@@ -8,7 +8,7 @@
         "generalDescription": "Best hotel in Hawaii"
     },
     {
-        "accommodationId": "A2",
+        "accommodationId": "a2",
         "accommodationName": "Pine Resort Hotel",
         "accommodationAddress": "263 Kirchweg, Switzerland",
         "averageRatings": "4.4",
@@ -16,7 +16,7 @@
         "generalDescription": "Best hotel in Switzerland"
     },
     {
-        "accommodationId": "A3",
+        "accommodationId": "a3",
         "accommodationName": "Palm Resort Hotel",
         "accommodationAddress": "10 Estuary Rd, New Zealand",
         "averageRatings": "4.6",
@@ -24,7 +24,7 @@
         "generalDescription": "Best hotel in New Zealand"
     },
     {
-        "accommodationId": "A4",
+        "accommodationId": "a4",
         "accommodationName": "Yamamoto Inn",
         "accommodationAddress": "22 Ichiban Rd, Japan",
         "averageRatings": "4.9",

@@ -25,6 +25,12 @@
         "tripSeason": "Summer",
         "accomodationId": "A1",
         "tripImages": ["surfing-md-1.jpg"],
+        "tripGuides": [
+            {
+                "guideId": "g4",
+                "guideName": "James Alton"
+            }
+        ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
         "tripAmenities": ["Breakfast & Dinner included", "Free Pool", "Free Gym"],
         "tripStartDate": "2022-05-19",
@@ -56,8 +62,14 @@
         "tripSeason": "Winter",
         "accomodationId": "A1",
         "tripImages": ["snowboarding-md-1.jpg"],
+        "tripGuides": [
+            {
+                "guideId": "g5",
+                "guideName": "Shosei Yamamura"
+            }
+        ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
-        "tripAmenities": ["Breakfast & Dinner included", "Free Hot Spring", "Equipment provided"],
+        "tripAmenities": ["Breakfast & Dinner included", "Free Hot Spring", "Equipment provided", "Cerftifed Guide available"],
         "tripStartDate": "2022-11-19",
         "tripEndDate": "2023-02-19"
     },
@@ -87,6 +99,16 @@
         "tripSeason": "Summer",
         "accomodationId": "A1",
         "tripImages": ["kayaking-md-1.jpg"],
+        "tripGuides": [
+            {
+                "guideId": "g1",
+                "guideName": "Jose Gonzales"
+            },
+            {
+                "guideId": "g2",
+                "guideName": "Andrea de la Torre"
+            }
+        ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
         "tripAmenities": ["Breakfast included", "Equipment provided", "Certified Guide included"],
         "tripStartDate": "2022-05-19",
@@ -118,6 +140,12 @@
         "tripSeason": "Winter",
         "accomodationId": "A1",
         "tripImages": ["ski-resort-img-1.jpg"],
+        "tripGuides": [
+            {
+                "guideId": "g3",
+                "guideName": "Raj <Surname>"
+            }
+        ],
         "tripDescription": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum voluptas, ipsam rem et explicabo nemo unde doloremque ducimus quasi assumenda labore molestiae error repellat omnis veritatis? Ipsa eius recusandae rerum!",
         "tripAmenities": ["Breakfast & Dinner included", "Free Transportation (with conditions)"],
         "tripStartDate": "2022-05-19",
