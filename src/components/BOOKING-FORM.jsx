@@ -1,40 +1,109 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { getTomorrowsDate } from '../utils/utils';
+
+import AppContext from '../contexts/app-context';
+import SearchFormContext from '../contexts/search-form-context';
 
 import ButtonSolid from './button-solid';
+import StripeCheckoutButton from './stripe/stripe-checkout-button';
 
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
+  /** CONTEXTS */
+  const { toggleModal } = useContext(AppContext);
+  const { searchFormDetails } = useContext(SearchFormContext);
+
   /** STATE */
-  const [collapseDetails, setCollapseDetails] = useState(false);
+  const [collapseDetails, setCollapseDetails] = useState(true);
+  const [numberOfTravellers, setNumberOfTravellers] = useState(2)
+  const [totalPrice, setTotalPrice] = useState(Number(tripPrice));
 
-  /** FUNCTIONS */
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const [checkInVal, setCheckInVal] = useState(searchFormDetails['checkIn']);
+  const [checkOutVal, setCheckOutVal] = useState(searchFormDetails['checkOut']);
+  // Toggling date input modal
+  const [dateInputFocus, setDateInputFocus] = useState({
+      'checkIn': '',
+      'checkOut': ''
+  });
 
-  };
+
+  useEffect(() => {
+    setTotalPrice(tripPrice + (10 * (numberOfTravellers - 2)));
+  }, [numberOfTravellers])
 
   return (
     <div className='w-full h-full flex flex-col items-center p-6'>
         <div className='flex flex-col justify-center items-start h-full w-full gap-x-4'>
           <h1 className='text-3xl font-semibold'>
-            £{tripPrice}
+            £{totalPrice}
           </h1>
           <span className='text-sm'>includes all taxes &amp; fees</span>
         </div>
         <div className="mt-4 flex h-full w-full">
           <form className='flex flex-col h-full w-full gap-y-4'
-            onSubmit={handleFormSubmit}
+            onSubmit={(e) => e.preventDefault()}
           >
             <div className="grid grid-cols-2 gap-x-2 w-full">
               <label className="form-label" htmlFor="trip-check-in">Check In</label>
               <label className="form-label" htmlFor="trip-check-out">Check Out</label>
-              <input className="form-input text-black" type="date" name="trip-check-in" />
-              <input className="form-input text-black" type="date" name="trip-check-out" />
+              <input 
+                className={`form-input text-black ${dateInputFocus['checkIn']}`} 
+                name="trip-check-in"
+                type="date"
+                value={checkInVal}
+                onChange={(e) => setCheckInVal(e.target.value)}
+                min={getTomorrowsDate()}
+                onFocus={() => {
+                    setDateInputFocus(prevState => {
+                        return {...prevState, checkIn: 'z-10'}
+                    });
+                    toggleModal(true);
+                }}
+                onBlur={() => {
+                    setDateInputFocus(prevState => {
+                        return {...prevState, checkIn: ''}
+                    });
+                    toggleModal(false);
+                }} 
+               />
+              <input 
+                className={`form-input text-black ${dateInputFocus['checkOut']}`} 
+                name="trip-check-out"
+                type="date"
+                value={checkOutVal}
+                onChange={(e) => setCheckOutVal(e.target.value)}
+                min={getTomorrowsDate('CheckOut')}
+                onFocus={() => {
+                    setDateInputFocus(prevState => {
+                        return {...prevState, checkOut: 'z-10'}
+                    });
+                    toggleModal(true);
+                }}
+                onBlur={() => {
+                    setDateInputFocus(prevState => {
+                        return {...prevState, checkOut: ''}
+                    });
+                    toggleModal(false);
+                }} 
+              />
             </div>
             <div className="flex flex-col">
-              <label className="form-label" htmlFor="trip-travellers">Travellers</label>
-              <input className="form-input text-black" type="number" name="trip-travellers" placeholder='Number of travellers' />
+              <label className="form-label" htmlFor="trip-travellers">
+                Travellers
+                <small className='mx-4'>(+ £10 per additional traveller)</small> 
+              </label>
+              <input 
+                className="form-input text-black" 
+                type="number" 
+                name="trip-travellers"
+                min={2}
+                onChange={(e) => {
+                  setNumberOfTravellers(e.target.value);
+                }}
+                value={numberOfTravellers}
+                placeholder='Number of travellers' 
+              />
             </div>
             <div className="flex flex-col mx-2">
               <button className='flex justify-between items-center pb-2
@@ -60,20 +129,24 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
                   <dt className='text-sm text-light'>£{tripTaxes}</dt>
                   <dt className='text-[.8rem] font-semibold'>Accommodation</dt>
                   <dt className='text-sm'>£{tripOtherFees}</dt>
+                  <dt className='text-[.8rem] font-semibold'>Additional travellers</dt>
+                  <dt className='text-sm'>£{10 * (numberOfTravellers - 2)}</dt>
                   <dt className='text-[.8rem] font-semibold'>Other fees</dt>
                   <dt className='text-sm'>£{tripPrice - (tripTaxes + tripOtherFees)}</dt>
                 </dl>
                 <hgroup className='pt-2 border-t-2 w-full'>
                   <h1 className='text-[.9rem] font-semibold'>Total Price</h1>
-                  <h2 className='text-sm'>£{tripPrice}</h2>
+                  <h2 className='text-sm'>£{totalPrice}</h2>
                 </hgroup>
               </div>
             </div>
             <div className="flex flex-col mt-4">
-              <ButtonSolid
-                btnStyles={'bg-success justify-center'}
-                btnTitle={'Confirm'}
-              />
+              <StripeCheckoutButton price={totalPrice}>
+                <ButtonSolid
+                  btnStyles={'bg-success justify-center'}
+                  btnTitle={'Continue'}
+                />
+              </StripeCheckoutButton>
             </div>
           </form>
         </div>

@@ -15,7 +15,7 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
               relative col-span-1`}
             >   
                 <img
-                    src={imgUrl ? require(`../assets/${imgUrl}`) : ''}
+                    src={imgUrl ? require(`../../assets/${imgUrl}`) : ''}
                     alt={'people on an adventure'}
                     className={`object-cover w-full h-72
                         md:h-full
@@ -26,16 +26,16 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
                 flex flex-col justify-between
             '>
                 <div className="w-full h-fit px-4 py-2 text-white">
-                    <div className='container mb-1 text-current'>
-                        <h4 className={`uppercase text-lg font-semibold text-current drop-shadow-xl 
+                    <hgroup className='container mb-1 text-current'>
+                        <h1 className={`uppercase text-lg font-semibold text-current drop-shadow-xl 
                         md:text-xl lg:text-3xl`}>
                             {cardTitle ? cardTitle : 'Title'}
-                        </h4>
-                        <h5 className={`uppercase text-sm font-medium text-current drop-shadow-lg 
+                        </h1>
+                        <h2 className={`uppercase text-sm font-medium text-current drop-shadow-lg 
                         md:text-lg lg:text-xl`}>
                             {cardSubTitle ? cardSubTitle : 'Subtitle'}
-                        </h5>
-                    </div>
+                        </h2>
+                    </hgroup>
                     <div className='flex justify-start items-center gap-2 flex-wrap
                         lg:flex-row'
                     >
@@ -51,13 +51,13 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
                             })
                         }
                     </div>
-                    <p className={`text-left py-4 text-current text-sm
-                    xl:text-base`}>
+                    <p className={`text-left py-4 text-current text-[.8rem]
+                    xl:text-sm`}>
                         {cardText[0] ? cardText[0] : ''}
                     </p>
                     <div className='flex flex-col w-full border-t-[1px] border-custom-gray py-2'>
                         <h1 className='text-[.9rem] font-semibold capitalize
-                            md:text-base
+                            md:text-sm
                         '>
                             Accommodation Amenities
                         </h1>

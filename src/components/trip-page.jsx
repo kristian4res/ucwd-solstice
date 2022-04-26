@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import AppContext from '../contexts/app-context';
 
 import PageContainer from './page-container';
-import CardMiniProfile from './card-mini-profile';
+import CardMiniProfile from './cards/card-mini-profile';
 
 import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
@@ -33,35 +33,35 @@ const TripPage = () => {
           xl:w-2/3
         '>
           <div className="image-gallery">
-            <div className="image1 image-animation">
+            <div className="image-animation image1">
               <img 
                 className='object-fill h-full w-full'
                 src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
-            <div className="image2 image-animation">
+            <div className="hidden image-animation lg:block lg:image2">
               <img 
                 className='object-fill h-full w-full'
                 src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
-            <div className="image3 image-animation">
+            <div className="hidden image-animation lg:block lg:image3">
               <img 
                 className='object-fill h-full w-full'
                 src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
-            <div className="image4 image-animation">
+            <div className="hidden image-animation lg:block lg:image4">
               <img 
                 className='object-fill h-full w-full'
                 src={require(`../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
-            <div className="image5 image-animation">
+            <div className="hidden image-animation lg:block lg:image5">
               <img 
                 className='object-fill h-full w-full'
                 src={require(`../assets/${tripData.tripImages[0]}`)} 

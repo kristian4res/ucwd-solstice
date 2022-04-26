@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ButtonSolid from './button-solid';
+import ButtonSolid from '../button-solid';
 
 import { HiChevronRight } from 'react-icons/hi';
 // import TripTag from './trip-tag';

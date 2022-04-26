@@ -24,8 +24,8 @@ const SearchForm = () => {
     // Pass down input states
     const [locationInput, setLocationInput] = useState(searchFormDetails['location']);
     const [sportInput, setSportInput] = useState(searchFormDetails['sport']);
-    const [checkInVal, setCheckInVal] = useState(getTomorrowsDate());
-    const [checkOutVal, setCheckOutVal] = useState(getTomorrowsDate('checkOut'));
+    const [checkInVal, setCheckInVal] = useState(searchFormDetails['checkIn']);
+    const [checkOutVal, setCheckOutVal] = useState(searchFormDetails['checkOut']);
     // Toggling date input modal
     const [dateInputFocus, setDateInputFocus] = useState({
         'checkIn': '',

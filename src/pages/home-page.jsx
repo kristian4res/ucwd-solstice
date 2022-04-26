@@ -10,8 +10,8 @@ import PageContainer from '../components/page-container';
 
 import ButtonOutline from '../components/button-outline';
 import SectionTitle from '../components/section-title';
-import CardLink from '../components/card-links';
-import CardArticle from '../components/card-article';
+import CardLink from '../components/cards/card-links';
+import CardArticle from '../components/cards/card-article';
 import PageArticle from '../components/page-article';
 import Hero from '../components/hero';
 

@@ -1,11 +1,11 @@
-import React from 'react'
-import PageContainer from '../components/page-container'
+import React from 'react';
+
+import PageContainer from '../components/page-container';
 
 const ContactsPage = () => {
   return (
     <PageContainer>
-      <section className='container min-h-screen'>
-        
+      <section className='container min-h-screen flex justify-center'>
       </section>
     </PageContainer>
   )

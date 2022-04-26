@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CardTripSkeleton from './card-trip-skeleton';
+import CardTripSkeleton from './cards/card-trip-skeleton';
 
 const WithTrip = (WrappedComponent) => {
   const Loader = ({ isLoading, ...otherProps }) => {
