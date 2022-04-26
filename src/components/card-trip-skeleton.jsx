@@ -3,9 +3,9 @@ import React from 'react';
 
 const CardTripSkeleton = () => {
     return (
-        <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
+        <div className='w-[1000px] h-72 drop-shadow-xl rounded-lg overflow-hidden
             flex flex-col 
-            md:grid md:grid-cols-3
+            md:grid md:grid-cols-3 
         '>
             <div className={`container h-72
                 bg-custom-gray-dark flex 

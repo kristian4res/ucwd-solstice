@@ -15,7 +15,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
   };
 
   return (
-    <div className='container w-full h-full flex flex-col items-center p-6'>
+    <div className='w-full h-full flex flex-col items-center p-6'>
         <div className='flex flex-col justify-center items-start h-full w-full gap-x-4'>
           <h1 className='text-3xl font-semibold'>
             £{tripPrice}
@@ -37,7 +37,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
               <input className="form-input text-black" type="number" name="trip-travellers" placeholder='Number of travellers' />
             </div>
             <div className="flex flex-col mx-2">
-              <button className='flex justify-between pb-2
+              <button className='flex justify-between items-center pb-2
                 text-lg font-semibold border-b-2 border-primary mb-2
                 active:brightness-90 hover:text-primary active:'
                 title={collapseDetails ? 'Show details' : 'Hide details'} 
@@ -45,7 +45,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
                   setCollapseDetails(prevState => !prevState);
                 }}
               >
-                <span>Price details</span>
+                <span className='text-left'>Price details</span>
                 {
                   collapseDetails 
                   ? <IoIosArrowDown className='h-6 w-6' />
@@ -53,7 +53,8 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
                 }
               </button>
               <div className={`flex flex-col gap-1 ${collapseDetails && 'h-0 overflow-hidden'}`}>
-                <dl className={`grid grid-cols-2 gap-1
+                <dl className={`flex flex-col gap-1
+                  xl:grid xl:grid-cols-2 
                 `}>
                   <dt className='text-[.8rem] font-semibold'>Taxes</dt>
                   <dt className='text-sm text-light'>£{tripTaxes}</dt>

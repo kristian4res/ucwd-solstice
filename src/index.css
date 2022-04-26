@@ -40,8 +40,14 @@
           "image1 image4 image5";
     }
     
-    .image-gallery-container * {
-        @apply cursor-pointer active:brightness-90 hover:brightness-95;
+    .image-gallery-container img {
+        @apply cursor-pointer transition-transform
+        active:brightness-75 
+        hover:brightness-90 hover:scale-105;
+    } 
+    
+    .image-gallery-container .image-animation {
+        @apply overflow-hidden;
     }
       
     .image1 { grid-area: image1; }
@@ -55,7 +61,7 @@
     .image5 { grid-area: image5; }
 
     .filter-select {
-        @apply border-2 border-custom-gray
+        @apply text-sm border-2 border-custom-gray
         hover:bg-slate-200;
     }
     
@@ -64,11 +70,11 @@
     }
     
     .form-label {
-        @apply mb-1 px-2 font-semibold;
+        @apply text-base mb-1 px-2 font-semibold;
     }
     
     .form-input {
-        @apply px-2 py-1 text-base whitespace-normal border-2
+        @apply px-2 py-1 text-sm whitespace-normal border-2
         rounded-md 
         border-transparent transition-colors cursor-pointer
         hover:bg-slate-200;

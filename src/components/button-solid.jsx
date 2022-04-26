@@ -17,7 +17,7 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
   return (
     <div className='w-full rounded-full shadow-md transition-transform text-current 
     hover:-translate-y-[2px] active:translate-y-[2px]'>
-        <button className={`btn-solid items-center bg-white rounded-full 
+        <button className={`btn-solid items-center rounded-full 
           ${btnStyles ? btnStyles : ''}
           `}
           onClick={handleClick ? () => handleClick() : undefined}

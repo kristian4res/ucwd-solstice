@@ -27,11 +27,11 @@ const Trips = () => {
         <SearchForm />
       </section>
       <section className='container pt-6 text-dark 
-        min-w-full flex flex-col justify-center items-start bg-white
+        min-w-full flex flex-col justify-center items-center bg-white
         gap-6 px-10
         xl:flex-row xl:justify-center xl:items-start xl:px-28 xl:pt-8
       '>
-        <div className='flex flex-col w-[20rem] h-full text-dark mt-2'>
+        <div className='flex flex-col self-start max-w-[20rem] h-full text-dark mt-2'>
           <FilterForm />
         </div>
         <div className="flex flex-col items-center">

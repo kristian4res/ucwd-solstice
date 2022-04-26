@@ -22,16 +22,20 @@ const FilterForm = () => {
   }, [season, continent, rating])
 
   return (
-    <div className='flex flex-row justify-center items-center gap-4 w-full h-full flex-wrap
+    <div className='flex flex-row 
+      justify-center items-center 
+      gap-4 w-full h-full flex-wrap
+      shadow-lg rounded-lg p-4
       xl:flex-col xl:items-start
     '>
-      <h3 className='flex justify-center items-center gap-2 text-xl font-semibold pr-4  border-main
-        md:border-r-2
-        xl:flex xl:border-b-2 xl:pb-4 xl:border-r-0 xl:pr-0 
+      <h1 className='flex justify-start items-center gap-2 
+        text-xl font-semibold pr-4 pb-2 w-full
+        border-main border-b-2
+        xl:pb-4
       '>
         <span title='Filters'>Filters</span>
         <BiSliderAlt className='h-6 w-6' aria-hidden />
-      </h3>
+      </h1>
       <form className="flex flex-row gap-2 flex-wrap
         xl:flex-col xl:flex-nowrap
       "

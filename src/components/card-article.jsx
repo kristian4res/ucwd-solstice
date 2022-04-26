@@ -32,7 +32,9 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                 </p>
                 <div className="flex w-fit justify-end text-custom-dark ml-auto mt-1 mb-2 
                     md:justify-end ">
-                  <ButtonSolid btnTitle={'Learn more'} 
+                  <ButtonSolid 
+                    btnStyles={'bg-white'}
+                    btnTitle={'Learn more'} 
                     icon={
                       <HiChevronRight className='h-6 w-6 lg:h-8 lg:w-8' />
                     } 

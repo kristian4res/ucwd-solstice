@@ -87,7 +87,7 @@ const TripList = () => {
         </div>
         {
           dataLength === 0 &&
-          <div className="flex flex-col justify-center items-center h-[20rem] max-w-full">
+          <div className="flex flex-col justify-center items-center h-82 max-w-full">
             <NoDataFoundSVG title='No data found' className='h-[14rem] w-[14rem]' />
               <h1 className='text-xl font-semibold mt-2 text-main
                   md:text-2xl
@@ -113,7 +113,7 @@ const TripList = () => {
                 cardTitle={val.tripName}
                 cardSubTitle={val.tripFullLocation}
                 cardText={[val.tripDescription, val.tripAmenities]}
-                cardDetails={[[val.tripRating, val.tripReviews], [val.tripTotalPrice]]}
+                cardDetails={[[val.tripRating, val.tripReviews], [val.tripBasePrice]]}
                 tagData={val.tripTags} 
               />
             )
