@@ -16,6 +16,7 @@
             ["continent", "North & South America"]
         ],
         "tripTotalPrice": 765,
+        "tripTaxesFees": [40, 490],
         "tripRating": 4.3,
         "tripReviews": 36,
         "tripFullLocation": "Honolulu, Hawaii",
@@ -62,6 +63,7 @@
             ["continent", "Asia"]
         ],
         "tripTotalPrice": 873,
+        "tripTaxesFees": [59, 302],
         "tripRating": 4.8,
         "tripReviews": 79,
         "tripFullLocation": "Hakuba Valley, Japan",
@@ -108,6 +110,7 @@
             ["continent", "Oceania"]
         ],
         "tripTotalPrice": 547,
+        "tripTaxesFees": [90, 102],
         "tripRating": 4.4,
         "tripReviews": 52,
         "tripFullLocation": "Kaituna River, New Zealand",
@@ -160,6 +163,7 @@
             ["continent", "Europe"]
         ],
         "tripTotalPrice": 450,
+        "tripTaxesFees": [40, 202],
         "tripRating": 4.7,
         "tripReviews": 49,
         "tripFullLocation": "Zermatt, Switzerland",

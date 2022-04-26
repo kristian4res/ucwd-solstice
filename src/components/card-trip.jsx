@@ -9,7 +9,7 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
     return (
         <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
             flex flex-col
-            md:grid md:grid-cols-3
+            md:grid md:grid-cols-3 md:max-w-[1000px] md:max-h-[500px]
         '>
             <div className={`container h-full bg-main flex justify-center
               relative col-span-1`}

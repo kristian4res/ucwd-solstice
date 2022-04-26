@@ -21,7 +21,9 @@ const Trips = () => {
 
   return (
     <PageContainer>
-      <section className='container bg-custom-gray pt-28 pb-10 text-dark min-w-full flex flex-col items-center w-3/5 shadow-2xl'>
+      <section className='container bg-custom-gray pt-28 pb-10 text-dark 
+        min-w-full flex flex-col items-center shadow-2xl'
+      >
         <SearchForm />
       </section>
       <section className='container pt-6 text-dark 
@@ -32,7 +34,9 @@ const Trips = () => {
         <div className='flex flex-col w-[20rem] h-full text-dark mt-2'>
           <FilterForm />
         </div>
-        <TripListWithLoader isLoading={loadingData} />
+        <div className="flex flex-col items-center">
+          <TripListWithLoader isLoading={loadingData} />
+        </div>
       </section>
     </PageContainer>
   )

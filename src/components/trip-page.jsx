@@ -178,7 +178,11 @@ const TripPage = () => {
            bg-main text-white
             md:h-fit
           ">
-            <BookingForm tripPrice={tripData.tripTotalPrice} />
+            <BookingForm 
+              tripPrice={tripData.tripTotalPrice} 
+              tripTaxes={tripData.tripTaxesFees[0]} 
+              tripOtherFees={tripData.tripTaxesFees[1]} 
+            />
           </div>
         </section>
       </div>
