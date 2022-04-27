@@ -8,7 +8,7 @@ import NavigationSearch from './navigation-search';
 import LinkUnderline from './link-underline';
 import LinkSolid from './link-solid';
 import LogoAdaptive from './logo-adaptive';
-import ButtonSolid from './button-solid';
+
 
 const Navigation = () => {
   /** CONTEXTS */
@@ -21,6 +21,9 @@ const Navigation = () => {
 
   // Mobile nav
   const [isNavOpen, setNavOpen] = useState(false);
+  /**
+   * Changes class of the navigation to accommodate a smaller screen width 
+   */
   const handleMobileNav = () => {
     setNavOpen(prevState => !prevState);
   }

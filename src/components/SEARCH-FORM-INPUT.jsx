@@ -21,6 +21,12 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
     const [field, setField] = useState(fieldname);
 
     /** FUNCTIONS */
+    
+    /**
+     * 
+     * @param {string} newVal - new value captured from the input element 
+     * This function updates the passed in state hook's value and toggles the modal element
+     */
     const updateStateAndClose = (newVal) => {
         // Set input value and context value
         state[1](newVal);
