@@ -3,7 +3,6 @@ import React from 'react';
 import ButtonSolid from '../button-solid';
 
 import { HiChevronRight } from 'react-icons/hi';
-// import TripTag from './trip-tag';
 
 const CardArticle = ({ imgUrl, imgTitle, tag }) => {
     return (
@@ -24,7 +23,6 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                 </h4>
                 <div className='flex flex-col flex-wrap space-y-2
                 lg:flex-row lg:space-x-1 lg:space-y-0'>
-                    {/* <TripTag category={'City'} label={tag} color={tag} /> */}
                 </div>
                 <p className='text-left py-4 text-slate-100 text-sm 
                 lg:text-base'>

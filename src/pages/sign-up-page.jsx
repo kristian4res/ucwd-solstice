@@ -53,6 +53,10 @@ const SignUpPage = () => {
     setConfirmPassword({value: '', isInvalid: false});
   }
 
+  /**
+   * This function takes the values from the input hooks 
+   * and validates them using the validator package
+   */
   const validateInputs = async () => {
     let allInputsValid = true;
 
@@ -171,6 +175,12 @@ const SignUpPage = () => {
     return allInputsValid;
   };
 
+  /**
+   * 
+   * @param {e} e - captured event, i.e. form submit 
+   * This functions will call the validateInputs function, 
+   * if it returns false then do not send data back (to the server*) otherwise send the data 
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 

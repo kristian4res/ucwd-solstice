@@ -15,11 +15,19 @@ const TripList = () => {
   const { filterFormDetails } = useContext(FilterFormContext);
 
   /** FUNCTIONS */
-  // Filter data based on the location and sport parameters from the search form 
+
+  /**
+   * 
+   * @param {string} location - trip location 
+   * @param {string} sport - trip sport
+   * @param {array} data - (fetched) data array containing trip objects
+   * @returns - data filtered using the passed in parameters
+   */
   const searchedData = (location, sport, data) => {
     if (!location && !sport) {
       return data;
     }
+    // Filter data based on the location and sport parameters from the search form 
     return data.filter((val) => {
       // If given both location and sport, check filter for specific trips
       if (location && sport) {
@@ -45,10 +53,16 @@ const TripList = () => {
     });
   }
   
-  // Filter data based on the user specified filters
+  /**
+   * 
+   * @param {object} params - object containing user specified filters (string) 
+   * @param {array} data - (fetched) data array containing trip objects
+   * @returns - data filtered based on passed in arguments
+   */
   const filterData = (params, data) => {
     let result = data;
-
+    
+    // Filter data based on the user specified filters
     for (const param in params) {
       result = result.filter((val) => {
         if (params[param] !== 'any') {
@@ -77,6 +91,9 @@ const TripList = () => {
   }
 
   /** DATA */
+  /**
+   * These variables contains the fully filtered data and it's length (stored in a separate variable). 
+   */
   let displayData = filterData(filterFormDetails, searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips));
   let dataLength = displayData.length;
 
@@ -123,4 +140,4 @@ const TripList = () => {
   )
 }
 
-export default TripList
+export default TripList;

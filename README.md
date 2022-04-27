@@ -16,7 +16,8 @@ Solstice is a mock online travel booking platform, built using React (via CRA), 
 
 #### Media Assets
   - [unsplash](https://unsplash.com/)
-  - [unDraw Images](https://undraw.co/)
+  - [unDraw](https://undraw.co/)
+  - [Pixabay](https://pixabay.com/)
 
 ## Usage
 To visit the latest live version of the app, go to this [link]().

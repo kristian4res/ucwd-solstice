@@ -19,6 +19,7 @@ import PageLayout from './pages/page-layout';
 import './App.css';
 
 function App() {
+  /** CONTEXTS */
   const { signIn: { currentUser }} = useContext(SignInSignUpContext);
 
   return (

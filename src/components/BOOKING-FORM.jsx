@@ -32,6 +32,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
     setTotalPrice(tripPrice + (10 * (numberOfTravellers - 2)));
   }, [numberOfTravellers])
 
+  
   return (
     <div className='w-full h-full flex flex-col items-center p-6'>
         <div className='flex flex-col justify-center items-start h-full w-full gap-x-4'>

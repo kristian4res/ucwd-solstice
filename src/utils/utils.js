@@ -1,4 +1,9 @@
 /** FUNCTIONS */
+
+/**
+ * @param {string} type - specifies which date to get, i.e. check out dates are calculated one day ahead of checkin
+ * @returns - ISO date string
+ */
 const getTomorrowsDate = (type) => {
     const today = new Date();
     
