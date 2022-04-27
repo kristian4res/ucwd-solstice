@@ -8,7 +8,7 @@ import imgSkiResort1 from '../assets/ski-resort-img-1.jpg';
 
 import PageContainer from '../components/page-container';
 
-import ButtonOutline from '../components/button-outline';
+import ButtonOutline from '../components/buttons/button-outline';
 import SectionTitle from '../components/section-title';
 import CardLink from '../components/cards/card-links';
 import CardArticle from '../components/cards/card-article';

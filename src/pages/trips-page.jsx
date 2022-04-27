@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import PageContainer from '../components/page-container';
-import SearchForm from '../components/search-form';
-import FilterForm from '../components/filter-form';
-import TripList from '../components/trip-list';
-import WithTrip from '../components/with-trip';
-
+import SearchForm from '../components/forms/search-form';
+import FilterForm from '../components/forms/filter-form';
+import TripList from '../components/trip/trip-list';
+import WithTrip from '../components/trip/with-trip';
 
 const Trips = () => {
   /** STATES */

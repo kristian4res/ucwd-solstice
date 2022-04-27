@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as SolsticeLogoLight } from '../assets/solstice-logo-light.svg';
-import { ReactComponent as SolsticeLogoColoured } from '../assets/solstice-logo-coloured.svg';
+import { ReactComponent as SolsticeLogoLight } from '../../assets/solstice-logo-light.svg';
+import { ReactComponent as SolsticeLogoColoured } from '../../assets/solstice-logo-coloured.svg';
 
 const LogoAdaptive = ({ pageLocation, navStatus }) => {
   return (

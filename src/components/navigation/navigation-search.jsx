@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
-import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
+import AppContext from '../../contexts/app-context';
+import SearchFormContext from '../../contexts/search-form-context';
 
-import ButtonSearchResult from './button-search-result';
-import ButtonSolid from './button-solid';
+import ButtonSearchResult from '../buttons/button-search-result';
+import ButtonSolid from '../buttons/button-solid';
 
 import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 

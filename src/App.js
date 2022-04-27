@@ -11,7 +11,7 @@ import Trips from './pages/trips-page';
 import Contacts from './pages/support-page';
 import SignIn from './pages/sign-in-page';
 import SignUp from './pages/sign-up-page';
-import TripPage from './components/trip-page';
+import TripPage from './components/trip/trip-page';
 
 import PageNotFound from './components/page-not-found';
 import PageLayout from './pages/page-layout';

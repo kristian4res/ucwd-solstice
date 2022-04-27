@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { getTomorrowsDate } from '../utils/utils';
+import { getTomorrowsDate } from '../../utils/utils';
 
-import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
+import AppContext from '../../contexts/app-context';
+import SearchFormContext from '../../contexts/search-form-context';
 
-import ButtonSolid from './button-solid';
-import StripeCheckoutButton from './stripe/stripe-checkout-button';
+import ButtonSolid from '../buttons/button-solid';
+import StripeCheckoutButton from '../stripe/stripe-checkout-button';
 
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 

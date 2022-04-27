@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 
-import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
-import FilterFormContext from '../contexts/filter-form-context';
+import AppContext from '../../contexts/app-context';
+import SearchFormContext from '../../contexts/search-form-context';
+import FilterFormContext from '../../contexts/filter-form-context';
 
-import { ReactComponent as NoDataFoundSVG } from '../assets/no-data.svg';
-import CardTrip from './cards/card-trip';
+import { ReactComponent as NoDataFoundSVG } from '../../assets/no-data.svg';
+import CardTrip from '../cards/card-trip';
 
 
 const TripList = () => {

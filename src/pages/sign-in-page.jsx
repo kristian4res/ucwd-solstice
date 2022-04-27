@@ -6,8 +6,8 @@ import AppContext from '../contexts/app-context';
 
 import { Link, useNavigate } from 'react-router-dom';
 import PageContainer from '../components/page-container';
-import ButtonSolid from '../components/button-solid';
-import GeneralFormInput from '../components/general-form-input';
+import ButtonSolid from '../components/buttons/button-solid';
+import GeneralFormInput from '../components/forms/general-form-input';
 import WithSpinner from '../components/with-spinner';
 import StatusMessage from '../components/status-message';
 import SignInProviders from '../components/sign-in-providers';

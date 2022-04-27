@@ -1,9 +1,9 @@
 import React, { useState, useRef, useContext } from 'react';
 
-import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
+import AppContext from '../../contexts/app-context';
+import SearchFormContext from '../../contexts/search-form-context';
 
-import ButtonSearchResult from './button-search-result';
+import ButtonSearchResult from '../buttons/button-search-result';
 
 import { IoMdCloseCircle } from 'react-icons/io';
 

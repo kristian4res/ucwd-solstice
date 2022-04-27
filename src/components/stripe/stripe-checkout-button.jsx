@@ -18,7 +18,6 @@ const StripeCheckoutButton = ({ children, price }) => {
             currency="GBP"
             locale="en"
             billingAddress
-            shippingAddress
             description={`Your total is £${price}`}
             amount={priceForStripe}
             panelLabel="Confirm payment"

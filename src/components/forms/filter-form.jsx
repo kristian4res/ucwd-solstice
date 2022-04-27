@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import FilterFormContext from '../contexts/filter-form-context';
+import FilterFormContext from '../../contexts/filter-form-context';
 
 import { BiSliderAlt } from 'react-icons/bi';
 

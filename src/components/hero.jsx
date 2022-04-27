@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchForm from './search-form';
+import SearchForm from './forms/search-form';
 
 import vidScubadiving1 from '../assets/scuba-diving-vid-1.mp4';
 

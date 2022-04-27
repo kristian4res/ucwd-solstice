@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
+import SignInSignUpContext from '../../contexts/sign-in-sign-up-context';
 
-import BurgerMenuBtn from './burger-menu-btn';
+import BurgerMenuBtn from '../buttons/button-burger-menu';
 import NavigationSearch from './navigation-search';
-import LinkUnderline from './link-underline';
-import LinkSolid from './link-solid';
-import LogoAdaptive from './logo-adaptive';
+import LinkUnderline from '../links/link-underline';
+import LinkSolid from '../links/link-solid';
+import LogoAdaptive from '../logo/logo-adaptive';
 
 
 const Navigation = () => {

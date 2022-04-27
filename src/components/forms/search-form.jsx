@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import AppContext from '../contexts/app-context';
-import SearchFormContext from '../contexts/search-form-context';
+import AppContext from '../../contexts/app-context';
+import SearchFormContext from '../../contexts/search-form-context';
 
-import { getTomorrowsDate } from '../utils/utils';
+import { getTomorrowsDate } from '../../utils/utils';
 
-import ButtonSolid from './button-solid';
+import ButtonSolid from '../buttons/button-solid';
 import SearchFormInput from './search-form-input';
 
 import { HiSearch, HiLocationMarker } from 'react-icons/hi';

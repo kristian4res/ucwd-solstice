@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 
-import AppContext from '../contexts/app-context';
+import AppContext from '../../contexts/app-context';
 
-import PageContainer from './page-container';
-import CardMiniProfile from './cards/card-mini-profile';
+import PageContainer from '../page-container';
+import CardMiniProfile from '../cards/card-mini-profile';
+import BookingForm from '../forms/booking-form';
 
 import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
-import BookingForm from './booking-form';
 
 
 const TripPage = () => {
@@ -17,6 +17,7 @@ const TripPage = () => {
 
   /** HOOKS */
   const urlParams = useParams();
+
   const paramId = urlParams.tripId;
   const tripData = trips.find(trip => trip.tripId === paramId);
 
@@ -37,35 +38,35 @@ const TripPage = () => {
             <div className="image-animation image1">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${tripData.tripImages[0]}`)} 
+                src={require(`../../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image2">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${tripData.tripImages[0]}`)} 
+                src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image3">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${tripData.tripImages[0]}`)} 
+                src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image4">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${tripData.tripImages[0]}`)} 
+                src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image5">
               <img 
                 className='object-fill h-full w-full'
-                src={require(`../assets/${tripData.tripImages[0]}`)} 
+                src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
