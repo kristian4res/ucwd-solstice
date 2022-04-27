@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+
 const LinkSolid= ({ label, route, extraStyles, isBtn, handleClick=undefined }) => {
   return (
     <li className='relative'>

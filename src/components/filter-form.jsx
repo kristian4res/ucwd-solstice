@@ -5,12 +5,19 @@ import FilterFormContext from '../contexts/filter-form-context';
 import { BiSliderAlt } from 'react-icons/bi';
 
 const FilterForm = () => {
+  /** CONTEXTS */
   const { filterFormDetails, updateFilterForm } = useContext(FilterFormContext);
 
+  /** STATES */
   const [season, setSeason] = useState(filterFormDetails['tripSeason']);
   const [continent, setContinent] = useState(filterFormDetails['tripContinent']);
   const [rating, setRating] = useState(filterFormDetails['tripRating']);
 
+
+  /**
+   * This useEffect triggers are re-render of the trip list component,
+   * whenever the filter parameters are changed
+   */
   useEffect(() => {
     const specifiedFilters = {
       tripSeason: season,

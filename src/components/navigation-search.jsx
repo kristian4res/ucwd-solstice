@@ -26,13 +26,17 @@ const NavigationSearch = () => {
     const [inputInvalid, setInputInvalid] = useState(null);
 
     /** FUNCTIONS */
+    /**
+     * This function takes the input hook value and validates it,
+     * whether it passes or fails, the UI is updated to reflect this status.
+     * If it passes, the input value is sent back (to the server*) 
+     * and the user is redirected
+     */
     const submitDetails = () => {
         // Get input values
         const details = {
             location: locationInput
         }
-
-        console.log(details.location, validator.isAlpha(details.location, "en-GB", { ignore: " " }))
 
         // Reject request if no input
         if (!details.location || !validator.isAlpha(details.location, "en-GB", { ignore: " " })) {

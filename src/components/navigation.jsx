@@ -18,19 +18,24 @@ const Navigation = () => {
   // Routing
   const routeLocation = useLocation();
   const isHomepage = routeLocation.pathname === '/';
-
+  // Detecting scroll (Y axis)
+  const [y, setY] = useState(100);
   // Mobile nav
+  const [navClass, setNavClass] = useState('');
   const [isNavOpen, setNavOpen] = useState(false);
+  
+  /** FUNCTIONS */
   /**
-   * Changes class of the navigation to accommodate a smaller screen width 
+   * Toggles hidden class in the navigation element
    */
   const handleMobileNav = () => {
     setNavOpen(prevState => !prevState);
   }
 
-  // Detecting scroll (Y axis)
-  const [y, setY] = useState(100);
-  const [navClass, setNavClass] = useState('');
+  /**
+   * This function will change the appearance of the navigation element,
+   * depending on the screen y coordinate
+   */
   const handleNavBackdrop = useCallback((e) => {
       const window = e.currentTarget;
       if (y > window.scrollY) {
@@ -41,7 +46,11 @@ const Navigation = () => {
     }, [y]
   );
   
-  // Adds listener to scroll event and attaches the callback to change the navigation look
+  /**
+   * Adds a listener to the browser window scroll event and 
+   * attaches the callback to change the navigation look, i.e. handleNavBackdrop,
+   * then removes the listener afterwards to prevent unecessary calls
+   */
   useEffect(() => {
     setY(window.scrollY);
     window.addEventListener("scroll", (e) => handleNavBackdrop(e));

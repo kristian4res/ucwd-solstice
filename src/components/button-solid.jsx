@@ -3,8 +3,9 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
-  // If no click function defined but route is defined, implement useNavigate hook
+  /** HOOKS */
   let navigate = useNavigate();
+  // If no click function defined but route is defined, implement useNavigate hook
   if (!handleClick && route) {
     handleClick = () => {
       if (route) {

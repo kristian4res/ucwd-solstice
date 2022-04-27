@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const LinkUnderline = ({ label, route, textSize, textWeight }) => {
+  /** HOOKS */
   const routeLocation = useLocation();
 
   return (

@@ -27,7 +27,11 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
       'checkOut': ''
   });
 
-
+  /**
+   * This useEffect triggers 
+   * a component rerender to the components 
+   * using the totalPrice
+   */
   useEffect(() => {
     setTotalPrice(tripPrice + (10 * (numberOfTravellers - 2)));
   }, [tripPrice, numberOfTravellers])
@@ -155,4 +159,4 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
   )
 }
 
-export default BookingForm
+export default BookingForm;

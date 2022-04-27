@@ -21,7 +21,6 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
     const [field, setField] = useState(fieldname);
 
     /** FUNCTIONS */
-    
     /**
      * 
      * @param {string} newVal - new value captured from the input element 

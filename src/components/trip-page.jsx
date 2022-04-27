@@ -15,6 +15,7 @@ const TripPage = () => {
   /** CONTEXTS */
   const { devData: { trips }} = useContext(AppContext);
 
+  /** HOOKS */
   const urlParams = useParams();
   const paramId = urlParams.tripId;
   const tripData = trips.find(trip => trip.tripId === paramId);

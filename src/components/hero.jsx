@@ -1,7 +1,9 @@
 import React from 'react';
 
 import SearchForm from './search-form';
+
 import vidScubadiving1 from '../assets/scuba-diving-vid-1.mp4';
+
 
 const Hero = () => {
   return (

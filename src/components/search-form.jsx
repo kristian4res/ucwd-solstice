@@ -33,6 +33,12 @@ const SearchForm = () => {
     });
 
     /** FUNCTIONS */
+    /**
+     * This function aggregates the input hook values and 
+     * validates them, if the data is valid it is sent back (to the server*) 
+     * and the user is redirected to the trips page
+     * otherwise the UI is updated to indicated the failed submission
+     */
     const submitDetails = () => {
         // Get input values
         const details = {
