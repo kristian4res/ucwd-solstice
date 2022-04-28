@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { getTomorrowsDate } from '../../utils/utils';
+import { getTomorrowsDate, isCheckOutValid } from '../../utils/utils';
 
 import AppContext from '../../contexts/app-context';
 import SearchFormContext from '../../contexts/search-form-context';
@@ -12,7 +12,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
   /** CONTEXTS */
   const { toggleModal } = useContext(AppContext);
-  const { searchFormDetails } = useContext(SearchFormContext);
+  const { searchFormDetails, searchInputStyle, setSearchInputStyle } = useContext(SearchFormContext);
 
   /** STATE */
   const [collapseDetails, setCollapseDetails] = useState(true);
@@ -26,6 +26,26 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
       'checkIn': '',
       'checkOut': ''
   });
+
+  /** FUNCTIONS */
+  const checkDate = () => {
+    if (!isCheckOutValid(checkInVal, checkOutVal)) {
+        setSearchInputStyle(prevState => {
+            return {...prevState,
+                checkOut: 'form-input-failure'
+            }
+        });
+        return false;
+    }
+    else {
+        setSearchInputStyle(prevState => {
+            return {...prevState,
+                checkOut: ''
+            }
+        });
+        return true;
+    }
+  }
 
   /**
    * This useEffect triggers 
@@ -50,48 +70,59 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
             onSubmit={(e) => e.preventDefault()}
           >
             <div className="grid grid-cols-2 gap-x-2 w-full">
-              <label className="form-label" htmlFor="trip-check-in">Check In</label>
-              <label className="form-label" htmlFor="trip-check-out">Check Out</label>
-              <input 
-                className={`form-input text-black ${dateInputFocus['checkIn']}`} 
-                name="trip-check-in"
-                type="date"
-                value={checkInVal}
-                onChange={(e) => setCheckInVal(e.target.value)}
-                min={getTomorrowsDate()}
-                onFocus={() => {
-                    setDateInputFocus(prevState => {
-                        return {...prevState, checkIn: 'z-10'}
-                    });
-                    toggleModal(true);
-                }}
-                onBlur={() => {
-                    setDateInputFocus(prevState => {
-                        return {...prevState, checkIn: ''}
-                    });
-                    toggleModal(false);
-                }} 
-               />
-              <input 
-                className={`form-input text-black ${dateInputFocus['checkOut']}`} 
-                name="trip-check-out"
-                type="date"
-                value={checkOutVal}
-                onChange={(e) => setCheckOutVal(e.target.value)}
-                min={getTomorrowsDate('CheckOut')}
-                onFocus={() => {
-                    setDateInputFocus(prevState => {
-                        return {...prevState, checkOut: 'z-10'}
-                    });
-                    toggleModal(true);
-                }}
-                onBlur={() => {
-                    setDateInputFocus(prevState => {
-                        return {...prevState, checkOut: ''}
-                    });
-                    toggleModal(false);
-                }} 
-              />
+              <div className='flex flex-col justify-start'>
+                <label className="form-label" htmlFor="trip-check-in">Check In</label>
+                <input 
+                  className={`form-input text-black ${dateInputFocus['checkIn']}`} 
+                  name="trip-check-in"
+                  type="date"
+                  value={checkInVal}
+                  onChange={(e) => setCheckInVal(e.target.value)}
+                  min={getTomorrowsDate()}
+                  onFocus={() => {
+                      setDateInputFocus(prevState => {
+                          return {...prevState, checkIn: 'z-10'}
+                      });
+                      toggleModal(true);
+                  }}
+                  onBlur={() => {
+                      setDateInputFocus(prevState => {
+                          return {...prevState, checkIn: ''}
+                      });
+                      toggleModal(false);
+                  }} 
+                />
+              </div>
+              <div className='flex flex-col justify-start'>
+                <label className="form-label" htmlFor="trip-check-out">Check Out</label>
+                <input 
+                  className={`${searchInputStyle['checkOut']} form-input text-black ${dateInputFocus['checkOut']}`} 
+                  name="trip-check-out"
+                  type="date"
+                  value={checkOutVal}
+                  onChange={(e) => setCheckOutVal(e.target.value)}
+                  min={getTomorrowsDate('CheckOut')}
+                  onFocus={() => {
+                      setDateInputFocus(prevState => {
+                          return {...prevState, checkOut: 'z-10'}
+                      });
+                      toggleModal(true);
+                  }}
+                  onBlur={() => {
+                      setDateInputFocus(prevState => {
+                          return {...prevState, checkOut: ''}
+                      });
+                      toggleModal(false);
+                  }} 
+                />
+                <div className={`${searchInputStyle['checkOut'] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
+                    <span className='text-[0.7rem] text-failure'>
+                        {   
+                            `Please ensure the checkout date is 1 day ahead of your check-in date.`
+                        }
+                    </span>
+                </div>
+              </div>
             </div>
             <div className="flex flex-col">
               <label className="form-label" htmlFor="trip-travellers">
@@ -146,12 +177,15 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
               </div>
             </div>
             <div className="flex flex-col mt-4">
-              <StripeCheckoutButton price={totalPrice}>
+              <StripeCheckoutButton 
+                price={totalPrice}
+              >
                 <ButtonSolid
                   btnStyles={'bg-success justify-center'}
                   btnTitle={'Continue'}
+                  handleClick={checkDate}
                 />
-              </StripeCheckoutButton>
+              </StripeCheckoutButton>                               
             </div>
           </form>
         </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { isCheckOutValid } from '../../utils/utils';
 
 import AppContext from '../../contexts/app-context';
 import SearchFormContext from '../../contexts/search-form-context';
@@ -14,7 +15,7 @@ import { HiSearch, HiLocationMarker } from 'react-icons/hi';
 const SearchForm = () => {
     /** CONTEXTS */
     const { toggleModal, devData: { trips, sports } } = useContext(AppContext);
-    const { searchFormDetails, submitSearchForm, setSearchInputStyle } = useContext(SearchFormContext);
+    const { searchFormDetails, submitSearchForm, searchInputStyle, setSearchInputStyle } = useContext(SearchFormContext);
 
     /** STATES */
     // Routing
@@ -59,6 +60,18 @@ const SearchForm = () => {
             });
             return false;
         }
+
+        // Reject request if check out is invalid
+        if (!isCheckOutValid(details.checkIn, details.checkOut)) {
+             // Update input style
+             setSearchInputStyle(prevState => {
+                return {...prevState,
+                    checkOut: 'form-input-failure',
+                }
+            });
+            return false;
+        }
+
 
         // Update context
         submitSearchForm(details);
@@ -117,7 +130,7 @@ const SearchForm = () => {
             </div>
             <div className='form-group w-full'>
                 <label htmlFor="search-form-check-out" className='form-label'>Check Out</label>
-                <input className={`form-input ${dateInputFocus['checkOut']}`} 
+                <input className={`${searchInputStyle['checkOut']} form-input ${dateInputFocus['checkOut']}`} 
                     name='search-form-check-out'
                     type="date"
                     value={checkOutVal}
@@ -136,6 +149,13 @@ const SearchForm = () => {
                         toggleModal(false);
                     }} 
                 />
+                <div className={`${searchInputStyle['checkOut'] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
+                    <span className='text-[0.7rem] text-failure'>
+                        {   
+                            `Please ensure the checkout date is 1 day ahead of your check-in date.`
+                        }
+                    </span>
+                </div>
             </div>
             <div className='flex justify-center text-white px-2 py-2 h-full w-full col-span-full
             md:items-center md:justify-center xl:col-span-1'>

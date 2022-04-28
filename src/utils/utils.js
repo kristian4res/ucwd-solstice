@@ -15,8 +15,16 @@ const getTomorrowsDate = (type) => {
     }
 
     return today.toISOString().split('T')[0];
-}
+};
+
+const isCheckOutValid = (checkIn, checkOut) => {
+    if (Date.parse(checkOut) > Date.parse(checkIn)) {
+        return true;
+    }
+    return false;
+};
 
 module.exports = {
-    getTomorrowsDate
+    getTomorrowsDate,
+    isCheckOutValid
 }

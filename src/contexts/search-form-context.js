@@ -18,7 +18,6 @@ export function SearchFormProvider({ children }) {
     const [searchInputStyle, setSearchInputStyle] = useState({
         location: '',
         sport: '',
-        checkIn: '',
         checkOut: ''
     });
 
