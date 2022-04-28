@@ -13,7 +13,7 @@ const Hero = () => {
               <source src={vidScubadiving1} type="video/mp4" />
             </video>
         </div>
-        <div className="flex flex-col items-center w-3/5 md:items-start">
+        <hgroup className="flex flex-col items-center w-3/5 md:items-start">
             <div className='flex flex-col'>
               <h1 className="my-0 text-3xl font-bold uppercase text-white inline-block md:text-4xl md:my-4 lg:text-6xl">
                 Solstice
@@ -24,7 +24,7 @@ const Hero = () => {
               </h2>
             </div>
             <SearchForm />
-        </div>
+        </hgroup>
     </header>
   )
 }
