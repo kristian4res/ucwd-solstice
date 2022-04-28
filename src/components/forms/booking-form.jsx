@@ -28,6 +28,11 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
   });
 
   /** FUNCTIONS */
+  /**
+   * Checks if the check out date is ahead of the check in date
+   * If invalid, it updates the UI to show an error message.
+   * @returns - false if checkout date is invalid, otherwise true
+   */
   const checkDate = () => {
     if (!isCheckOutValid(checkInVal, checkOutVal)) {
         setSearchInputStyle(prevState => {

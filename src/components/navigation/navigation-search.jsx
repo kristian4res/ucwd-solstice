@@ -56,7 +56,9 @@ const NavigationSearch = () => {
         submitSearchForm(details);
     }
     
-    // Timeout to delay the function execution (i.e. give time for other functions to execute)
+    /** 
+     * Timeout to delay the function execution (i.e. give time for other functions to execute)
+     * */ 
     const onBlurHandler = () => {
         return setTimeout(() => setIsFocused(false), 100);
     }
