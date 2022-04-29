@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 import AppContext from '../contexts/app-context';
 
-import { Link, useNavigate } from 'react-router-dom';
 import PageContainer from '../components/page-container';
 import ButtonSolid from '../components/buttons/button-solid';
 import GeneralFormInput from '../components/forms/general-form-input';
@@ -229,7 +229,7 @@ const SignUpPage = () => {
             </div>
             <div className="form-group">
               <GeneralFormInput 
-                type={'text'} 
+                type={'email'} 
                 label='Email address' 
                 name={'sign-up-email'} 
                 state={[emailAddress, setEmailAddress]}

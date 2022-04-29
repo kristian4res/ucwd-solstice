@@ -1,24 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-const GeneralFormInput = ({ type, label, name, state, errMessage }) => {
+
+const GeneralFormTextarea = ({ formId, label, name, size, state, errMessage }) => {
     
     return (  
         <>
             <label className='form-label' htmlFor={name}>
                 {label}
             </label>
-            {
-                name === 'sign-up-password' 
-                && (<div className='px-2 mb-2 text-left text-[.7rem] font-normal text-custom-gray-dark'>
-                    Must be at least 8 characters and 
-                    consists of at least one special character, 
-                    one number, one lowercase letter and one uppercase letter.
-                </div>)
-            }
-            <input className={`text-black form-input-border ${state[0].isInvalid ? 'border-failure' : 'border-custom-gray'}`} 
-                type={type} 
+            <textarea className={`text-black form-input-border ${state[0].isInvalid ? 'border-failure' : 'border-custom-gray'}`} 
+                form={formId}
                 name={name} 
-                placeholder={label} 
+                cols={size[0] || 20}
+                rows={size[1] || 22}
+                placeholder={'Enter your ' + label} 
                 onFocus={(e) => {
                     e.target.style = 'border-none';
                 }}
@@ -41,4 +36,4 @@ const GeneralFormInput = ({ type, label, name, state, errMessage }) => {
     )
 }
 
-export default GeneralFormInput
+export default GeneralFormTextarea;

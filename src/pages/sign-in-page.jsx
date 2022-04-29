@@ -121,7 +121,7 @@ const SignInPage = () => {
             </div>
             <div className="form-group">
               <GeneralFormInput 
-                type={'text'} 
+                type={'email'} 
                 label='Email address' 
                 name={'sign-in-email'} 
                 state={[emailAddress, setEmailAddress]}

@@ -2,7 +2,7 @@
 Solstice is a mock online travel booking platform, built using React (via CRA), React-Router, TailwindCSS and Firebase.
 
 ### Built With
-  - [React](https://reactjs.org/)
+  - [React (v17.0.2)](https://reactjs.org/)
   - [React Router (v6)](https://v5.reactrouter.com/web/guides/quick-start)
   - [Tailwind CSS](https://tailwindcss.com/)
   - [Firebase](https://firebase.google.com/)
