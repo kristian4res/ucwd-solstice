@@ -127,4 +127,8 @@
     .btn-underline-active {
         @apply text-primary;
     }
+
+    .link-style {
+        @apply text-primary hover:brightness-95 active:brightness-90; 
+    }
 }

@@ -55,6 +55,11 @@ const FAQ = () => {
                     })
                 }
             </ul>
+            <div className="flex justify-center mt-6">
+                <span className='text-center text-sm'>
+                    Can't find an answer? <a title='Contacts' className='link-style' href='#contact-container'>Contact Us</a>
+                </span>
+            </div>
         </div>
     )
 }

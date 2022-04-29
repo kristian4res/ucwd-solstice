@@ -291,7 +291,7 @@ const SignUpPage = () => {
             </div>
           </form>
           <div className="flex justify-center items-center">
-            <span className='text-center text-sm'>Already have an account? <Link title='Sign up' className='text-primary' to='/'>Sign in</Link>
+            <span className='text-center text-sm'>Already have an account? <Link title='Sign up' className='link-style' to='/signin'>Sign in</Link>
             </span>
           </div>
           <div className="flex flex-col items-center gap-4 mt-6">

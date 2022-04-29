@@ -21,14 +21,10 @@ const ContactsPage = () => {
           <div className='custom-bg-gradient w-full h-2 mb-4 rounded-sm' />
         </h1>
         <FAQ />
-        {/* <div className='flex gap-8 flex-col justify-start items-center 
-        md:flex-row md:justify-center md:items-start'>
-          <FAQ />
-          <ContactForm />
-        </div> */}
       </section>
       <PageArticle />
-      <section className={`container flex justify-center items-start pt-10 
+      <section id='contact-container'
+        className={`container flex justify-center items-start pt-10 
         min-w-full relative ${currentUser && 'min-h-screen'}
       `}>
         {
