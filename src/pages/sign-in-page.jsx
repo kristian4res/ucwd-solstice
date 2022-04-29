@@ -4,7 +4,7 @@ import validator from 'validator';
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 import AppContext from '../contexts/app-context';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PageContainer from '../components/page-container';
 import ButtonSolid from '../components/buttons/button-solid';
 import GeneralFormInput from '../components/forms/general-form-input';
@@ -15,14 +15,14 @@ import SignInProviders from '../components/sign-in-providers';
 
 const SignInPage = () => {
   /** CONTEXTS */
-  const { signIn: { handleSignInDetails, processSignIn, currentUser } } = useContext(SignInSignUpContext);
+  const { signIn: { handleSignInDetails } } = useContext(SignInSignUpContext);
   const { showModal, toggleModal } = useContext(AppContext);
 
   /** LOADERS */
   const StatusMessageWithSpinner = WithSpinner(StatusMessage);
 
   /** STATES */
-  const redirectToHome = useNavigate();
+  const [processSignIn, setProcessSignIn] = useState(false);
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -33,11 +33,10 @@ const SignInPage = () => {
   });
 
   /** FUNCTIONS */
-  const clearInputs = () => {
-    setEmailAddress({value: '', isInvalid: false});
-    setPassword({value: '', isInvalid: false});
-  }
-
+  /**
+   * This function takes the values from the input hooks 
+   * and validates them using the validator package
+   */
   const validateInputs = async () => {
     let allInputsValid = true;
 
@@ -78,6 +77,13 @@ const SignInPage = () => {
     return allInputsValid;
   };
 
+  /**
+   * 
+   * @param {e} e - captured event, i.e. form submit 
+   * This functions will call the validateInputs function, 
+   * if it returns false then do not send data back (to the server*)
+   * otherwise send the data 
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -89,13 +95,16 @@ const SignInPage = () => {
         password: password.value
       };
 
-      // Send sign in details
-      const results = await handleSignInDetails(signInDetails);
-      
-       // Clear inputs, UI and redirect to homepage
-       if (results) {
-        toggleModal(false);
-      }
+      // Set loading screen
+      toggleModal(true);
+      setProcessSignIn(true);
+
+      // Clear inputs, UI and redirect to homepage
+      setTimeout(async () => {
+        setProcessSignIn(false);
+        // Send sign in details
+        await handleSignInDetails(signInDetails);
+      }, 3000);
     }
     else {
       return false;
@@ -110,7 +119,7 @@ const SignInPage = () => {
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processSignIn} status={currentUser} toggleModal={toggleModal} />
+          <StatusMessageWithSpinner isLoading={processSignIn} status={!processSignIn} toggleModal={toggleModal} />
         </div>
         <div className="flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg">
           <form className='flex flex-col max-w-[500px] gap-2 rounded-lg'
