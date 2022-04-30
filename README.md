@@ -28,7 +28,7 @@ Solstice is a mock online travel booking platform, built using React (via CRA), 
 - [Travel-tips-1](https://unsplash.com/@anniespratt)
 
 ## Usage
-To visit the latest live version of the app, go to this [link]().
+To visit the latest live version of the app, go to this [link](https://ucwd-solstice.netlify.app/).
 
 ## Acknowledgements
   - [Detecting Page Scroll Direction](https://stackoverflow.com/questions/62497110/detect-scroll-direction-in-react-js)
