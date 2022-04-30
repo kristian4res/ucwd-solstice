@@ -49,10 +49,8 @@ export function signOutUser() {
 export async function googleSignIn() {
    return signInWithPopup(auth, provider)
     .then((result) => {
-        alert('Successfully signed in with Google');
         return true;
     }).catch((error) => {
-        alert('Something unexpected happened while signing in using Google');
         return false;
     }); 
 }  

@@ -40,11 +40,6 @@ export function SignInSignUpProvider({ children }) {
         catch(err) {
             alert('Unexpected error occured whilst signing up. Please try again.');
         }
-
-        // Delay to show progress
-        setTimeout(() => {
-            setProcessSignUp(false);
-        }, 1000);
     };
 
     /**
@@ -80,13 +75,18 @@ export function SignInSignUpProvider({ children }) {
      */
     const signInUsingGoogle = async () => {
         try {
-            await googleSignIn();
-            navigateTo('/');
-            return true;
+            const result = await googleSignIn();
+            if (result) {
+                navigateTo('/');
+            }
         }
         catch(err) {
             alert('Unexpected error occured whilst signing in with Google. Please try again.');
         }
+        // Delay to show progress
+        setTimeout(() => {
+            setProcessSignIn(false);
+        }, 1000)
     }
 
     /**

@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 const SignInProviders = () => {
     /** CONTEXTS */
-    const { signIn: { signInUsingGoogle } } = useContext(SignInSignUpContext);
+    const { signIn: { signInUsingGoogle, setProcessSignIn } } = useContext(SignInSignUpContext);
 
 
     return (
