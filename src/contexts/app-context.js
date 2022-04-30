@@ -17,6 +17,7 @@ export function AppProvider({ children }) {
     const routeLocation = useLocation();
     const [showModal, setShowModal] = useState(null);
 
+    /** FUNCTION */
     /**
      * This function toggles a value that 
      * causes the modal to show or disappear

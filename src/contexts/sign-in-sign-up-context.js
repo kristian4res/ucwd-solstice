@@ -15,22 +15,11 @@ export function SignInSignUpProvider({ children }) {
     /** HOOKS & STATES */
     const navigateTo = useNavigate();
     const currentUser = useAuth();
+    // Hooks for the loading screens
     const [processSignUp, setProcessSignUp] = useState(false);
     const [processSignIn, setProcessSignIn] = useState(false);
 
     /** FUNCTIONS */
-    // const encryptPassword = async (password) => {
-    //     try {
-    //         const saltRounds = 10;
-    //         const hash = await bcrypt.hash(password, saltRounds);
-
-    //         return hash;
-    //     }
-    //     catch(err) {
-    //         alert('Something unexpected occured while trying to sign up.');
-    //     }
-    // }
-
     /**
      *
      * This function takes in the sign up details and 
@@ -41,10 +30,6 @@ export function SignInSignUpProvider({ children }) {
      * @param {object} signUpDetails - user inputs from sign up form 
      */
     const handleSignUpDetails = async (signUpDetails) => {
-        // Encrypt password
-        // const hashedPassword = encryptPassword(signUpDetails.password);
-        // signUpDetails = {...signUpDetails, password: hashedPassword}
-
         // Send out details to Firebase
         try {
             const result = await signUpUsingEmail(signUpDetails);
@@ -72,9 +57,6 @@ export function SignInSignUpProvider({ children }) {
      * @param {object} signInDetails - user inputs from sign in form 
      */
     const handleSignInDetails = async (signInDetails) => {
-        // Check password
-
-
         // Send out details to Firebase
         try {
             const result = await signInUserUsingEmail(signInDetails);
@@ -92,6 +74,10 @@ export function SignInSignUpProvider({ children }) {
         }, 1000)
     };
 
+    /**
+     * This function calls a Firebase function 
+     * that will open a Google Sign In window
+     */
     const signInUsingGoogle = async () => {
         try {
             await googleSignIn();
@@ -103,6 +89,12 @@ export function SignInSignUpProvider({ children }) {
         }
     }
 
+    /**
+     * This function will call a Firebase function 
+     * that will clear the Google Auth object, which
+     * effectively logs the user out 
+     * and makes certain website features unavailable.
+     */
     const signOutCurrentUser= async () => {
         try {
             await signOutUser();
