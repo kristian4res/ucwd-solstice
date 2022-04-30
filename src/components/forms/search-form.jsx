@@ -164,7 +164,7 @@ const SearchForm = () => {
                     btnStyles={'flex flex-row-reverse justify-center items-center bg-primary'}
                     btnTitle='Search'
                     icon={
-                        <HiSearch className='h-6 w-6 lg:h-8 lg:w-8' />
+                        <HiSearch className='h-6 w-6 lg:h-8 lg:w-8' aria-hidden={true} />
                     }
                     handleClick={submitDetails}
                 />

@@ -20,7 +20,9 @@ const ButtonOutline = ({ btnTitle, icon, route }) => {
             xl:text-lg'>
             {btnTitle}
           </span>
-          {icon}
+          <span aria-hidden={true}>
+            {icon}
+          </span>
         </button>
     </div>
   )

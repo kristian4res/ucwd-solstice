@@ -9,8 +9,8 @@ const LogoAdaptive = ({ pageLocation, navStatus }) => {
     <Link className="flex justify-center items-center text-lg font-bold md:text-3xl" to='/'>
       {
         navStatus.length > 0 || pageLocation !== '/' ?
-        <SolsticeLogoColoured />
-        : <SolsticeLogoLight />
+        <SolsticeLogoColoured aria-hidden={true} />
+        : <SolsticeLogoLight aria-hidden={true} />
       }
       <div className={`flex flex-col items-center justify-center ml-1 h-full text-center`}>
         solstice

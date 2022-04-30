@@ -158,8 +158,8 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
                 <span className='text-left'>Price details</span>
                 {
                   collapseDetails 
-                  ? <IoIosArrowDown className='h-6 w-6' />
-                  : <IoIosArrowUp className='h-6 w-6' />
+                  ? <IoIosArrowDown className='h-6 w-6' aria-hidden={true} />
+                  : <IoIosArrowUp className='h-6 w-6' aria-hidden={true} />
                 }
               </button>
               <div className={`flex flex-col gap-1 ${collapseDetails && 'h-0 overflow-hidden'}`}>

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import PageContainer from '../components/page-container';
+import PageContainer from '../components/general/page-container';
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 
 import FAQ from '../components/support/faq';
-import PageArticle from '../components/page-article';
+import PageArticle from '../components/general/page-article';
 import ContactForm from '../components/forms/contact-form';
-import SignInPrompt from '../components/sign-in-prompt';
+import SignInPrompt from '../components/general/sign-in-prompt';
 
 
 const ContactsPage = () => {

@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 
 import Navigation from '../components/navigation/navigation';
-import Footer from '../components/footer';
-import Modal from '../components/modal';
+import Footer from '../components/general/footer';
+import Modal from '../components/general/modal';
 
 function PageLayout() {
 

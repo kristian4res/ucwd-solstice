@@ -5,8 +5,8 @@ import AppContext from '../../contexts/app-context';
 
 import ButtonSolid from '../buttons/button-solid';
 import GeneralFormInput from '../forms/general-form-input';
-import WithSpinner from '../with-spinner';
-import StatusMessage from '../status-message';
+import WithSpinner from '../general/with-spinner';
+import StatusMessage from '../general/status-message';
 
 import { MdEmail } from 'react-icons/md';
 import { BiMailSend } from 'react-icons/bi';

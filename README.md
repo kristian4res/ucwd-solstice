@@ -11,13 +11,20 @@ Solstice is a mock online travel booking platform, built using React (via CRA), 
   - [Create React App](https://create-react-app.dev/docs/getting-started/)
   - [React Icons](https://react-icons.github.io/react-icons)
   - [Validator](https://www.npmjs.com/package/validator)
-  - [UniqId](https://www.npmjs.com/package/uniqid)
   - [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout)
 
 #### Media Assets
   - [unsplash](https://unsplash.com/)
   - [unDraw](https://undraw.co/)
   - [Pixabay](https://pixabay.com/)
+  
+- [Snowboarding-img-1](https://unsplash.com/@phodskins)
+- [Kayaking-img-1](https://unsplash.com/@raouldp)
+- [Scuba-diving-vid-1](https://pixabay.com/videos/scuba-diving-diving-sport-water-699/)
+- [Ski-resort-img-1](https://unsplash.com/@joanoger)
+- [Ski-resort-img-2](https://unsplash.com/@alainwong)
+- [Surfing-img-1](https://unsplash.com/@arstyy)
+- [Travel-tips-1](https://unsplash.com/@anniespratt)
 
 ## Usage
 To visit the latest live version of the app, go to this [link]().

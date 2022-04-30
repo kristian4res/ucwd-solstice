@@ -27,9 +27,9 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
           xl:text-lg'>
             {btnTitle}
           </span>
-          <i>
+          <span aria-hidden={true}>
             {icon}
-          </i>   
+          </span>   
         </button>
     </div>
   )

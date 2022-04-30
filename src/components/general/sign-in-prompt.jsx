@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LinkSolid from './links/link-solid';
+import LinkSolid from '../links/link-solid';
 
 const SignInPrompt = ({ title, subtitle }) => {
   return (

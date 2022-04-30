@@ -1,19 +1,19 @@
 import React from 'react';
 
-import imgSnowboarding1 from '../assets/snowboarding-md-1.jpg';
-import imgKayaking1 from '../assets/kayaking-md-1.jpg';
-import imgSurfing1 from '../assets/surfing-md-1.jpg';
-import imgTravelArticle from '../assets/travel-tips-md-1.jpg';
+import imgSnowboarding1 from '../assets/snowboarding-img-1.jpg';
+import imgKayaking1 from '../assets/kayaking-img-1.jpg';
+import imgSurfing1 from '../assets/surfing-img-1.jpg';
+import imgTravelArticle from '../assets/travel-tips-img-1.jpg';
 import imgSkiResort1 from '../assets/ski-resort-img-1.jpg';
 
-import PageContainer from '../components/page-container';
+import PageContainer from '../components/general/page-container';
 
 import ButtonOutline from '../components/buttons/button-outline';
-import SectionTitle from '../components/section-title';
+import SectionTitle from '../components/general/section-title';
 import CardLink from '../components/cards/card-links';
 import CardArticle from '../components/cards/card-article';
-import PageArticle from '../components/page-article';
-import Hero from '../components/hero';
+import PageArticle from '../components/general/page-article';
+import Hero from '../components/general/hero';
 
 import { HiChevronDoubleRight } from 'react-icons/hi'
 

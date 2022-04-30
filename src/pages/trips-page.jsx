@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import PageContainer from '../components/page-container';
+import PageContainer from '../components/general/page-container';
 import SearchForm from '../components/forms/search-form';
 import FilterForm from '../components/forms/filter-form';
 import TripList from '../components/trip/trip-list';

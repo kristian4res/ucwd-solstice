@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Logo from './logo/logo';
+import Logo from '../logo/logo';
 
-import LinkUnderline from './links/link-underline';
+import LinkUnderline from '../links/link-underline';
 
 import { FaLinkedin, FaGithub, FaFigma } from 'react-icons/fa';
 

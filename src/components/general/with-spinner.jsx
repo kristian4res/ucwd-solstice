@@ -8,7 +8,7 @@ const WithSpinner = (WrappedComponent) => {
     return isLoading 
         ? (
           <div className='flex justify-center items-center gap-2'>
-            <CgSpinnerTwo className='h-6 w-6 animate-spin text-custom-dark' />
+            <CgSpinnerTwo className='h-6 w-6 animate-spin text-custom-dark' aria-hidden={true} />
             <span className='text-bold text-lg'>
                 Processing...
             </span>

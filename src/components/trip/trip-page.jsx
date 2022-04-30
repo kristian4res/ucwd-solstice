@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 import AppContext from '../../contexts/app-context';
 import SignInSignUpContext from '../../contexts/sign-in-sign-up-context';
 
-import PageContainer from '../page-container';
+import PageContainer from '../general/page-container';
 import CardMiniProfile from '../cards/card-mini-profile';
 import BookingForm from '../forms/booking-form';
+import SignInPrompt from '../general/sign-in-prompt';
 
 import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
-import SignInPrompt from '../sign-in-prompt';
 
 
 const TripPage = () => {
@@ -118,11 +118,16 @@ const TripPage = () => {
               </p>
             </div>
             <div className='flex flex-col justify-start gap-2 mt-4'>
-              <h1 className='text-base font-semibold capitalize
-                  lg:text-lg
-              '>
-                  {tripData.tripAccommodation.name}
-              </h1>
+              <hgroup>
+                <h1 className='text-base font-semibold capitalize
+                    lg:text-lg
+                '>
+                    {tripData.tripAccommodation.name}
+                </h1>
+                <h2 className='text-base font-light capitalize'>
+                  {tripData.tripAccommodation.generalDescription}
+                </h2>
+              </hgroup>
               <p className='text-sm 
                 lg:text-base
               '>

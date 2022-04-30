@@ -1,5 +1,5 @@
 import React from 'react'
-import PageContainer from './page-container';
+import PageContainer from '../components/general/page-container';
 
 import { ReactComponent as PageNotFoundSVG} from '../assets/page-not-found.svg';
 

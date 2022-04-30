@@ -34,7 +34,7 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
                     btnStyles={'bg-white'}
                     btnTitle={'Learn more'} 
                     icon={
-                      <HiChevronRight className='h-6 w-6 lg:h-8 lg:w-8' />
+                      <HiChevronRight className='h-6 w-6 lg:h-8 lg:w-8' aria-hidden={true} />
                     } 
                   />
                 </div>

@@ -13,7 +13,7 @@ import SignIn from './pages/sign-in-page';
 import SignUp from './pages/sign-up-page';
 import TripPage from './components/trip/trip-page';
 
-import PageNotFound from './components/page-not-found';
+import PageNotFound from './pages/page-not-found';
 import PageLayout from './pages/page-layout';
 
 import './App.css';

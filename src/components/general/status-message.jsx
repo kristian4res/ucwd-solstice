@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ButtonSolid from './buttons/button-solid';
+import ButtonSolid from '../buttons/button-solid';
 
 const StatusMessage = ({ status, toggleModal }) => {
     return (

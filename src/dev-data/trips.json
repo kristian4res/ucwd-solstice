@@ -32,7 +32,7 @@
             "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
             "generalDescription": "Best hotel in Hawaii"
         },
-        "tripImages": ["surfing-md-1.jpg"],
+        "tripImages": ["surfing-img-1.jpg"],
         "tripGuides": [
             {
                 "guideId": "g4",
@@ -79,7 +79,7 @@
             "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
             "generalDescription": "Best hotel in Japan"
         },
-        "tripImages": ["snowboarding-md-1.jpg"],
+        "tripImages": ["snowboarding-img-1.jpg"],
         "tripGuides": [
             {
                 "guideId": "g5",
@@ -126,7 +126,7 @@
             "amenitiesList": ["Pool", "Free Wifi", "Spa", "Restaurant", "Air Conditioning", "Gym"],
             "generalDescription": "Best hotel in New Zealand"
         },
-        "tripImages": ["kayaking-md-1.jpg"],
+        "tripImages": ["kayaking-img-1.jpg"],
         "tripGuides": [
             {
                 "guideId": "g1",

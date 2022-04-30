@@ -1,6 +1,6 @@
 import React from 'react';
 
-import imgSurfing1 from '../assets/surfing-md-1.jpg';
+import imgSurfing1 from '../../assets/surfing-img-1.jpg';
 
 const PageArticle = ({ articleTitle, articleText, imgUrl }) => {
   return (

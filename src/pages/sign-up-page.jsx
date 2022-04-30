@@ -5,12 +5,12 @@ import validator from 'validator';
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 import AppContext from '../contexts/app-context';
 
-import PageContainer from '../components/page-container';
+import PageContainer from '../components/general/page-container';
 import ButtonSolid from '../components/buttons/button-solid';
 import GeneralFormInput from '../components/forms/general-form-input';
-import WithSpinner from '../components/with-spinner';
-import StatusMessage from '../components/status-message';
-import SignInProviders from '../components/sign-in-providers';
+import WithSpinner from '../components/general/with-spinner';
+import StatusMessage from '../components/general/status-message';
+import SignInProviders from '../components/general/sign-in-providers';
 
 
 const SignUpPage = () => {

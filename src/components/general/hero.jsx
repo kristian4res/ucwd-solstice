@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SearchForm from './forms/search-form';
+import SearchForm from '../forms/search-form';
 
-import vidScubadiving1 from '../assets/scuba-diving-vid-1.mp4';
+import scubaDivingVideo from '../../assets/scuba-diving-vid-1.mp4';
 
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
     <header id="hero-section" className='relative flex flex-col justify-center items-center w-full h-[64vh] pt-24 md:pt-0'>
         <div id="bg-video" className='h-full w-full absolute top-0 left-0 -z-10 shadow-lg'>
             <video className='h-full w-full object-cover' autoPlay muted loop>
-              <source src={vidScubadiving1} type="video/mp4" />
+              <source src={scubaDivingVideo} type="video/mp4" />
             </video>
         </div>
         <hgroup className="flex flex-col items-center w-3/5 md:items-start">

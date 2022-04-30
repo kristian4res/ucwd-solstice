@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
+import SignInSignUpContext from '../../contexts/sign-in-sign-up-context';
 
 import { FcGoogle } from 'react-icons/fc';
 
@@ -15,7 +15,7 @@ const SignInProviders = () => {
         <button title='Google sign in' onClick={() => {
            signInUsingGoogle();
         }}>
-            <FcGoogle className='h-6 w-6' />
+            <FcGoogle className='h-6 w-6' aria-hidden={true} />
         </button>
     </div>
   )
