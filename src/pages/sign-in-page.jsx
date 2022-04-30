@@ -15,14 +15,14 @@ import SignInProviders from '../components/sign-in-providers';
 
 const SignInPage = () => {
   /** CONTEXTS */
-  const { signIn: { handleSignInDetails } } = useContext(SignInSignUpContext);
+  const { signIn: { handleSignInDetails, currentUser, processSignIn, setProcessSignIn } } = useContext(SignInSignUpContext);
   const { showModal, toggleModal } = useContext(AppContext);
 
   /** LOADERS */
   const StatusMessageWithSpinner = WithSpinner(StatusMessage);
 
   /** STATES */
-  const [processSignIn, setProcessSignIn] = useState(false);
+  // const [processSignIn, setProcessSignIn] = useState(false);
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -99,9 +99,8 @@ const SignInPage = () => {
       toggleModal(true);
       setProcessSignIn(true);
 
-      // Clear inputs, UI and redirect to homepage
+      // Set delay when sending back details
       setTimeout(async () => {
-        setProcessSignIn(false);
         // Send sign in details
         await handleSignInDetails(signInDetails);
       }, 3000);
@@ -119,7 +118,7 @@ const SignInPage = () => {
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processSignIn} status={!processSignIn} toggleModal={toggleModal} />
+          <StatusMessageWithSpinner isLoading={processSignIn} status={currentUser} toggleModal={toggleModal} />
         </div>
         <div className="flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg">
           <form className='flex flex-col max-w-[500px] gap-2 rounded-lg'

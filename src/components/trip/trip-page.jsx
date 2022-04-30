@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
 
 import AppContext from '../../contexts/app-context';
+import SignInSignUpContext from '../../contexts/sign-in-sign-up-context';
 
 import PageContainer from '../page-container';
 import CardMiniProfile from '../cards/card-mini-profile';
@@ -9,11 +10,13 @@ import BookingForm from '../forms/booking-form';
 
 import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
+import SignInPrompt from '../sign-in-prompt';
 
 
 const TripPage = () => {
   /** CONTEXTS */
   const { devData: { trips }} = useContext(AppContext);
+  const { signIn: { currentUser } } = useContext(SignInSignUpContext);
 
   /** HOOKS */
   const urlParams = useParams();
@@ -174,17 +177,24 @@ const TripPage = () => {
               
             </div>
           </div>
-          <div className="flex flex-col justify-center items-center 
-            w-full h-full rounded-md shadow-lg
-           bg-main text-white
-            lg:h-fit
-          ">
-            <BookingForm 
-              tripPrice={tripData.tripBasePrice} 
-              tripTaxes={tripData.tripTaxesFees[0]} 
-              tripOtherFees={tripData.tripTaxesFees[1]} 
-            />
-          </div>
+          {
+            currentUser 
+            ? <div className="flex flex-col justify-center items-center 
+                w-full h-full rounded-md shadow-lg
+              bg-main text-white
+                lg:h-fit
+              ">
+                <BookingForm 
+                  tripPrice={tripData.tripBasePrice} 
+                  tripTaxes={tripData.tripTaxesFees[0]} 
+                  tripOtherFees={tripData.tripTaxesFees[1]} 
+                />
+              </div>
+            : <SignInPrompt 
+                title={'Book your trip of a lifetime'}
+                subtitle={'Sign in or sign up to book a trip.'}
+              />
+          }
         </section>
       </div>
     </PageContainer>

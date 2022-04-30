@@ -14,8 +14,8 @@ export function SignInSignUpProvider({ children }) {
     /** STATES */
     const navigateTo = useNavigate();
     const currentUser = useAuth();
-    const [processSignUp, setProcessSignUp] = useState(true);
-    const [processSignIn, setProcessSignIn] = useState(true);
+    const [processSignUp, setProcessSignUp] = useState(false);
+    const [processSignIn, setProcessSignIn] = useState(false);
 
     /** FUNCTIONS */
     const handleSignUpDetails = async (signUpDetails) => {
@@ -23,27 +23,37 @@ export function SignInSignUpProvider({ children }) {
 
         // Send out details to Firebase
         try {
-            await signUpUsingEmail(signUpDetails);
-            navigateTo('/');
-            setProcessSignUp(false);
-            return true;
+            const result = await signUpUsingEmail(signUpDetails);
+            if (result) {
+                navigateTo('/');
+            }
         }
         catch(err) {
             alert('Unexpected error occured whilst signing up. Please try again.');
         }
+
+        // Delay to show progress
+        setTimeout(() => {
+            setProcessSignUp(false);
+        }, 1000);
     };
 
     const handleSignInDetails = async (signInDetails) => {
         // Send out details to Firebase
         try {
-            await signInUserUsingEmail(signInDetails);
-            navigateTo('/');
-            setProcessSignIn(false);
-            return true;
+            const result = await signInUserUsingEmail(signInDetails);
+            if (result) {
+                navigateTo('/');
+            }
         }
         catch(err) {
             alert('Unexpected error occured whilst signing in. Please try again.');
         }
+
+        // Delay to show progress
+        setTimeout(() => {
+            setProcessSignIn(false);
+        }, 1000)
     };
 
     const signInUsingGoogle = async () => {
@@ -70,8 +80,8 @@ export function SignInSignUpProvider({ children }) {
 
     return (
         <SignInSignUpContext.Provider value={{ 
-                signUp: { handleSignUpDetails, processSignUp }, 
-                signIn: { handleSignInDetails, signInUsingGoogle, processSignIn, currentUser },
+                signUp: { handleSignUpDetails, processSignUp, setProcessSignUp }, 
+                signIn: { handleSignInDetails, signInUsingGoogle, currentUser, processSignIn, setProcessSignIn },
                 signOut: { signOutCurrentUser }
             }}
         >

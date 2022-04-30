@@ -6,7 +6,7 @@ import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 import FAQ from '../components/support/faq';
 import PageArticle from '../components/page-article';
 import ContactForm from '../components/forms/contact-form';
-import LinkSolid from '../components/links/link-solid';
+import SignInPrompt from '../components/sign-in-prompt';
 
 
 const ContactsPage = () => {
@@ -30,18 +30,10 @@ const ContactsPage = () => {
         {
           currentUser 
           ? <ContactForm />
-          : <div className='flex flex-col items-start border-2 border-custom-gray rounded-lg p-8 m-4'>
-              <hgroup className='flex flex-col gap-2'>
-                <h1 className='text-2xl font-bold'>We're here for you</h1>
-                <h2 className='text-lg'>Sign in to get help with trip bookings, reservations and more.</h2>
-              </hgroup>
-              <ul className='flex flex-col gap-6 justify-center pt-6 text-white
-                  lg:flex-row'
-              >
-                <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg' />
-                <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg' />
-            </ul>
-          </div>
+          : <SignInPrompt 
+              title={"We're here for you"}
+              subtitle={'Sign in or sign up to get help with trip bookings, reservations and more.'}
+            />
         }
       </section>
     </PageContainer>

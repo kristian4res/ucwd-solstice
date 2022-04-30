@@ -18,7 +18,6 @@ const ContactForm = () => {
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
 
-
     /** STATES */
     const [processSend, setProcessSend] = useState(false);
     const [name, setName] = useState({

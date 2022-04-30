@@ -15,14 +15,13 @@ import SignInProviders from '../components/sign-in-providers';
 
 const SignUpPage = () => {
   /** CONTEXTS */
-  const { signUp: { handleSignUpDetails } } = useContext(SignInSignUpContext);
+  const { signUp: { handleSignUpDetails, processSignUp, setProcessSignUp }, signIn: { currentUser } } = useContext(SignInSignUpContext);
   const { showModal, toggleModal } = useContext(AppContext);
 
   /** LOADERS */
   const StatusMessageWithSpinner = WithSpinner(StatusMessage);
 
   /** STATES */
-  const [processSignUp, setProcessSignUp] = useState(false);
   const [emailAddress, setEmailAddress] = useState({
     value: '',
     isInvalid: false 
@@ -192,9 +191,8 @@ const SignUpPage = () => {
       toggleModal(true);
       setProcessSignUp(true);
 
-      // Clear inputs, UI and redirect to homepage
+      // Set delay when sending back details
       setTimeout(async () => {
-        setProcessSignUp(false);
         // Send sign up details
         await handleSignUpDetails(signUpDetails);
       }, 3000);
@@ -213,7 +211,7 @@ const SignUpPage = () => {
           justify-center items-center
           ${showModal ? 'flex' : 'hidden'}
         `}>
-          <StatusMessageWithSpinner isLoading={processSignUp} status={!processSignUp} toggleModal={toggleModal} />
+          <StatusMessageWithSpinner isLoading={processSignUp} status={currentUser} toggleModal={toggleModal} />
         </div>
         <div className='flex flex-col max-w-[500px] gap-2 p-4 border-2 border-custom-gray rounded-lg'>
 
