@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { getAuth, 
     signInWithPopup, 
     GoogleAuthProvider, 
@@ -40,14 +39,6 @@ export function signUpUsingEmail(userDetails) {
 }
 
 export async function signInUserUsingEmail(userDetails) {
-    // signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password)
-    // .then(userCredentials => {
-    //     return userCredentials;
-    // })
-    // .catch(err => {
-    //     alert('Something unexpected happened while signing in');
-    //     return false;
-    // });
     return signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password)
 }
 
@@ -58,22 +49,9 @@ export function signOutUser() {
 export async function googleSignIn() {
    return signInWithPopup(auth, provider)
     .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // // The signed-in user info.
-        const user = result.user;
-        // Successful sign in
+        alert('Successfully signed in with Google');
         return true;
     }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // // The email of the user's account used.
-        const email = error.email;
-        // // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // Unsuccesful sign in
         alert('Something unexpected happened while signing in using Google');
         return false;
     }); 

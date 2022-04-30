@@ -8,18 +8,42 @@ import { signUpUsingEmail,
     googleSignIn, 
 } from '../firebase/firebase-app';
 
+
 const SignInSignUpContext = createContext();
 
 export function SignInSignUpProvider({ children }) {
-    /** STATES */
+    /** HOOKS & STATES */
     const navigateTo = useNavigate();
     const currentUser = useAuth();
     const [processSignUp, setProcessSignUp] = useState(false);
     const [processSignIn, setProcessSignIn] = useState(false);
 
     /** FUNCTIONS */
+    // const encryptPassword = async (password) => {
+    //     try {
+    //         const saltRounds = 10;
+    //         const hash = await bcrypt.hash(password, saltRounds);
+
+    //         return hash;
+    //     }
+    //     catch(err) {
+    //         alert('Something unexpected occured while trying to sign up.');
+    //     }
+    // }
+
+    /**
+     *
+     * This function takes in the sign up details and 
+     * passes it to a Firebase function which will handle 
+     * the user account creation, 
+     * if successful the user is logged in and redirected to the homepage
+     * otherwise, the user is shown an error message
+     * @param {object} signUpDetails - user inputs from sign up form 
+     */
     const handleSignUpDetails = async (signUpDetails) => {
         // Encrypt password
+        // const hashedPassword = encryptPassword(signUpDetails.password);
+        // signUpDetails = {...signUpDetails, password: hashedPassword}
 
         // Send out details to Firebase
         try {
@@ -38,7 +62,19 @@ export function SignInSignUpProvider({ children }) {
         }, 1000);
     };
 
+    /**
+     *
+     * This function takes in the sign in details and 
+     * passes it to a Firebase function which will handle 
+     * the authentication, 
+     * if successful the user is logged in and redirected to the homepage
+     * otherwise, the user is shown an error message
+     * @param {object} signInDetails - user inputs from sign in form 
+     */
     const handleSignInDetails = async (signInDetails) => {
+        // Check password
+
+
         // Send out details to Firebase
         try {
             const result = await signInUserUsingEmail(signInDetails);

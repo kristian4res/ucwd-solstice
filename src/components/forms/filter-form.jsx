@@ -41,7 +41,7 @@ const FilterForm = () => {
         xl:pb-4
       '>
         <span title='Filters'>Filters</span>
-        <BiSliderAlt className='h-6 w-6' aria-hidden />
+        <BiSliderAlt className='h-6 w-6' aria-hidden={true} />
       </h1>
       <form className="flex flex-row gap-2 flex-wrap
         xl:flex-col xl:flex-nowrap

@@ -7,20 +7,29 @@ import sportsData from '../dev-data/sports.json';
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
-    // REMOVE THIS AFTERWARDS
+    // DATA - search result suggestions
     const devData = {
         "trips": tripsData,
         "sports": sportsData
     }
 
-    // Handle modal controls
+    /** HOOKS & STATES */
+    const routeLocation = useLocation();
     const [showModal, setShowModal] = useState(null);
+
+    /**
+     * This function toggles a value that 
+     * causes the modal to show or disappear
+     * @param {boolean} value
+     */
     const toggleModal = (value) => {
         setShowModal(value);
     };
 
-    // Reset UI when switching routes
-    const routeLocation = useLocation();
+
+    /**
+     * Reset UI and scroll to the top when switching routes
+     */
     useEffect(() => {
         // Close modal if showing
         toggleModal(false);

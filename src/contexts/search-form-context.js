@@ -7,20 +7,26 @@ import { getTomorrowsDate } from "../utils/utils";
 const SearchFormContext = createContext();
 
 export function SearchFormProvider({ children }) {
-    /** STATES */
+    /** HOOKS & STATES */
+    const routeLocation = useLocation();
     const [searchFormDetails, setSearchFormDetails] = useState({
         location: '',
         sport: '',
         checkIn: getTomorrowsDate(),
         checkOut: getTomorrowsDate('checkOut')
     });
-
     const [searchInputStyle, setSearchInputStyle] = useState({
         location: '',
         sport: '',
         checkOut: ''
     });
 
+    /**
+     * This function takes user inputs and validates them 
+     * using the validator package, then updates the search form context values
+     * and input styles, i.e. make the inputs glow green if valid and red if invalid
+     * @param {object} details - user search form inputs
+     */
     const submitSearchForm = (details) => {
         // Destructure details object
         const { location, sport, checkIn, checkOut } = details;
@@ -62,9 +68,10 @@ export function SearchFormProvider({ children }) {
             }
         });
     };
-
-    // Reset input UI when changing routes
-    const routeLocation = useLocation();
+ 
+    /**
+     * Reset input styles, i.e. input borders, when changing routes
+     */
     useEffect(() => {
         // When changing routes, reset input messages
         setSearchInputStyle({
