@@ -39,35 +39,40 @@ const TripPage = () => {
         '>
           <div className="image-gallery">
             <div className="image-animation image1">
-              <img 
+              <img
+                loading='lazy'
                 className='object-fill h-full w-full'
                 src={require(`../../assets/${tripData.tripImages[0]}`)} 
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image2">
-              <img 
+              <img
+                loading='lazy' 
                 className='object-fill h-full w-full'
                 src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image3">
-              <img 
+              <img
+                loading='lazy' 
                 className='object-fill h-full w-full'
                 src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image4">
-              <img 
+              <img
+                loading='lazy' 
                 className='object-fill h-full w-full'
                 src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"
               />
             </div>
             <div className="hidden image-animation lg:block lg:image5">
-              <img 
+              <img
+                loading='lazy' 
                 className='object-fill h-full w-full'
                 src={require(`../../assets/${tripData.tripImages[0]}`)}  
                 alt="trip cover"

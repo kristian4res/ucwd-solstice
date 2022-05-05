@@ -15,6 +15,7 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
               relative col-span-1`}
             >   
                 <img
+                    loading='lazy'
                     src={imgUrl ? require(`../../assets/${imgUrl}`) : ''}
                     alt={'people on an adventure'}
                     className={`object-cover w-full h-72

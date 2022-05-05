@@ -111,7 +111,8 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     {   
                         dataset ? 
                         // Filter and loop through data, then display data by rendering list elements
-                        dataset.filter((val) => {
+                        dataset
+                        .filter((val) => {
                             if (state[0] === '' || !isFocused) {
                                 return val;
                             }
@@ -124,7 +125,8 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                             else {
                                 return val;
                             }
-                        }).map((val, key) => {
+                        })
+                        .map((val, key) => {
                             return <ButtonSearchResult key={key} 
                                 val={{ title: val[field], subtitle: val[`${label === 'location' ? 'tripFullLocation' : 'sportName'}`]}}
                                 handleClick={() => {

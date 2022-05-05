@@ -14,6 +14,7 @@ const CardTripSkeleton = () => {
                 relative col-span-1`}
             >   
                 <img
+                    loading='lazy'
                     src={''}
                     alt={''}
                     className={`object-cover w-full

@@ -11,6 +11,7 @@ const CardArticle = ({ imgUrl, imgTitle, tag }) => {
             <div className="container flex justify-center 
              m-0.5 mb-0 overflow-hidden relative">
                 <img
+                    loading='lazy'
                     src={imgUrl}
                     alt={'Sports'}
                     className='w-full h-56 lg:h-72 object-cover'

@@ -25,6 +25,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PageLayout />}>
+        {/* If route not found */}
+        <Route path='*' element={<PageNotFound />} />
         {/* Default page component */}
         <Route index element={<Homepage />} />
         {/* Custom routes and their respective page components */}
@@ -40,7 +42,6 @@ function App() {
               <Route path="signup" element={<SignUp />} />
             </>
         }
-        <Route path='*' element={<PageNotFound />} />
       </Route>
     </Routes>
   );
