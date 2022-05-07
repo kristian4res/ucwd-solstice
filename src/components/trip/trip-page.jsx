@@ -197,7 +197,8 @@ const TripPage = () => {
                 <BookingForm 
                   tripPrice={tripData.tripBasePrice} 
                   tripTaxes={tripData.tripTaxesFees[0]} 
-                  tripOtherFees={tripData.tripTaxesFees[1]} 
+                  tripOtherFees={tripData.tripTaxesFees[1]}
+                  tripLocation={tripData.tripFullLocation} 
                 />
               </div>
             : <SignInPrompt 

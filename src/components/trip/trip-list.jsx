@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import AppContext from '../../contexts/app-context';
 import SearchFormContext from '../../contexts/search-form-context';
 import FilterFormContext from '../../contexts/filter-form-context';
 
-import { ReactComponent as NoDataFoundSVG } from '../../assets/no-data.svg';
 import CardTrip from '../cards/card-trip';
+import ButtonSolid from '../buttons/button-solid';
+
+import { ReactComponent as NoDataFoundSVG } from '../../assets/no-data.svg';
+import { data } from 'autoprefixer';
 
 
 const TripList = () => {
@@ -13,6 +16,15 @@ const TripList = () => {
   const { devData: { trips }} = useContext(AppContext);
   const { searchFormDetails } = useContext(SearchFormContext);
   const { filterFormDetails } = useContext(FilterFormContext);
+
+  /** HOOKS */
+  // Contains the data to be displayed and the number of data items
+  const [displayData, setDisplayData] = useState(
+    {
+      data: [],
+      length: data.length
+    }
+  );
 
   /** FUNCTIONS */
 
@@ -90,20 +102,49 @@ const TripList = () => {
     return result;
   }
 
-  /** DATA */
-  /**
-   * These variables contains the fully filtered data and it's length (stored in a separate variable). 
-   */
-  let displayData = filterData(filterFormDetails, searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips));
-  let dataLength = displayData.length;
+  // When loading component, fetch and load data to be displayed
+  useEffect(() => {
+    let data;
+
+    if (filterFormDetails || (searchFormDetails['location'] || searchFormDetails['sport'])) {
+      data = filterData(filterFormDetails, searchedData(searchFormDetails['location'], searchFormDetails['sport'], trips));
+    }
+    else {
+      data = trips;
+    }
+
+    setDisplayData(prevState => {
+      return {
+        ...prevState,
+        data: data,
+        length: data.length
+      }
+    });
+  }, [filterFormDetails, searchFormDetails['location'], searchFormDetails['sport']])
 
   return (
     <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen w-[95%]'>
-        <div className='flex justify-start'>
-            <h4 className='font-semibold'>{dataLength} results found</h4>
+        <div className='flex items-center justify-between'>
+            <h4 className='font-semibold'>{displayData.length} results found</h4>
+            <div className='text-white w-fit'>
+              <ButtonSolid
+                btnTitle={'See all trips'}
+                btnStyles={'bg-primary'}
+                handleClick={() => {
+                  // Reset trips data
+                  setDisplayData(prevState => {
+                    return {
+                      ...prevState,
+                      data: trips,
+                      length: trips.length
+                    }
+                  });
+                }}
+              />
+            </div>
         </div>
         {
-          dataLength === 0 &&
+          displayData.length === 0 && (searchFormDetails['location'] || searchFormDetails['sport']) ? 
           <div className="flex flex-col justify-center items-center h-82 max-w-full">
             <NoDataFoundSVG title='No data found' className='h-[14rem] w-[14rem]' />
               <h1 className='text-xl font-semibold mt-2 text-main
@@ -118,23 +159,24 @@ const TripList = () => {
                   Unfortunately, there are no trips that matches your search.
               </p>
           </div>
+          : ''
         }
         {
-          displayData
-          .map((val, key) => {
-            return (
-              <CardTrip 
-                key={key}
-                imgUrl={val.tripImages[0]} 
-                cardId={val.tripId}
-                cardTitle={val.tripName}
-                cardSubTitle={val.tripFullLocation}
-                cardText={[val.tripDescription, val.tripAmenities]}
-                cardDetails={[[val.tripRating, val.tripReviews], [val.tripBasePrice]]}
-                tagData={val.tripTags} 
-              />
-            )
-          })
+          displayData.data
+            .map((val, key) => {
+              return (
+                <CardTrip 
+                  key={key}
+                  imgUrl={val.tripImages[0]} 
+                  cardId={val.tripId}
+                  cardTitle={val.tripName}
+                  cardSubTitle={val.tripFullLocation}
+                  cardText={[val.tripDescription, val.tripAmenities]}
+                  cardDetails={[[val.tripRating, val.tripReviews], [val.tripBasePrice]]}
+                  tagData={val.tripTags} 
+                />
+              )
+            })
         }
     </div>
   )

@@ -8,18 +8,20 @@ import ButtonSearchResult from '../buttons/button-search-result';
 import { IoMdCloseCircle } from 'react-icons/io';
 
 const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldname }, iconEl, withLabel=true, inputType='text'}) => {
+    /** DATA FIELDNAME */
+    const field = fieldname;
+
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
-    const { searchFormDetails, searchInputStyle } = useContext(SearchFormContext);
+    const { setSearchInputStyle, searchInputStyle } = useContext(SearchFormContext);
 
     /** ELEMENT REFERENCES */
     const inputRef = useRef();
 
-    /** STATES */
+    /** STATES & HOOKS */
     // Handle input state
     const [isFocused, setIsFocused] = useState(false);
-    const [field, setField] = useState(fieldname);
-
+    
     /** FUNCTIONS */
     /**
      * 
@@ -39,13 +41,12 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
 
 
     return (
-        <div>  
+        <>  
             {
                 // Show label if specified
                 withLabel ? <label htmlFor={`search-form-${label}`} className='form-label capitalize'>{label}</label>
                 : ''
             }
-            {/* <div className='grid grid-cols-5 justify-items-center w-full'> */}
             <div className='relative w-full'>
                 <button className={`${searchInputStyle[label]} pl-2 form-input text-left max-h-full w-full`}
                     onFocus={() => setIsFocused(true)}
@@ -56,13 +57,12 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     }}
                 >   
                     <p className='truncate pr-8'>
-                        {state[0] ? state[0] : searchFormDetails[`${label}`]}
-                        {(searchFormDetails[`${label}`] || state[0]) ? '' : placeholder}
+                        {state[0] || placeholder}
                     </p>
                 </button>
                 <button className='absolute top-[8.5%] right-[1.5%] p-2 text-custom-gray-dark'
                     onClick={() => {
-                        // Clear input
+                        // Clears input
                         state[1]('');
                     }}
                 >
@@ -109,6 +109,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                 />
                 <ul>
                     {   
+                        // Provide search result suggestions
                         dataset ? 
                         // Filter and loop through data, then display data by rendering list elements
                         dataset
@@ -142,7 +143,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     }
                 </ul>
             </div>
-        </div>
+        </>
     )
 }
 

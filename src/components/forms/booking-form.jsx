@@ -9,7 +9,7 @@ import StripeCheckoutButton from '../stripe/stripe-checkout-button';
 
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
+const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
   /** CONTEXTS */
   const { toggleModal } = useContext(AppContext);
   const { searchFormDetails, searchInputStyle, setSearchInputStyle } = useContext(SearchFormContext);
@@ -17,6 +17,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
   /** STATE */
   const [collapseDetails, setCollapseDetails] = useState(true);
   const [numberOfTravellers, setNumberOfTravellers] = useState(2)
+  const [travellingFrom, setTravellingFrom] = useState('London, UK');
   const [totalPrice, setTotalPrice] = useState(Number(tripPrice));
 
   const [checkInVal, setCheckInVal] = useState(searchFormDetails['checkIn']);
@@ -145,6 +146,36 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees }) => {
                 value={numberOfTravellers}
                 placeholder='Number of travellers' 
               />
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="flex flex-col">
+                <label className="form-label" htmlFor="trip-travellers">
+                  From
+                </label>
+                <input 
+                  className="form-input text-black" 
+                  type="text" 
+                  name="trip-travelling-from"
+                  onChange={(e) => {
+                    setTravellingFrom(e.target.value);
+                  }}
+                  value={travellingFrom}
+                  placeholder='Travelling from' 
+                />
+              </div>
+              <div className='flex flex-col'>
+                <label className="form-label" htmlFor="trip-travellers">
+                  To
+                </label>
+                <input 
+                  className="form-input cursor-text text-black" 
+                  type="text" 
+                  name="trip-travelling-to"
+                  value={tripLocation}
+                  placeholder='Travelling to'
+                  readOnly
+                />
+              </div>
             </div>
             <div className="flex flex-col mx-2">
               <button className='flex justify-between items-center pb-2
