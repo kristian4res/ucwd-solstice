@@ -13,7 +13,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
 
     /** CONTEXTS */
     const { showModal, toggleModal } = useContext(AppContext);
-    const { setSearchInputStyle, searchInputStyle } = useContext(SearchFormContext);
+    const { searchInputStyle } = useContext(SearchFormContext);
 
     /** ELEMENT REFERENCES */
     const inputRef = useRef();
@@ -72,7 +72,9 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
             <div className={`${searchInputStyle[label] === 'form-input-failure' ? 'flex' : 'hidden'}`}>
                 <span className='text-[0.7rem] text-failure'>
                     {   
-                        `Please ensure you use only letters, e.g. Location: Hawaii or Sport: Surfing`
+                        `Please ensure you fill out either Location 
+                        or Sport and use only letters, 
+                        e.g. Location: Hawaii or Sport: Surfing`
                     }
                 </span>
             </div>

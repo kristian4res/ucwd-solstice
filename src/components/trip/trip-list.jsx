@@ -6,9 +6,8 @@ import FilterFormContext from '../../contexts/filter-form-context';
 
 import CardTrip from '../cards/card-trip';
 import ButtonSolid from '../buttons/button-solid';
-
-import { ReactComponent as NoDataFoundSVG } from '../../assets/no-data.svg';
-import { data } from 'autoprefixer';
+import WithTrip from './with-trip';
+import TripNoResults from './trip-no-results';
 
 
 const TripList = () => {
@@ -22,9 +21,13 @@ const TripList = () => {
   const [displayData, setDisplayData] = useState(
     {
       data: [],
-      length: data.length
+      length: 0
     }
   );
+  const [artificialLoading, setArtificialLoading] = useState(true);
+
+  /** LOADERS */
+  const TripSearchLoader = WithTrip(TripNoResults);
 
   /** FUNCTIONS */
 
@@ -39,6 +42,7 @@ const TripList = () => {
     if (!location && !sport) {
       return data;
     }
+
     // Filter data based on the location and sport parameters from the search form 
     return data.filter((val) => {
       // If given both location and sport, check filter for specific trips
@@ -52,6 +56,7 @@ const TripList = () => {
         }
         return null;
       }
+
       // If invidivual parameters, check location parameter first then sport parameter
       else if (location && val.tripLocation.toLowerCase().includes(location.toLowerCase())) {
         return val;
@@ -59,6 +64,7 @@ const TripList = () => {
       else if (sport && val.tripSport[0].sportName.toLowerCase().includes(sport.toLowerCase())) {
           return val;
       }
+
       else {
         return null;
       }
@@ -73,32 +79,41 @@ const TripList = () => {
    */
   const filterData = (params, data) => {
     let result = data;
-    
+
     // Filter data based on the user specified filters
     for (const param in params) {
       result = result.filter((val) => {
-        if (params[param] !== 'any') {
-          if (param === 'tripSeason' || param === 'tripContinent') {
-            if (params[param].toLowerCase().includes(val[param].toLowerCase())) {
-              return val;
-            }
-            return null;
-          }
-          else if (param === 'tripRating') {
-            if (Number.parseFloat(val[param]) >= Number.parseFloat(params[param])) {
-              return val;
-            }
-            return null;
-          }
-          else {
-            return null;
-          }
-        }
-        else {
+        // If any, then return all of the data
+        if (params[param] === 'any') {
           return val;
         }
+
+        // If specified, return data that matches the season
+        if (param === 'tripSeason') {
+          if (params[param].toLowerCase().includes(val[param].toLowerCase())) {
+            return val;
+          }
+        }
+
+        // If specified, return data that matches the continent
+        if (param === 'tripContinent') {
+          if (params[param].toLowerCase().includes(val[param].toLowerCase())) {
+            return val;
+          }
+        }
+
+        // If specified, return data above the specified rating
+        if (param === 'tripRating') {
+          if (Number.parseFloat(val[param]) >= Number.parseFloat(params[param])) {
+            return val;
+          }
+        }
+
+        // Return no results if no filter is specified
+        return null;
       });
     }
+
     return result;
   }
 
@@ -120,7 +135,18 @@ const TripList = () => {
         length: data.length
       }
     });
-  }, [filterFormDetails, searchFormDetails['location'], searchFormDetails['sport']])
+  }, [filterFormDetails, searchFormDetails, trips]);
+
+  // Creates loading progress whenever the user searches using the form
+  useEffect(() => {
+    // Start loader
+    setArtificialLoading(true);
+
+    // Delay loader for a duration (between 1ms - 500ms)
+    setTimeout(() => {
+      setArtificialLoading(false);
+    }, Math.floor(Math.random() * 500));
+  }, [displayData]);
 
   return (
     <div className='grid grid-cols-1 gap-6 place-content-start min-h-screen w-[95%]'>
@@ -144,25 +170,9 @@ const TripList = () => {
             </div>
         </div>
         {
-          displayData.length === 0 && (searchFormDetails['location'] || searchFormDetails['sport']) ? 
-          <div className="flex flex-col justify-center items-center h-82 max-w-full">
-            <NoDataFoundSVG title='No data found' className='h-[14rem] w-[14rem]' />
-              <h1 className='text-xl font-semibold mt-2 text-main
-                  md:text-2xl
-                  lg:text-3xl
-              '>
-                  Oops!
-              </h1>
-              <p className='text-base text-center mt-4  whitespace-pre-wrap
-                  md:text-xl
-              '>
-                  Unfortunately, there are no trips that matches your search.
-              </p>
-          </div>
-          : ''
-        }
-        {
-          displayData.data
+          displayData.length === 0 && (searchFormDetails['location'] || searchFormDetails['sport']) 
+          ? <TripSearchLoader isLoading={artificialLoading} />
+          : displayData.data
             .map((val, key) => {
               return (
                 <CardTrip 

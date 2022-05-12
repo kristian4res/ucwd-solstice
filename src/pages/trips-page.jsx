@@ -13,7 +13,7 @@ const Trips = () => {
   /** LOADERS */
   const TripListWithLoader = WithTrip(TripList);
 
-  // Simulate asynchronous API calls
+  // Simulate API calls, i.e. delay
   useEffect(() => {
     setTimeout(() => setLoadingData(false), Math.floor(Math.random() * 500));
   }, []);

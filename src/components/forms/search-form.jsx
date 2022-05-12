@@ -72,6 +72,13 @@ const SearchForm = () => {
             return false;
         }
 
+         // Update input style
+         setSearchInputStyle(prevState => {
+            return {...prevState,
+                checkOut: 'form-input-success'
+            }
+        });
+
 
         // Update context
         submitSearchForm(details);

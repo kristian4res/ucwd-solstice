@@ -77,7 +77,6 @@ export function SearchFormProvider({ children }) {
         setSearchInputStyle({
             location: '',
             sport: '',
-            checkIn: '',
             checkOut: ''
         });
     }, [routeLocation])
