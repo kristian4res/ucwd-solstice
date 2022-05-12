@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import AppContext from '../../contexts/app-context';
@@ -6,6 +6,7 @@ import AppContext from '../../contexts/app-context';
 import PageContainer from '../general/page-container';
 import CardMiniProfile from '../cards/card-mini-profile';
 import BookingForm from '../forms/booking-form';
+import ImageCarousel from '../carousel/image-carousel';
 
 import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
@@ -21,7 +22,16 @@ const TripPage = () => {
   const paramId = urlParams.tripId;
   const tripData = trips.find(trip => trip.tripId === paramId);
 
-  
+  /** DEFAULT IMAGE DATA */
+  const imgArr = [
+    tripData.tripImages[0], 
+    tripData.tripImages[0], 
+    tripData.tripImages[0],
+    tripData.tripImages[0], 
+    tripData.tripImages[0],
+    tripData.tripImages[0]
+  ];
+
   return (
     <PageContainer extraStyles={'pt-20'}>
       <div className={`
@@ -30,51 +40,39 @@ const TripPage = () => {
         min-h-full max-w-full 
         px-6 pt-10 gap-6 relative
       `}>
+        {/* Shows image gallery/carousel when for smaller screens (below lg) */}
         <section className='container flex justify-center items-center 
+          h-full w-full rounded-lg px-8
+          lg:hidden
+        '>
+          <ImageCarousel imgData={imgArr} />
+        </section>
+
+        {/* Shows image grid for larger screens (above lg) */}
+        <section className='hidden container justify-center items-center 
           overflow-hidden h-full rounded-lg 
-          xl:w-2/3
+          lg:flex lg:w-2/3
         '>
           <div className="image-gallery">
-            <div className="image-animation image1">
-              <img
-                loading='lazy'
-                className='object-fill h-full w-full'
-                src={require(`../../assets/${tripData.tripImages[0]}`)} 
-                alt="trip cover"
-              />
-            </div>
-            <div className="hidden image-animation lg:block lg:image2">
-              <img
-                loading='lazy' 
-                className='object-fill h-full w-full'
-                src={require(`../../assets/${tripData.tripImages[0]}`)}  
-                alt="trip cover"
-              />
-            </div>
-            <div className="hidden image-animation lg:block lg:image3">
-              <img
-                loading='lazy' 
-                className='object-fill h-full w-full'
-                src={require(`../../assets/${tripData.tripImages[0]}`)}  
-                alt="trip cover"
-              />
-            </div>
-            <div className="hidden image-animation lg:block lg:image4">
-              <img
-                loading='lazy' 
-                className='object-fill h-full w-full'
-                src={require(`../../assets/${tripData.tripImages[0]}`)}  
-                alt="trip cover"
-              />
-            </div>
-            <div className="hidden image-animation lg:block lg:image5">
-              <img
-                loading='lazy' 
-                className='object-fill h-full w-full'
-                src={require(`../../assets/${tripData.tripImages[0]}`)}  
-                alt="trip cover"
-              />
-            </div>
+            {
+              imgArr
+              .map((val, key) => {
+                return (
+                  <figure
+                    key={key} 
+                    className={`image-animation ${`image`+ (key + 1)}
+                    `}
+                  >
+                    <img
+                      loading='lazy' 
+                      className='object-fill h-full w-full'
+                      src={require(`../../assets/${val}`)}  
+                      alt="trip cover"
+                    />
+                  </figure>
+                )
+              })
+            }
           </div>
         </section>
         <section className='container grid grid-cols-1 gap-4 gap-x-12

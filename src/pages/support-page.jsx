@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import PageContainer from '../components/general/page-container';
 import SignInSignUpContext from '../contexts/sign-in-sign-up-context';
 
+import PageContainer from '../components/general/page-container';
 import FAQ from '../components/support/faq';
 import PageArticle from '../components/general/page-article';
 import ContactForm from '../components/forms/contact-form';
@@ -10,6 +10,7 @@ import SignInPrompt from '../components/general/sign-in-prompt';
 
 
 const ContactsPage = () => {
+  /** CONTEXTS */
   const { signIn: { currentUser } } = useContext(SignInSignUpContext);
 
   return (
