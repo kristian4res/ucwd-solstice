@@ -11,7 +11,7 @@ const LinkUnderline = ({ label, route, textSize, textWeight }) => {
       <li className='relative'>
         <Link className={`btn-underline
             font-${textWeight ? textWeight : 'bold'}
-            text-${textSize ? textSize : 'lg'}
+            text-${textSize ? textSize : 'xl'}
             ${route === routeLocation.pathname && 'btn-underline-active'}
           `} 
           to={route}

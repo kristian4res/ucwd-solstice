@@ -1,16 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import CardTag from './card-tag';
 
 import { FaStar } from 'react-icons/fa';
 
 const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetails, tagData }) => {
+    /** HOOKS */
+    const redirectTo = useNavigate();
+    
     return (
-        <div className='w-full h-full drop-shadow-xl rounded-lg overflow-hidden
-            flex flex-col
+        <div className='w-full h-full drop-shadow-sm rounded-lg overflow-hidden
+            flex flex-col transition-transform cursor-pointer
+            hover:scale-[101%] hover:drop-shadow-xl active:scale-[99%]
             md:grid md:grid-cols-3 md:max-w-[1000px] md:max-h-[500px]
-        '>
+        '
+            onClick={() => redirectTo(`${cardId}`)}
+        >
             <div className={`container h-full bg-main flex justify-center
               relative col-span-1`}
             >   
@@ -83,14 +89,13 @@ const CardTrip = ({ imgUrl, cardId, cardTitle, cardSubTitle, cardText, cardDetai
                     <div className="flex w-fit justify-end text-custom-dark ml-auto mt-1 mb-2 
                         md:justify-end"
                     >
-                        <button className='shadow-md transition-transform text-current 
-                             btn-solid items-center bg-white rounded-full
-                            hover:-translate-y-[2px] active:translate-y-[2px]
-                        '>
-                            <Link className='font-semibold' to={`${cardId}`}>
-                                View
-                            </Link>
-                        </button>
+                        <Link className='shadow-md transition-transform text-current 
+                            btn-solid items-center bg-white rounded-full
+                        hover:-translate-y-[2px] active:translate-y-[2px] font-semibold' 
+                        to={`${cardId}`}
+                        >
+                            View
+                        </Link>
                     </div>
                 </div>
                 <div className='container h-fit w-full 

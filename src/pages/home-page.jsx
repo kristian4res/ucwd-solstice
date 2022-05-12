@@ -35,7 +35,7 @@ const Homepage = () => {
           </div>
           <div className='flex justify-center text-dark mx-10 mt-4
           md:justify-end '>
-            <ButtonOutline btnTitle={'Explore More'} 
+            <ButtonOutline btnTitle={'Explore All'} 
               icon={
                 <HiChevronDoubleRight className='h-6 w-6 lg:h-8 lg:w-8' />
               }

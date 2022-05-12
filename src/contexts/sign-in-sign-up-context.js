@@ -34,7 +34,7 @@ export function SignInSignUpProvider({ children }) {
         try {
             const result = await signUpUsingEmail(signUpDetails);
             if (result) {
-                navigateTo('/');
+                navigateTo(-1);
             }
         }
         catch(err) {
@@ -56,7 +56,8 @@ export function SignInSignUpProvider({ children }) {
         try {
             const result = await signInUserUsingEmail(signInDetails);
             if (result) {
-                navigateTo('/');
+                // Navigate back to the previous route
+                navigateTo(-1);
             }
         }
         catch(err) {
@@ -77,7 +78,8 @@ export function SignInSignUpProvider({ children }) {
         try {
             const result = await googleSignIn();
             if (result) {
-                navigateTo('/');
+                // Navigate back to the previous route
+                navigateTo(-1);
             }
         }
         catch(err) {
@@ -98,7 +100,8 @@ export function SignInSignUpProvider({ children }) {
     const signOutCurrentUser= async () => {
         try {
             await signOutUser();
-            navigateTo('/');
+            // Navigate back to the previous route
+            navigateTo(-1);
             return true;
         }
         catch(err) {

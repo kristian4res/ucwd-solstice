@@ -3,7 +3,9 @@ import { getTomorrowsDate, isCheckOutValid } from '../../utils/utils';
 
 import AppContext from '../../contexts/app-context';
 import SearchFormContext from '../../contexts/search-form-context';
+import SignInSignUpContext from '../../contexts/sign-in-sign-up-context';
 
+import SignInPrompt from '../general/sign-in-prompt';
 import ButtonSolid from '../buttons/button-solid';
 import StripeCheckoutButton from '../stripe/stripe-checkout-button';
 
@@ -12,6 +14,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
   /** CONTEXTS */
   const { toggleModal } = useContext(AppContext);
+  const { signIn: { currentUser } } = useContext(SignInSignUpContext);
   const { searchFormDetails, searchInputStyle, setSearchInputStyle } = useContext(SearchFormContext);
 
   /** STATE */
@@ -212,17 +215,30 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
                 </hgroup>
               </div>
             </div>
-            <div className="flex flex-col mt-4">
-              <StripeCheckoutButton 
-                price={totalPrice}
-              >
-                <ButtonSolid
-                  btnStyles={'bg-success justify-center'}
-                  btnTitle={'Continue'}
-                  handleClick={checkDate}
+            {
+              currentUser 
+              ? 
+                (
+                  <div className="flex flex-col mt-4">
+                    <StripeCheckoutButton 
+                      price={totalPrice}
+                    >
+                      <ButtonSolid
+                        btnStyles={'bg-success justify-center'}
+                        btnTitle={'Continue'}
+                        handleClick={checkDate}
+                      />
+                    </StripeCheckoutButton>                               
+                  </div>
+                )
+              :
+               (
+                <SignInPrompt 
+                  title={'Book your trip of a lifetime'}
+                  subtitle={'Sign in or sign up to book a trip.'}
                 />
-              </StripeCheckoutButton>                               
-            </div>
+               )
+            }
           </form>
         </div>
     </div>

@@ -97,8 +97,8 @@ const Navigation = () => {
                 {
                   !currentUser 
                   ? <>
-                      <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg' />
-                      <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg' />
+                      <LinkSolid label='Sign Up' route='/signup' extraStyles='bg-success rounded-lg text-lg' />
+                      <LinkSolid label='Sign In' route='/signin' extraStyles='bg-secondary-pastel rounded-lg text-lg' />
                     </>
                   : <LinkSolid label='Sign Out' isBtn={true} handleClick={signOutCurrentUser} extraStyles='bg-secondary rounded-lg' />
                 }

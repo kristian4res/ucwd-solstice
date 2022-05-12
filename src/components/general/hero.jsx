@@ -8,7 +8,11 @@ import scubaDivingVideo from '../../assets/scuba-diving-vid-1.mp4';
 const Hero = () => {
   return (
     <header id="hero-section" className='relative flex flex-col justify-center items-center w-full h-[64vh] pt-24 md:pt-0'>
-        <div id="bg-video" className='h-full w-full absolute top-0 left-0 -z-10 shadow-lg'>
+        <div id="bg-video" className='h-full w-full absolute top-0 left-0 
+          -z-10 shadow-lg
+          contrast-[0.85]
+        '
+        >
             <video className='h-full w-full object-cover' autoPlay muted loop>
               <source src={scubaDivingVideo} type="video/mp4" />
             </video>

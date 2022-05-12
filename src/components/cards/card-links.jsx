@@ -30,8 +30,9 @@ const CardLink = ({ imgUrl, imgTitle, tagData }) => {
 
     return (
         <div className='container w-full h-full flex flex-col items-center 
-        shadow-lg rounded-lg overflow-clip cursor-pointer transition-transform
-        active:brightness-90 active:scale-95'
+            drop-shadow-md rounded-lg overflow-clip cursor-pointer transition-transform
+            hover:scale-[101%] hover:drop-shadow-xl active:scale-[99%]
+        '
             onClick={handleRedirect}
             title={`Search for ${imgTitle} trips`}
         >
@@ -47,7 +48,7 @@ const CardLink = ({ imgUrl, imgTitle, tagData }) => {
             <div className='flex flex-col w-full bg-main px-4 py-2'>
                 <h4 className={`container mb-1 uppercase text-lg font-semibold text-white drop-shadow-xl 
                 md:text-xl lg:text-3xl`}>
-                    {imgTitle}
+                    Go {imgTitle}
                 </h4>
                 <div className='flex flex-col flex-wrap space-y-2
                 lg:flex-row lg:space-x-1 lg:space-y-0'>
