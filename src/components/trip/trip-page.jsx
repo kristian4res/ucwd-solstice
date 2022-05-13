@@ -1,7 +1,4 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
-
-import AppContext from '../../contexts/app-context';
+import React from 'react';
 
 import PageContainer from '../general/page-container';
 import CardMiniProfile from '../cards/card-mini-profile';
@@ -12,16 +9,7 @@ import { FaStar } from 'react-icons/fa';
 import { IoMdPerson } from 'react-icons/io';
 
 
-const TripPage = () => {
-  /** CONTEXTS */
-  const { devData: { trips }} = useContext(AppContext);
-
-  /** HOOKS */
-  const urlParams = useParams();
-
-  const paramId = urlParams.tripId;
-  const tripData = trips.find(trip => trip.tripId === paramId);
-
+const TripPage = ({ tripData }) => {
   /** DEFAULT IMAGE DATA */
   const imgArr = [
     tripData.tripImages[0], 

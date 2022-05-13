@@ -8,10 +8,10 @@ Solstice is a mock online travel booking platform, built using React (via CRA), 
   - [Firebase](https://firebase.google.com/)
   
 #### Third-Party Libraries
-  - [Create React App](https://create-react-app.dev/docs/getting-started/) for template
+  - [Create React App](https://create-react-app.dev/docs/getting-started/) for React App template
   - [React Icons](https://react-icons.github.io/react-icons) for icons
   - [Validator](https://www.npmjs.com/package/validator) for input validation
-  - [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout) for Stripe checkout window
+  - [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout) for test Stripe checkout window
   - [React Slick](https://www.npmjs.com/package/react-slick) for image gallery/carousel
 
 #### Media Assets

@@ -35,4 +35,4 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
   )
 }
 
-export default ButtonSolid
+export default ButtonSolid;

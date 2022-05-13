@@ -11,7 +11,7 @@ import Trips from './pages/trips-page';
 import Contacts from './pages/support-page';
 import SignIn from './pages/sign-in-page';
 import SignUp from './pages/sign-up-page';
-import TripPage from './components/trip/trip-page';
+import TripCheckId from './components/trip/trip-check-id';
 
 import PageNotFound from './pages/page-not-found';
 import PageLayout from './pages/page-layout';
@@ -32,7 +32,7 @@ function App() {
         {/* Custom routes and their respective page components */}
         <Route path="trips">
           <Route index element={<Trips />} />
-          <Route path=":tripId" element={<TripPage />} />
+          <Route path=":tripId" element={<TripCheckId />} />
         </Route>
         <Route path="support" element={<Contacts />} />
         { 
