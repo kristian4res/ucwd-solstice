@@ -110,6 +110,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     autoComplete={'off'}
                 />
                 <ul>
+                    {/* Default search filter result */}
                     <li className={`${state[0] === '' 
                             ? 'hidden' 
                             : 'flex justify-center items-center p-2 border-b-2 border-custom-gray-dark cursor-pointer'}`}
@@ -120,9 +121,6 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                     >
                         <span className='w-full h-full text-center'>{`Search for "` + state[0] + '"'}</span> 
                     </li>
-                    {/* <li className={`${state[0] === '' ? 'hidden' : 'flex justify-center items-center pt-2'}`}>
-                        <span className='w-full h-full text-center'>No results </span> 
-                    </li> */}
                     {
                         // Provide search result suggestions
                         // Filter and loop through data, then display data by rendering list elements
