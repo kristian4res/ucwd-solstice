@@ -130,7 +130,7 @@ const SearchFormInput = ({ state, label, placeholder='', data: { dataset, fieldn
                                 return val;
                             }
                             else if (state[0] !== '') {
-                                if (val[field].toLowerCase().includes(state[0].toLowerCase()))  {
+                                if (val[field]?.toLowerCase().includes(state[0]?.toLowerCase()))  {
                                     return val;
                                 }
                                 return null;

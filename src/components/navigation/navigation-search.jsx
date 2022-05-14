@@ -108,7 +108,7 @@ const NavigationSearch = () => {
                             if (!locationInput || locationInput === '') {
                                 return null;
                             }
-                            else if (val.tripLocation.toLowerCase().includes(locationInput.toLowerCase()))  {
+                            else if (val.tripLocation?.toLowerCase().includes(locationInput?.toLowerCase()))  {
                                 return val;
                             }
                             else {
