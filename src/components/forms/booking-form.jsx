@@ -171,12 +171,13 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
                   To
                 </label>
                 <input 
-                  className="form-input cursor-text text-black" 
+                  className="form-input-disabled cursor-text text-white" 
                   type="text" 
                   name="trip-travelling-to"
                   value={tripLocation}
                   placeholder='Travelling to'
                   readOnly
+                  unselectable='true'
                 />
               </div>
             </div>
