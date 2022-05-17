@@ -136,6 +136,7 @@ const NavigationSearch = () => {
                     icon={
                         <HiSearch className='h-5 w-5 md:h-6 md:w-6' />
                     }
+                    title='Search trips'
                     handleClick={submitDetails}
                 />
             </div>

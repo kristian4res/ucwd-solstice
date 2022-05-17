@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useNavigate } from "react-router-dom";
 
-const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
+const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick, title }) => {
   /** HOOKS */
   let navigate = useNavigate();
   // If no click function defined but route is defined, implement useNavigate hook
@@ -21,6 +21,7 @@ const ButtonSolid = ({ btnStyles, btnTitle, icon, route, handleClick }) => {
         <button className={`btn-solid items-center rounded-full 
           ${btnStyles ? btnStyles : ''}
           `}
+          title={title}
           onClick={handleClick ? () => handleClick() : undefined}
         >
           <span className='text-sm text-current 
