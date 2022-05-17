@@ -169,7 +169,7 @@ const SearchForm = () => {
                 <ButtonSolid
                     type="submit"
                     btnStyles={'flex flex-row-reverse justify-center items-center bg-primary'}
-                    btnTitle='Search'
+                    btnTitle='Search trips'
                     icon={
                         <HiSearch className='h-6 w-6 lg:h-8 lg:w-8' aria-hidden={true} />
                     }
