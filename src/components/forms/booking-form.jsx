@@ -20,7 +20,7 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
   /** STATE */
   const [collapseDetails, setCollapseDetails] = useState(true);
   const [numberOfTravellers, setNumberOfTravellers] = useState(2)
-  const [travellingFrom, setTravellingFrom] = useState('London, UK');
+  const [travellingFrom, setTravellingFrom] = useState();
   const [totalPrice, setTotalPrice] = useState(Number(tripPrice));
 
   const [checkInVal, setCheckInVal] = useState(searchFormDetails['checkIn']);
@@ -155,16 +155,20 @@ const BookingForm = ({ tripPrice, tripTaxes, tripOtherFees, tripLocation }) => {
                 <label className="form-label" htmlFor="trip-travellers">
                   From
                 </label>
-                <input 
+                <select 
                   className="form-input text-black" 
-                  type="text" 
                   name="trip-travelling-from"
-                  onChange={(e) => {
-                    setTravellingFrom(e.target.value);
-                  }}
+                  onChange={(e) => setTravellingFrom(e.target.value)}
                   value={travellingFrom}
-                  placeholder='Travelling from' 
-                />
+                >
+                  <option value="heathrow">London Heathrow Airport</option>
+                  <option value="gatwitck">London Gatwick Airport</option>
+                  <option value="gatwitck">London Luton Airport</option>
+                  <option value="gatwitck">Manchester Airport</option>
+                  <option value="gatwitck">Birmingham Airport</option>
+                  <option value="gatwitck">Bristol Airport</option>
+                  <option value="gatwitck">Edinburgh Airport</option>
+                </select>
               </div>
               <div className='flex flex-col'>
                 <label className="form-label" htmlFor="trip-travellers">
