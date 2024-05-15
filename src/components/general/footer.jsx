@@ -64,7 +64,7 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <a href="https://github.com/Enigma-cloud" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/kristian4res" target="_blank" rel="noopener noreferrer">
               <FaGithub className='h-6 w-6'/>
             </a>
           </li>
