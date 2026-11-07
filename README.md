@@ -1,5 +1,5 @@
 # Solstice
-Solstice is a mock online travel booking platform, built using React (via CRA), React-Router, TailwindCSS and Firebase.
+Solstice is a mock online travel booking platform, built using React, Vite, React-Router, TailwindCSS and Firebase.
 Solstice was built as part of a course module, User Centred Web Development (UCWD),
 which covered the importance of user experience and accessibility when designing a product. 
 The development of this application followed the principles of [**Design Sprints**](https://www.thesprintbook.com/the-design-sprint), a methodology used to quickly validate ideas and solve challenges.
@@ -11,7 +11,7 @@ The development of this application followed the principles of [**Design Sprints
   - [Firebase](https://firebase.google.com/)
   
 #### Third-Party Libraries
-  - [Create React App](https://create-react-app.dev/docs/getting-started/) for React App template
+  - [Vite](https://vitejs.dev/) for frontend tooling and bundling
   - [React Icons](https://react-icons.github.io/react-icons) for icons
   - [Validator](https://www.npmjs.com/package/validator) for input validation
   - [React Stripe Checkout](https://www.npmjs.com/package/react-stripe-checkout) for test Stripe checkout window
