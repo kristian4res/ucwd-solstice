@@ -26,6 +26,7 @@ const FilterForm = () => {
     };
 
     updateFilterForm(specifiedFilters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [season, continent, rating])
 
   return (
